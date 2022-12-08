@@ -6,7 +6,7 @@
   let results = [];
 
   function onChange(e) {
-    if (e.target.value.length > 3) {
+    if (e.target.value.length >= 3) {
       let search = e.target.value.toLowerCase();
       results = tracks.filter((track) => {
         return `${track.album} - ${track.title}`.toLowerCase().includes(search);

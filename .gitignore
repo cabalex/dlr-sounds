@@ -13,8 +13,11 @@ dist-ssr
 *.local
 
 # Temporary
+public/AudioFiles-original
 public/AudioFiles
-public/downloader.py
+public/AlbumArt-original
+public/*.py
+public/errors.json
 
 # Editor directories and files
 .vscode/*

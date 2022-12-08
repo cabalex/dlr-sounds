@@ -4,6 +4,7 @@
   import Track from "./Track.svelte";
 
   export let album: {name: string, poster: string, tracks: TrackData[]};
+  export let deletePlaylist: () => void|null = null;
   let element;
   let open = false;
 
@@ -22,22 +23,26 @@
 </script>
 
 <div class="album" on:click={() => open = !open} bind:this={element}>
-  <img src={"http://soundsofdisneyland.com/" + album.poster} alt={album.name} />
+  <img src={album.poster} alt={album.name} />
   {#if open}
   <div class="trackListOuter">
     <div class="trackList">
       <header>
-        <img src={"http://soundsofdisneyland.com/" + album.poster} alt={album.name} />
+        <img src={album.poster} alt={album.name} />
         <h2>{album.name} <h3>{album.tracks.length} tracks</h3>
-          <div>
+          <div on:click={(e) => e.stopPropagation()}> 
             <button on:click={playAll}>Play All</button>
             <button on:click={queueAll}>Queue All</button>
+            {#if deletePlaylist}
+            <button on:click={deletePlaylist}>Delete Playlist</button>
+            {/if}
           </div>
         </h2>
       </header>
       {#each album.tracks as track, i}
-        <Track track={track} number={i+1} />
+        <Track track={track} album={album} number={i+1} />
       {/each}
+      <footer>Tap anywhere outside to close</footer>
     </div>
   </div>
   {/if}
@@ -67,6 +72,7 @@
     top: 0;
     left: 0;
     z-index: 2;
+    animation: fadeIn 0.1s ease-out;
   }
   .trackList {
     width: calc(100% - 40px);
@@ -80,6 +86,7 @@
 
     display: flex;
     flex-direction: column;
+    animation: slideUp 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   .trackList header {
     display: flex;
@@ -98,8 +105,21 @@
     margin: 0;
     font-size: 1.25rem;
   }
+  .trackList footer {
+    display: none;
+    padding: 50px 0;
+  }
 
   @media screen and (max-width: 500px) {
+    .trackList footer {
+      display: block;
+    }
+    .trackList:after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 200px;
+    }
     .trackList header {
       flex-direction: column;
       align-items: center;

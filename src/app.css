@@ -9,6 +9,7 @@
   background-color: #242424;
 
   --alternate: #444;
+  --alternate-dark: #222;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -49,11 +50,22 @@ body {
   50% { transform: rotate(-25deg) }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50%); }
+  to { transform: translateY(0); }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
     --alternate: #ccc;
+    --alternate-dark: #ddd;
   }
   a:hover {
     color: #747bff;

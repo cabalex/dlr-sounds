@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
   import Play from "svelte-material-icons/Play.svelte";
   import Pause from "svelte-material-icons/Pause.svelte";
   import SkipNext from "svelte-material-icons/SkipNext.svelte";
@@ -7,7 +7,7 @@
   import PlaylistMusic from "svelte-material-icons/PlaylistMusic.svelte";
   import PlaylistMusicOutlined from "svelte-material-icons/PlaylistMusicOutline.svelte";
 
-
+  import clockFace from "../assets/smallWorldClockface.png";
   import type { TrackData } from "../assets/Audio";
   import { audioStore, audioStorePosition, audioElem } from "../AudioStore";
   import Queue from './Queue.svelte';
@@ -16,57 +16,86 @@
   let track: TrackData = $audioStore[0];
 
   let audio = $audioElem;
-  audio.addEventListener('ended', () => {
+
+  // Audio listeners
+  function onEnded() {
     // Play automatically the next track when audio ends.
     if ($audioStorePosition < $audioStore.length - 1) {
       audioStorePosition.set($audioStorePosition + 1);
-      play();
     }
-  });
-  // progress bar 
-  audio.addEventListener('timeupdate', () => {
+  }
+  function onTimeUpdate() {
     progress = audio.currentTime;
     duration = audio.duration || 0.01;
-  });
+  }
+
+  // activate scroller
+  function updateScroller() {
+    if (window.innerWidth - 250 < scroller.clientWidth) {
+      scroller.style.animation = "";
+    } else {
+      scroller.style.animation = "none";
+    }
+  }
+  let scroller: HTMLElement;
+
+  onMount(() => {
+    audio.addEventListener('ended', onEnded)
+    audio.addEventListener('timeupdate', onTimeUpdate);
+    window.addEventListener('resize', updateScroller);
+    setMediaControlHandlers();
+    updateScroller();
+  })
 
   const unsubscribeAudio = audioStore.subscribe((value) => {
     if (value[$audioStorePosition].title !== track.title) {
       track = value[$audioStorePosition];
-      audio.src = "http://soundsofdisneyland.com/" + track.mp3;
       play();
     }
   });
   const unsubscribePosition = audioStorePosition.subscribe((value) => {
     if ($audioStore[value].title !== track.title) {
       track = $audioStore[value];
-      audio.src = "http://soundsofdisneyland.com/" + track.mp3;
       play();
     }
   });
 
-  onDestroy(() => { unsubscribeAudio(); unsubscribePosition() });
+  onDestroy(() => {
+    unsubscribeAudio();
+    unsubscribePosition();
+    audio.removeEventListener('ended', onEnded)
+    audio.removeEventListener('timeupdate', onTimeUpdate);
+    window.removeEventListener('resize', updateScroller);
+  });
 
   // play the audio.
   async function play() {
-    setMediaControlHandlers();
-
     if (!decodeURIComponent(audio.src).includes(track.mp3)) {
-      audio.src = "http://soundsofdisneyland.com/" + track.mp3;
+      audio.src = track.mp3;
     }
-    await audio.play();
+    await audio.play().catch(() => {});
+
     progress = audio.currentTime;
     duration = audio.duration || 0.01;
     updateMetadata();
+    updateScroller();
   }
 
   // update metadata for media controls.
   function updateMetadata() {
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: track.title,
-      artist: track.artist,
-      album: track.album,
-      artwork: [{src: "http://soundsofdisneyland.com/" + track.poster, sizes: "1400x1400", type: "image/png"}]
-    });
+    if (!navigator.mediaSession.metadata) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: track.title,
+        artist: track.artist,
+        album: track.album,
+        artwork: [{src: track.poster, sizes: "500x500", type: "image/png"}]
+      });
+    } else {
+      navigator.mediaSession.metadata.title = track.title;
+      navigator.mediaSession.metadata.artist = track.artist;
+      navigator.mediaSession.metadata.album = track.album;
+      navigator.mediaSession.metadata.artwork = [{src: track.poster, sizes: "500x500", type: "image/png"}];
+    }
 
     // Media is loaded, set the duration.
     updatePositionState();
@@ -110,7 +139,6 @@
       updatePositionState();
     });
   }
-  setMediaControlHandlers();
 
   function readableTime(time: number) {
     let hours = Math.floor(time / 3600);
@@ -130,20 +158,22 @@
 
   /* queue */
   let showingQueue = false;
-  
-
 </script>
 
 <div class="audioPlayer" on:click={(e) => e.stopPropagation()}>
   {#if (audio.readyState >= 3)}
-  <img alt={track.title} src={"http://soundsofdisneyland.com/" + track.poster} />
+  <img alt={track.title} src={track.poster} />
   {/if}
   {#if (audio.readyState < 3)}
-  <img class="loadingClock" alt="Loading" src="http://soundsofdisneyland.com/icons/smallWorldClockface.png" />
+  <img class="loadingClock" alt="Loading" src={clockFace} />
   {/if}
   <div class="trackData">
     <div class="mainData">
-      <h3>{track.title}</h3>
+      <h3 title={track.title}>
+        <span class="scroller" bind:this={scroller}>
+          {track.title}
+        </span>
+      </h3>
       <button on:click={previousTrack}><SkipPrevious /></button>
       <button on:click={() => { if (audio.paused) { play() } else { audio.pause() }} }>
         {#if (audio.paused)}
@@ -204,7 +234,7 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
-    width: 100%;
+    width: calc(100% - 90px);
     padding-right: 10px;
   }
   .mainData {
@@ -216,7 +246,20 @@
   .mainData h3 {
     margin: 0;
     flex-grow: 1;
+    flex-shrink: 1;
     text-align: left;
+    /* prevent wrapping */
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .mainData .scroller {
+    display: inline-block;
+    animation: scroll 10s linear infinite;
+    animation-delay: -5s;
+  }
+  @keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
   }
   .progress {
     display: flex;

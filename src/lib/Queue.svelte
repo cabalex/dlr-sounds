@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TrashCan from "svelte-material-icons/TrashCan.svelte";
+  import PlaylistRemove from "svelte-material-icons/PlaylistRemove.svelte";
   import { audioStore, audioStorePosition } from "../AudioStore";
   import PlayAnim from "../assets/PlayAnim.svelte";
   import Track from "./Track.svelte";
@@ -10,6 +10,7 @@
   function deleteTrack(i) {
     audioStore.update((value) => {
       value.splice(i, 1);
+      if (i < $audioStorePosition) audioStorePosition.set($audioStorePosition - 1);
       return value;
     });
   }
@@ -20,10 +21,16 @@
       onShown(false);
     }
   }
+
+  function clearQueue() {
+    let pos = $audioStorePosition;
+    audioStorePosition.set(0);
+    audioStore.update((value) => value.filter((v, i) => i === pos))
+  }
 </script>
 {#if shown}
 <div class="queue" bind:this={element}>
-  <h3>{$audioStore.length} songs in queue</h3>
+  <h3>{$audioStore.length} songs in queue <button on:click={clearQueue}>Clear queue</button></h3>
   {#each $audioStore as track, i}
     <div
       class={"track" + ($audioStorePosition === i ? ' playing' : '')}
@@ -33,10 +40,10 @@
       <PlayAnim className="thumb" />
       {/if}
       {#if $audioStorePosition !== i}
-      <img class="thumb" src={"http://soundsofdisneyland.com/" + track.poster} alt={track.title} />
+      <img class="thumb" src={track.poster} alt={track.title} />
       {/if}
       <span style="flex-grow: 1; text-align: left">{track.title}</span>
-      <button on:click={(e) => { e.stopPropagation(); deleteTrack(i)}}><TrashCan /></button>
+      <button on:click={(e) => { e.stopPropagation(); deleteTrack(i)}}><PlaylistRemove /></button>
     </div>
   {/each}
 </div>
@@ -49,7 +56,7 @@
     position: fixed;
     right: 10px;
     bottom: 90px;
-    background-color: var(--alternate);
+    background-color: var(--alternate-dark);
     padding: 10px;
     max-height: 50vh;
     overflow-y: auto;
@@ -61,7 +68,7 @@
   }
   .queue:after {
     content: "";
-    background-color: var(--alternate);
+    background-color: var(--alternate-dark);
     clip-path: polygon(0 0, 50% 100%, 100% 0);
 
     position: fixed;
@@ -83,12 +90,22 @@
     font-size: 24px;
     line-height: 0;
     cursor: pointer;
+    border-radius: 0;
+    border-color: transparent;
   }
   .queue .track:hover {
     background-color: #999;
   }
   .queue .track.playing {
     background-color: #aaa;
+    position: sticky;
+    bottom: 0;
+    top: 0;
+    box-shadow: 0 0 10px var(--alternate-dark);
+  }
+  .queue .track button:not(:hover) {
+    background-color: transparent;
+    border-color: transparent;
   }
   .queue .track .thumb {
     height: 30px;
