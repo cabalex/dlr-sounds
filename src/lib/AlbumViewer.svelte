@@ -1,6 +1,6 @@
 <script lang="ts">
   import Plus from "svelte-material-icons/Plus.svelte";
-  import PlaylistThumb from "../assets/Playlist.png";
+  import PlaylistThumb from "../assets/playlist.png";
   import type { TrackData } from "../assets/Audio";
   import { audioStore } from "../AudioStore";
   import Album from './Album.svelte';
