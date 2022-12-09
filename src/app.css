@@ -34,6 +34,16 @@ body {
   min-width: 320px;
   height: 100%;
   width: 100%;
+  touch-action: pan-x pan-y;
+}
+
+button {
+  border: 5px solid buttonface;
+  color: white;
+}
+.btnrow {
+  display: flex;
+  gap: 5px;
 }
 
 #app {
@@ -72,5 +82,7 @@ body {
   }
   button {
     background-color: #f9f9f9;
+    border-color: #f9f9f9;
+    color: black;
   }
 }

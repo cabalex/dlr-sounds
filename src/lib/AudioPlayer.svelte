@@ -16,6 +16,8 @@
   let track: TrackData = $audioStore[0];
 
   let audio = $audioElem;
+  let audioPlayer;
+  let paused = true;
 
   // Audio listeners
   function onEnded() {
@@ -23,6 +25,12 @@
     if ($audioStorePosition < $audioStore.length - 1) {
       audioStorePosition.set($audioStorePosition + 1);
     }
+  }
+  function onPlay() {
+    navigator.mediaSession.playbackState = "playing";
+  }
+  function onPause() {
+    navigator.mediaSession.playbackState = "paused";
   }
   function onTimeUpdate() {
     progress = audio.currentTime;
@@ -40,21 +48,29 @@
   let scroller: HTMLElement;
 
   onMount(() => {
-    audio.addEventListener('ended', onEnded)
+    audio = $audioElem;
+    audioPlayer.appendChild(audio);
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('pause', onPause);
+    audio.addEventListener('ended', onEnded);
     audio.addEventListener('timeupdate', onTimeUpdate);
+    audio.addEventListener('loaded', updateMetadata);
     window.addEventListener('resize', updateScroller);
     setMediaControlHandlers();
     updateScroller();
   })
 
   const unsubscribeAudio = audioStore.subscribe((value) => {
-    if (value[$audioStorePosition].title !== track.title) {
+    if ($audioStorePosition > value.length - 1) {
+      audioStorePosition.set(0);
+    }
+    if (value[$audioStorePosition].mp3 !== track.mp3) {
       track = value[$audioStorePosition];
       play();
     }
   });
   const unsubscribePosition = audioStorePosition.subscribe((value) => {
-    if ($audioStore[value].title !== track.title) {
+    if ($audioStore[value].mp3 !== track.mp3) {
       track = $audioStore[value];
       play();
     }
@@ -63,8 +79,11 @@
   onDestroy(() => {
     unsubscribeAudio();
     unsubscribePosition();
+    audio.removeEventListener('play', onPlay);
+    audio.removeEventListener('pause', onPause);
     audio.removeEventListener('ended', onEnded)
     audio.removeEventListener('timeupdate', onTimeUpdate);
+    audio.removeEventListener('loaded', updateMetadata);
     window.removeEventListener('resize', updateScroller);
   });
 
@@ -73,50 +92,50 @@
     if (!decodeURIComponent(audio.src).includes(track.mp3)) {
       audio.src = track.mp3;
     }
-    await audio.play().catch(() => {});
 
+    paused = false;
+    await audio.play();
     progress = audio.currentTime;
-    duration = audio.duration || 0.01;
+    duration = audio.duration || 100;
     updateMetadata();
     updateScroller();
   }
 
+  async function pause() {
+    paused = true;
+    await audio.pause();
+  }
+
   // update metadata for media controls.
   function updateMetadata() {
-    if (!navigator.mediaSession.metadata) {
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: track.title,
-        artist: track.artist,
-        album: track.album,
-        artwork: [{src: track.poster, sizes: "500x500", type: "image/png"}]
-      });
-    } else {
-      navigator.mediaSession.metadata.title = track.title;
-      navigator.mediaSession.metadata.artist = track.artist;
-      navigator.mediaSession.metadata.album = track.album;
-      navigator.mediaSession.metadata.artwork = [{src: track.poster, sizes: "500x500", type: "image/png"}];
-    }
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: track.title,
+      artist: track.artist,
+      album: track.album,
+      artwork: [{src: track.poster, sizes: "500x500", type: "image/jpeg"}]
+    });
 
-    // Media is loaded, set the duration.
     updatePositionState();
   }
 
   // update the position state for media controls.
   function updatePositionState() {
-    navigator.mediaSession.setPositionState({
-      duration: audio.duration,
-      playbackRate: audio.playbackRate,
-      position: audio.currentTime
-    });
+    if ('setPositionState' in navigator.mediaSession) {
+      navigator.mediaSession.setPositionState({
+        duration: duration || progress,
+        playbackRate: audio.playbackRate,
+        position: progress
+      });
+    }
   }
 
-  function previousTrack() {
+  async function previousTrack() {
     audioStorePosition.set(($audioStorePosition - 1 + $audioStore.length) % $audioStore.length);
-    play();
+    await play();
   }
-  function nextTrack() {
+  async function nextTrack() {
     audioStorePosition.set(($audioStorePosition + 1) % $audioStore.length);
-    play();
+    await play();
   }
 
   function setMediaControlHandlers() {
@@ -125,8 +144,8 @@
     navigator.mediaSession.setActionHandler('nexttrack', nextTrack);
 
     /* Play & Pause */
-    navigator.mediaSession.setActionHandler('play', () => audio.play());
-    navigator.mediaSession.setActionHandler('pause', () => audio.pause());
+    navigator.mediaSession.setActionHandler('play', play);
+    navigator.mediaSession.setActionHandler('pause', pause);
 
     /* Seek To (supported since Chrome 78) */
 
@@ -136,6 +155,8 @@
         return;
       }
       audio.currentTime = event.seekTime;
+      duration = audio.duration;
+      progress = audio.currentTime;
       updatePositionState();
     });
   }
@@ -153,6 +174,7 @@
     let width = bounding.width;
     let x = width + bounding.x - (e.clientX || e.touches[0].x);
     audio.currentTime = (width - x) / width * audio.duration;
+    updatePositionState();
     e.stopPropagation();
   }
 
@@ -160,7 +182,7 @@
   let showingQueue = false;
 </script>
 
-<div class="audioPlayer" on:click={(e) => e.stopPropagation()}>
+<div class="audioPlayer" on:click={(e) => e.stopPropagation()} bind:this={audioPlayer}>
   {#if (audio.readyState >= 3)}
   <img alt={track.title} src={track.poster} />
   {/if}
@@ -172,14 +194,14 @@
       <h3 title={track.title}>
         <span class="scroller" bind:this={scroller}>
           {track.title}
+          <span>{track.album}</span>
         </span>
       </h3>
       <button on:click={previousTrack}><SkipPrevious /></button>
-      <button on:click={() => { if (audio.paused) { play() } else { audio.pause() }} }>
-        {#if (audio.paused)}
+      <button on:click={() => { if (audio.paused) { play() } else { pause() }} }>
+        {#if (paused)}
         <Play />
-        {/if}
-        {#if (!audio.paused)}
+        {:else}
         <Pause />
         {/if}
       </button>
@@ -254,11 +276,17 @@
   }
   .mainData .scroller {
     display: inline-block;
-    animation: scroll 10s linear infinite;
+    animation: scroll 13s linear infinite;
     animation-delay: -5s;
+  }
+  .mainData .scroller span {
+    font-size: 0.8em;
+    color: #888;
   }
   @keyframes scroll {
     0% { transform: translateX(100%); }
+    40% { transform: translateX(0%); }
+    60% { transform: translateX(0%); }
     100% { transform: translateX(-100%); }
   }
   .progress {
@@ -280,7 +308,6 @@
   }
   .progressBar {
     height: 100%;
-    transition: width 0.3s linear;
     background-color: white;
     pointer-events: none;
   }

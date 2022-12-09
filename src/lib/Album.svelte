@@ -30,7 +30,7 @@
       <header>
         <img src={album.poster} alt={album.name} />
         <h2>{album.name} <h3>{album.tracks.length} tracks</h3>
-          <div on:click={(e) => e.stopPropagation()}> 
+          <div class="btnrow" on:click={(e) => e.stopPropagation()}> 
             <button on:click={playAll}>Play All</button>
             <button on:click={queueAll}>Queue All</button>
             {#if deletePlaylist}

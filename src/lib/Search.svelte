@@ -42,7 +42,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: field;
+    background-color: var(--alternate);
     font-size: 24px;
     padding-right: 10px;
   }
@@ -50,6 +50,7 @@
     border: none;
     outline: none;
     width: calc(100% - 20px);
+    background-color: var(--alternate);
     padding: 10px;
     font-size: 20px;
   }

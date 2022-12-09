@@ -23,27 +23,27 @@
   
   function addToQueue(track: TrackData, e) {
     e.stopPropagation();
-    if (!$audioStore.map(track => track.title).includes(track.title)) {
+    if (!$audioStore.map(track => track.mp3).includes(track.mp3)) {
       audioStore.update((value) => [...value, track]);
     }
   }
 
   function removeFromQueue(track: TrackData, e) {
     e.stopPropagation();
-    if ($audioStore.map(track => track.title).includes(track.title)) {
-      let index = $audioStore.map(track => track.title).indexOf(track.title);
+    if ($audioStore.map(track => track.mp3).includes(track.mp3)) {
+      let index = $audioStore.map(track => track.mp3).indexOf(track.mp3);
       audioStore.update((value) => {
         if (index < $audioStorePosition) {
           audioStorePosition.set($audioStorePosition - 1);
         }
-        return value.filter((t) => t.title != track.title)
+        return value.filter((t) => t.mp3 != track.mp3)
       });
     }
   }
 
   function toggleQueue(track: TrackData, e) {
     e.stopPropagation();
-    if ($audioStore.map(track => track.title).includes(track.title)) {
+    if ($audioStore.map(track => track.mp3).includes(track.mp3)) {
       removeFromQueue(track, e);
     } else {
       addToQueue(track, e);
@@ -58,12 +58,12 @@
   {#if number != -1}
   <span class="number">{number}</span>
   {/if}
-  <span class="title">{track.title}</span>
-  <button on:click={(e) => toggleQueue.call(null, track, e)}>
-    {#if $audioStore.map(track => track.title).includes(track.title)}
+  <span class="title" title={track.title}>{track.title}</span>
+  <button on:click={(e) => toggleQueue.call(null, track, e)} title="Add/Remove from queue">
+    {#if $audioStore.map(track => track.mp3).includes(track.mp3)}
     <PlaylistCheck />
     {/if}
-    {#if !$audioStore.map(track => track.title).includes(track.title)}
+    {#if !$audioStore.map(track => track.mp3).includes(track.mp3)}
     <PlaylistPlus />
     {/if}
   </button>
