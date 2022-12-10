@@ -59,6 +59,7 @@
     background-color: var(--alternate-dark);
     padding: 10px;
     max-height: 50vh;
+    max-width: calc(100vw - 40px);
     overflow-y: auto;
 
     display: flex;
@@ -66,7 +67,7 @@
     gap: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   }
-  .queue:after {
+  .audioPlayer:not(.fullscreen) .queue:after {
     content: "";
     background-color: var(--alternate-dark);
     clip-path: polygon(0 0, 50% 100%, 100% 0);

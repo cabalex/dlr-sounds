@@ -9,6 +9,8 @@
 - Ability to search titles and albums
 - Optimized audio and image assets for faster loading (.mp3 -> .ogg, .png -> .jpeg)
 - Cleaner UI with support for dark/light mode
+- Ability to be added to the home screen
+- Full screen playback mode
 - Snappier animations
 - Media controls integration (PC/Android only)
 - Ability to create custom playlists

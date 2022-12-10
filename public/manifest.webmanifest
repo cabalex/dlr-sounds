@@ -1,0 +1,15 @@
+{
+  "background_color": "#242424",
+  "description": "Sounds of the Disneyland Resort",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "vite.svg",
+      "sizes": "192x192",
+      "type": "image/svg"
+    }
+  ],
+  "name": "Sounds of the DLR",
+  "short_name": "DLR Sounds",
+  "start_url": "/dlr-sounds/index.html"
+}

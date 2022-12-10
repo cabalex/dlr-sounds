@@ -18,6 +18,7 @@
   let audio = $audioElem;
   let audioPlayer;
   let paused = true;
+  let fullscreen = false;
 
   // Audio listeners
   function onEnded() {
@@ -49,7 +50,10 @@
 
   onMount(() => {
     audio = $audioElem;
+    // Append child to document to allow media controls
+    // (MediaSession requires an element to work?)
     audioPlayer.appendChild(audio);
+
     audio.addEventListener('play', onPlay);
     audio.addEventListener('pause', onPause);
     audio.addEventListener('ended', onEnded);
@@ -182,11 +186,10 @@
   let showingQueue = false;
 </script>
 
-<div class="audioPlayer" on:click={(e) => e.stopPropagation()} bind:this={audioPlayer}>
+<div class="audioPlayer" class:fullscreen={fullscreen} on:click={(e) => e.stopPropagation()} bind:this={audioPlayer}>
   {#if (audio.readyState >= 3)}
-  <img alt={track.title} src={track.poster} />
-  {/if}
-  {#if (audio.readyState < 3)}
+  <img alt={track.title} src={track.poster} on:click={() => { fullscreen = !fullscreen; updateScroller()}} />
+  {:else}
   <img class="loadingClock" alt="Loading" src={clockFace} />
   {/if}
   <div class="trackData">
@@ -237,6 +240,7 @@
     gap: 10px;
     z-index: 10;
     background-color: var(--alternate);
+    transition: height 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
     height: 75px;
   }
@@ -310,5 +314,96 @@
     height: 100%;
     background-color: white;
     pointer-events: none;
+  }
+
+  /* fullscreen */
+  .audioPlayer.fullscreen:after {
+    position: fixed;
+    color: #888;
+    content: "Sounds of the DLR - tap the image again to close";
+    top: 10px;
+    width: calc(100% - 20px);
+    text-align: right;
+  }
+  .audioPlayer.fullscreen {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    justify-content: center;
+  }
+  .audioPlayer.fullscreen img {
+    width: min(500px, calc(90vw / 3));
+    height: unset;
+    margin-right: 5%;
+  }
+  .audioPlayer.fullscreen .trackData {
+    width: min(600px, 95vw);
+    padding: 0;
+  }
+  .audioPlayer.fullscreen .mainData {
+    flex-wrap: wrap;
+    justify-content: left;
+  }
+  .audioPlayer.fullscreen .mainData h3 {
+    width: 100vw;
+    font-size: 2em;
+    line-height: 1.2em;
+    overflow: visible;
+    white-space: initial;
+  }
+  .audioPlayer.fullscreen .mainData button {
+    font-size: 3em;
+  }
+  .audioPlayer.fullscreen .scroller {
+    animation: none;
+    max-width: 100%;
+    display: block;
+  }
+  .audioPlayer.fullscreen .scroller span {
+    display: block;
+  }
+
+  .audioPlayer.fullscreen .progress {
+    position: fixed;
+    bottom: 5%;
+    left: 5%;
+    width: 90%;
+    font-size: 1.4em;
+    filter: drop-shadow(0 0 5px var(--alternate));
+  }
+
+  @media screen and (max-width: 1000px) {
+    .audioPlayer.fullscreen {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .audioPlayer.fullscreen:after {
+      text-align: center;
+      width: 100%;
+    }
+    .audioPlayer.fullscreen .mainData {
+      justify-content: center;
+    }
+    .audioPlayer.fullscreen img {
+      margin-right: 0;
+      width: min(500px, 90vw);
+    }
+    .audioPlayer.fullscreen .mainData h3 {
+      font-size: 1.5em;
+      line-height: 1.2em;
+      text-align: center;
+    }
+    .audioPlayer.fullscreen .progress {
+      position: unset;
+      width: unset;
+      font-size: unset;
+    }
   }
 </style>
