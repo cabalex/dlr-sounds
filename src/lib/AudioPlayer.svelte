@@ -65,16 +65,18 @@
   })
 
   const unsubscribeAudio = audioStore.subscribe((value) => {
-    if ($audioStorePosition > value.length - 1) {
+    let position = $audioStorePosition;
+    if (position > value.length - 1) {
       audioStorePosition.set(0);
+      position = 0;
     }
-    if (value[$audioStorePosition].mp3 !== track.mp3) {
-      track = value[$audioStorePosition];
+    if (value[position] && value[position].mp3 !== track.mp3) {
+      track = value[position];
       play();
     }
   });
   const unsubscribePosition = audioStorePosition.subscribe((value) => {
-    if ($audioStore[value].mp3 !== track.mp3) {
+    if ($audioStore[value] && $audioStore[value].mp3 !== track.mp3) {
       track = $audioStore[value];
       play();
     }
