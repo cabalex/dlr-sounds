@@ -18,7 +18,7 @@
     <p style="font-size: 12px; line-height: 1.25;">
       Fair Use Notice: This web site contains copyrighted material whose use has not been authorized by the Walt Disney Company. This site is non-profit, and is intended for educational use, constituting a fair use of the copyrighted material (as provided for in section 107 of the US Copyright Law.) If you wish to use this copyrighted material for purposes that go beyond fair use, you must first obtain permission from the Walt Disney Company. All Disney related artwork and audio posted on this site is owned by the Walt Disney Company. This site is in no way affiliated or endorsed by the Walt Disney Company. For official Disney information please visit: <a rel="noreferrer" target="_blank" href="https://disneyland.disney.go.com">https://www.disneyland.disney.go.com</a>. Please support the Walt Disney Company by purchasing their merchandise and visiting their theme parks around the world.
     </p>
-    dlr-sounds v3 - <a rel="noreferrer" target="_blank" href="https://cabalex.github.io">cabalex 2022</a>
+    dlr-sounds v4 - <a rel="noreferrer" target="_blank" href="https://cabalex.github.io">cabalex 2022</a>
   </footer>
 </main>
 

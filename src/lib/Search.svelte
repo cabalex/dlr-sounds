@@ -1,9 +1,11 @@
 <script lang="ts">
   import Magnify from "svelte-material-icons/Magnify.svelte"
+  import Close from "svelte-material-icons/Close.svelte"
   import Track from "./Track.svelte";
   export let tracks;
 
   let results = [];
+  let inputRef;
 
   function onChange(e) {
     if (e.target.value.length >= 3) {
@@ -18,15 +20,23 @@
 </script>
 
 <div class="search">
-  <div class="searchBar">
-    <input on:keyup={onChange} type="text" placeholder={`Search ${tracks.length} magical tracks...`} />
-    <Magnify />
+  <div class="searchBar" style={results.length ? "border-bottom: 1px solid #777" : ""}>
+    <input bind:this={inputRef} on:keyup={onChange} type="text" placeholder={`Search ${tracks.length} magical tracks...`} />
+    {#if (inputRef && inputRef.value)}
+    <div style="cursor: pointer" on:click={() => {inputRef.value = ""; results = []}}>
+      <Close />
+    </div>
+    {:else}
+      <Magnify />
+    {/if}
   </div>
+  {#if results}
   <div class="results">
     {#each results as track}
       <Track track={track} showAlbum={true} />
     {/each}
   </div>
+  {/if}
 </div>
 
 <style>
@@ -59,7 +69,7 @@
     top: 100%;
     left: 0;
     width: 100%;
-    max-height: calc(100vh - 220px);
+    max-height: calc(100vh - 600%);
     overflow-y: auto;
     background-color: var(--alternate);
   }

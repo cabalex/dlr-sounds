@@ -13,8 +13,7 @@ dist-ssr
 *.local
 
 # Temporary
-public/AudioFiles-original
-public/AudioFiles
+public/AudioFiles*
 public/AlbumArt-original
 public/*.py
 public/errors.json

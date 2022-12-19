@@ -10,6 +10,8 @@
 
   --alternate: #444;
   --alternate-dark: #222;
+  --safe-margin-bottom: 0px;
+  --safe-margin-bottom: env(safe-area-inset-bottom);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -54,6 +56,17 @@ button {
 .audioPlayer.fullscreen .queue {
   top: 40px;
   bottom: unset;
+}
+.audioPlayer:not(.fullscreen) .queue:after {
+  content: "";
+  background-color: var(--alternate-dark);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+
+  position: fixed;
+  bottom: calc(80px + var(--safe-margin-bottom));
+  right: 17px;
+  width: 20px;
+  height: 10px;
 }
 
 .loadingClock {

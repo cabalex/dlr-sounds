@@ -1,5 +1,7 @@
 <script lang="ts">
   import PlaylistRemove from "svelte-material-icons/PlaylistRemove.svelte";
+  import Delete from "svelte-material-icons/Delete.svelte";
+  import Shuffle from "svelte-material-icons/Shuffle.svelte";
   import { audioStore, audioStorePosition } from "../AudioStore";
   import PlayAnim from "../assets/PlayAnim.svelte";
   import Track from "./Track.svelte";
@@ -24,13 +26,28 @@
 
   function clearQueue() {
     let pos = $audioStorePosition;
+    audioStore.update((value) => {
+      return value.filter((v, i) => i === pos);
+    })
     audioStorePosition.set(0);
-    audioStore.update((value) => value.filter((v, i) => i === pos))
+  }
+
+  function shuffleQueue() {
+    let pos = $audioStorePosition;
+    audioStore.update((value) => {
+      let shuffled = value.filter((v, i) => i !== pos).sort(() => Math.random() - 0.5);
+      audioStorePosition.set(0);
+      return [value[pos], ...shuffled];
+    });
   }
 </script>
 {#if shown}
 <div class="queue" bind:this={element}>
-  <h3>{$audioStore.length} songs in queue <button on:click={clearQueue}>Clear queue</button></h3>
+  <h3>
+    <span>{$audioStore.length} {$audioStore.length == 1 ? "song" : "songs"} in queue</span>
+    <button on:click={clearQueue}><Delete /></button>
+    <button on:click={shuffleQueue}><Shuffle /></button>
+  </h3>
   {#each $audioStore as track, i}
     <div
       class={"track" + ($audioStorePosition === i ? ' playing' : '')}
@@ -60,6 +77,7 @@
     padding: 10px;
     max-height: 50vh;
     max-width: calc(100vw - 40px);
+    margin-bottom: var(--safe-margin-bottom);
     overflow-y: auto;
 
     display: flex;
@@ -67,16 +85,22 @@
     gap: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   }
-  .audioPlayer:not(.fullscreen) .queue:after {
-    content: "";
-    background-color: var(--alternate-dark);
-    clip-path: polygon(0 0, 50% 100%, 100% 0);
+  .queue > h3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 
-    position: fixed;
-    bottom: 80px;
-    right: 17px;
-    width: 20px;
-    height: 10px;
+    position: sticky;
+    top: -10px;
+    margin: 0;
+    padding: 10px;
+    background-color: var(--alternate-dark);
+  }
+  .queue > h3 > span {
+    flex-grow: 1;
+    text-align: center;
   }
   .queue .track {
     display: flex;
@@ -87,7 +111,7 @@
     padding-right: 10px;
     user-select: none;
   }
-  .queue .track > button {
+  .queue .track > button, .queue button {
     font-size: 24px;
     line-height: 0;
     cursor: pointer;
@@ -101,7 +125,7 @@
     background-color: #aaa;
     position: sticky;
     bottom: 0;
-    top: 0;
+    top: 50px;
     box-shadow: 0 0 10px var(--alternate-dark);
   }
   .queue .track button:not(:hover) {

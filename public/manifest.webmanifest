@@ -4,9 +4,9 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "vite.svg",
+      "src": "logo192.png",
       "sizes": "192x192",
-      "type": "image/svg"
+      "type": "image/png"
     }
   ],
   "name": "Sounds of the DLR",

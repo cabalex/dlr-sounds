@@ -58,6 +58,7 @@
     audio.addEventListener('pause', onPause);
     audio.addEventListener('ended', onEnded);
     audio.addEventListener('timeupdate', onTimeUpdate);
+    audio.addEventListener('loadedmetadata', updateMetadata);
     audio.addEventListener('loaded', updateMetadata);
     window.addEventListener('resize', updateScroller);
     setMediaControlHandlers();
@@ -89,6 +90,7 @@
     audio.removeEventListener('pause', onPause);
     audio.removeEventListener('ended', onEnded)
     audio.removeEventListener('timeupdate', onTimeUpdate);
+    audio.removeEventListener('loadedmetadata', updateMetadata);
     audio.removeEventListener('loaded', updateMetadata);
     window.removeEventListener('resize', updateScroller);
   });
@@ -99,8 +101,9 @@
       audio.src = track.mp3;
     }
 
-    paused = false;
+    updateMetadata();
     await audio.play();
+    paused = false;
     progress = audio.currentTime;
     duration = audio.duration || 100;
     updateMetadata();
@@ -108,8 +111,8 @@
   }
 
   async function pause() {
-    paused = true;
     await audio.pause();
+    paused = true;
   }
 
   // update metadata for media controls.
@@ -189,7 +192,7 @@
 </script>
 
 <div class="audioPlayer" class:fullscreen={fullscreen} on:click={(e) => e.stopPropagation()} bind:this={audioPlayer}>
-  {#if (audio.readyState >= 3 && audio._state !== "SEEKING")}
+  {#if (audio.readyState >= 3)}
   <img alt={track.title} src={track.poster} on:click={() => { fullscreen = !fullscreen; updateScroller()}} />
   {:else}
   <img class="loadingClock" alt="Loading" src={clockFace} />
@@ -202,7 +205,7 @@
           <span>{track.album}</span>
         </span>
       </h3>
-      <button on:click={previousTrack}><SkipPrevious /></button>
+      <button on:click={() => { if (audio.currentTime > 3) { audio.currentTime = 0 } else { previousTrack() }}}><SkipPrevious /></button>
       <button on:click={() => { if (audio.paused) { play() } else { pause() }} }>
         {#if (paused)}
         <Play />
@@ -243,7 +246,7 @@
     z-index: 10;
     background-color: var(--alternate);
     transition: height 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-    padding-bottom: env(safe-area-inset-bottom);
+    padding-bottom: var(--safe-margin-bottom);
 
     height: 75px;
   }
