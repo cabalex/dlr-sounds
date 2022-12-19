@@ -2673,7 +2673,7 @@ const tracks: TrackData[] = [
 		title:"Dumbo Flying Elephants: Area Music: Casey Jr.",
 		artist:"Walt Disney",
 		free:false,
-		mp3:"Dumbo Flying Elephants-01 Dumbo Flying Elephants_ Area Music_ Casey Jr..mp3",
+		mp3:"Dumbo Flying Elephants-01 Dumbo Flying Elephants_ Area Music_ Casey Jr.mp3",
 		poster:"AlbumArt/Dumbo Flying Elephants.jpeg",
 		album:"Dumbo Flying Elephants",
 		comments:""
