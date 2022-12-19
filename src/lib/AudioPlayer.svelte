@@ -189,7 +189,7 @@
 </script>
 
 <div class="audioPlayer" class:fullscreen={fullscreen} on:click={(e) => e.stopPropagation()} bind:this={audioPlayer}>
-  {#if (audio.readyState >= 3)}
+  {#if (audio.readyState >= 3 && audio._state !== "SEEKING")}
   <img alt={track.title} src={track.poster} on:click={() => { fullscreen = !fullscreen; updateScroller()}} />
   {:else}
   <img class="loadingClock" alt="Loading" src={clockFace} />
@@ -243,6 +243,7 @@
     z-index: 10;
     background-color: var(--alternate);
     transition: height 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    padding-bottom: env(safe-area-inset-bottom);
 
     height: 75px;
   }

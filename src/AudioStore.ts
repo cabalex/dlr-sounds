@@ -1,7 +1,7 @@
 import tracks from "./assets/Audio";
 import { writable, readable } from "svelte/store";
 import { OGVLoader, OGVPlayer } from "ogv";
-OGVLoader.base = "/ogv";
+OGVLoader.base = window.location.origin + window.location.pathname + "ogv";
 
 export const audioStore = writable([ tracks[Math.floor(Math.random() * tracks.length)] ]);
 export const audioStorePosition = writable(0);
