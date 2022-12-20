@@ -4,6 +4,10 @@
   import Pause from "svelte-material-icons/Pause.svelte";
   import SkipNext from "svelte-material-icons/SkipNext.svelte";
   import SkipPrevious from "svelte-material-icons/SkipPrevious.svelte";
+  import VolumeHigh from "svelte-material-icons/VolumeHigh.svelte";
+  import VolumeMedium from "svelte-material-icons/VolumeMedium.svelte";
+  import VolumeLow from "svelte-material-icons/VolumeLow.svelte";
+  import VolumeOff from "svelte-material-icons/VolumeOff.svelte";
   import PlaylistMusic from "svelte-material-icons/PlaylistMusic.svelte";
   import PlaylistMusicOutlined from "svelte-material-icons/PlaylistMusicOutline.svelte";
 
@@ -16,6 +20,7 @@
   let track: TrackData = $audioStore[0];
 
   let audio = $audioElem;
+  let titleElem = document.querySelector("title");
   let audioPlayer;
   let paused = true;
   let fullscreen = false;
@@ -25,13 +30,17 @@
     // Play automatically the next track when audio ends.
     if ($audioStorePosition < $audioStore.length - 1) {
       audioStorePosition.set($audioStorePosition + 1);
+    } else {
+      titleElem.textContent = "Sounds of the DLR";
     }
   }
   function onPlay() {
     navigator.mediaSession.playbackState = "playing";
+    titleElem.textContent = `${track.title} - Sounds of the DLR`;
   }
   function onPause() {
     navigator.mediaSession.playbackState = "paused";
+    titleElem.textContent = "Sounds of the DLR";
   }
   function onTimeUpdate() {
     progress = audio.currentTime;
@@ -40,7 +49,10 @@
 
   // activate scroller
   function updateScroller() {
-    if (window.innerWidth - 250 < scroller.clientWidth) {
+    if (
+      (window.innerWidth > 700 && window.innerWidth - 250 < scroller.clientWidth) ||
+      (window.innerWidth < 700 && window.innerWidth - 140 < scroller.clientWidth)
+    ) {
       scroller.style.animation = "";
     } else {
       scroller.style.animation = "none";
@@ -189,6 +201,39 @@
 
   /* queue */
   let showingQueue = false;
+
+  /* volume */
+  let showingVolume = false;
+
+
+  /* handle key presses */
+  function handleKeyUp(e) {
+    switch(e.key) {
+      case " ":
+        if (paused) {
+          play();
+        } else {
+          pause();
+        }
+        break;
+      case "ArrowLeft":
+        previousTrack();
+        break;
+      case "ArrowRight":
+        nextTrack();
+        break;
+      case "Escape":
+        fullscreen = false;
+        break;
+      case "q":
+        showingQueue = !showingQueue;
+        break;
+      default:
+        return;
+    }
+    e.preventDefault();
+    e.stopPropagation();
+  }
 </script>
 
 <div class="audioPlayer" class:fullscreen={fullscreen} on:click={(e) => e.stopPropagation()} bind:this={audioPlayer}>
@@ -205,6 +250,42 @@
           <span>{track.album}</span>
         </span>
       </h3>
+      <button
+        on:touchstart={() => { if (showingVolume) showingVolume = false}}
+        on:mouseenter={() => showingVolume = true}
+        on:mouseleave={() => showingVolume = false}
+      >
+        {#if (audio.volume > 0.7)}
+        <VolumeHigh />
+        {:else if (audio.volume > 0.2)}
+        <VolumeMedium />
+        {:else if (audio.volume > 0)}
+        <VolumeLow />
+        {:else}
+        <VolumeOff />
+        {/if}
+        {#if showingVolume}
+        <div class="volume">
+          {#if (audio.volume > 0.7)}
+          <VolumeHigh />
+          {:else if (audio.volume > 0.2)}
+          <VolumeMedium />
+          {:else if (audio.volume > 0)}
+          <VolumeLow />
+          {:else}
+          <VolumeOff />
+          {/if}
+          <input
+            on:touchstart={(e) => { e.stopPropagation()}}
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            bind:value={audio.volume}
+          />
+        </div>
+        {/if}
+      </button>
       <button on:click={() => { if (audio.currentTime > 3) { audio.currentTime = 0 } else { previousTrack() }}}><SkipPrevious /></button>
       <button on:click={() => { if (audio.paused) { play() } else { pause() }} }>
         {#if (paused)}
@@ -234,6 +315,12 @@
   <Queue shown={showingQueue} onShown={(newState) => showingQueue = newState} />
 </div>
 
+<svelte:window
+  on:keydown={handleKeyUp}
+  on:touchstart={() => { showingQueue = false; showingVolume = false}}
+  on:click={() => { showingQueue = false; showingVolume = false}}
+/>
+
 <style>
   .audioPlayer {
     position: fixed;
@@ -261,6 +348,26 @@
     border: 0;
     font-size: 32px;
     cursor: pointer;
+    position: relative;
+  }
+  .audioPlayer .volume {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: -20px;
+    background-color: var(--alternate-dark);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 20px 10px;
+    line-height: 0;
+    transform: translateX(-62px) translateY(-1.25rem) rotate(-90deg);
+  }
+  .audioPlayer.fullscreen .volume {
+    transform: translateX(-62px) translateY(-0.25rem) rotate(-90deg);
   }
   .trackData {
     display: flex;
@@ -378,6 +485,33 @@
     width: 90%;
     font-size: 1.4em;
     filter: drop-shadow(0 0 5px var(--alternate));
+  }
+
+  @media screen and (max-width: 700px) {
+    .audioPlayer {
+      height: 100px;
+    }
+    .audioPlayer img {
+      width: 100px;
+      height: 100px;
+    }
+    .audioPlayer .mainData {
+      flex-wrap: wrap;
+      gap: 0;
+      justify-content: center;
+    }
+    .audioPlayer .mainData h3 {
+      width: 100%;
+      margin: 5px;
+    }
+    .audioPlayer .mainData button:not(:first-child) {
+      margin-left: 5%;
+      margin-bottom: 0;
+      line-height: 0;
+    }
+    .progress {
+      width: calc(100% - 30px);
+    }
   }
 
   @media screen and (max-width: 1000px) {

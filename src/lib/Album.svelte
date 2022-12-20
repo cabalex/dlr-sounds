@@ -17,12 +17,32 @@
     audioStore.set(album.tracks);
   }
 
+  function shufflePlayAll() {
+    audioStorePosition.set(0);
+    audioStore.set(album.tracks.sort(() => Math.random() - 0.5));
+  }
+
   function queueAll() {
     audioStore.update((value) => [...value, ...album.tracks]);
   }
 </script>
 
-<div class="album" on:click={() => open = !open} bind:this={element}>
+<div class="album"
+  on:click={() => open = !open}
+  on:keydown={(e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      e.stopPropagation();
+      open = !open;
+    }
+    if (e.key === "Escape" && open) {
+      open = false;
+    }
+  }}
+  bind:this={element}
+  role="button"
+  tabindex="0"
+>
   <img src={album.poster} alt={album.name} />
   {#if open}
   <div class="trackListOuter">
@@ -31,7 +51,8 @@
         <img src={album.poster} alt={album.name} />
         <h2>{album.name} <h3>{album.tracks.length} tracks</h3>
           <div class="btnrow" on:click={(e) => e.stopPropagation()}> 
-            <button on:click={playAll}>Play All</button>
+            <button on:click={playAll}>Play</button>
+            <button on:click={shufflePlayAll}>Shuffle Play</button>
             <button on:click={queueAll}>Queue All</button>
             {#if deletePlaylist}
             <button on:click={deletePlaylist}>Delete Playlist</button>
@@ -39,9 +60,11 @@
           </div>
         </h2>
       </header>
-      {#each album.tracks as track, i}
-        <Track track={track} album={album} number={i+1} />
-      {/each}
+      <div role="list">
+        {#each album.tracks as track, i}
+          <Track track={track} album={album} number={i+1} />
+        {/each}
+      </div>
       <footer>Tap anywhere outside to close</footer>
     </div>
   </div>

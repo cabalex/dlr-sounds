@@ -53,6 +53,9 @@ button {
 }
 
 /* crosses components */
+.volume svg {
+  transform: rotate(90deg);
+}
 .audioPlayer.fullscreen .queue {
   top: 40px;
   bottom: unset;
@@ -67,6 +70,11 @@ button {
   right: 17px;
   width: 20px;
   height: 10px;
+}
+@media screen and (max-width: 700px) {
+  .audioPlayer:not(.fullscreen) .queue:after {
+    right: calc(calc(calc(100% - 100px) * 0.5) - 22%);
+  }
 }
 
 .loadingClock {

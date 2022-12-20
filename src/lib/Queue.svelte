@@ -11,9 +11,8 @@
 
   function deleteTrack(i) {
     audioStore.update((value) => {
-      value.splice(i, 1);
       if (i < $audioStorePosition) audioStorePosition.set($audioStorePosition - 1);
-      return value;
+      return value.filter((v, j) => j !== i);
     });
   }
 
@@ -52,6 +51,15 @@
     <div
       class={"track" + ($audioStorePosition === i ? ' playing' : '')}
       on:click={() => audioStorePosition.set(i)}
+      on:keydown={(e) => {
+        if (e.key === "Enter" || e.key == " ") {
+          e.preventDefault();
+          e.stopPropagation(); 
+          audioStorePosition.set(i);
+        }
+      }}
+      role="button"
+      tabindex="0"
     >
       {#if $audioStorePosition === i}
       <PlayAnim className="thumb" />
@@ -60,7 +68,18 @@
       <img class="thumb" src={track.poster} alt={track.title} />
       {/if}
       <span style="flex-grow: 1; text-align: left">{track.title}</span>
-      <button on:click={(e) => { e.stopPropagation(); deleteTrack(i)}}><PlaylistRemove /></button>
+      <button
+        on:click={(e) => { e.stopPropagation(); deleteTrack(i)}}
+        on:keydown={(e) => {
+          if (e.key === "Enter" || e.key == " ") {
+            e.preventDefault();
+            e.stopPropagation(); 
+            deleteTrack(i);
+          }
+        }}
+      >
+        <PlaylistRemove />
+      </button>
     </div>
   {/each}
 </div>

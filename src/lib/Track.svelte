@@ -51,7 +51,19 @@
   }
 </script>
 
-<div class="track" on:click={(e) => playTrack.call(null, track, e)}>
+<div
+  class="track"
+  on:click={(e) => playTrack.call(null, track, e)}
+  on:keydown={(e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      e.stopPropagation();
+      playTrack.call(null, track, e);
+    }
+  }}
+  tabindex="0"
+  role="button"
+>
   {#if showAlbum}
   <img src={track.poster} alt={track.title} />
   {/if}
@@ -59,7 +71,17 @@
   <span class="number">{number}</span>
   {/if}
   <span class="title" title={track.title}>{track.title}</span>
-  <button on:click={(e) => toggleQueue.call(null, track, e)} title="Add/Remove from queue">
+  <button
+    on:click={(e) => toggleQueue.call(null, track, e)}
+    on:keydown={(e) => {
+      if (e.key === " " || e.key === "Enter") {
+        e.stopPropagation();
+        e.preventDefault();
+        toggleQueue.call(null, track, e)
+      }
+    }}
+    title="Add/Remove from queue"
+    tabindex="0">
     {#if $audioStore.map(track => track.mp3).includes(track.mp3)}
     <PlaylistCheck />
     {/if}
@@ -80,6 +102,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+  .track:focus-visible, .track button:focus-visible {
+    outline: 2px solid #777;
   }
   .track .number {
     width: 20px;
