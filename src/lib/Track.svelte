@@ -106,7 +106,7 @@
       if (e.key === " " || e.key === "Enter") {
         e.stopPropagation();
         e.preventDefault();
-        openAlbum.set(album.title)
+        triggerOpenAlbum.call(null, track, e);
       }
     }}
     title="Show album"
