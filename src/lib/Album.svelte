@@ -1,6 +1,7 @@
 <script lang="ts">
+  import { onDestroy } from "svelte";
   import type { TrackData } from "../assets/Audio";
-  import { audioStore, audioStorePosition } from "../AudioStore";
+  import { audioStore, audioStorePosition, openAlbum } from "../AudioStore";
   import Track from "./Track.svelte";
 
   export let album: {name: string, poster: string, tracks: TrackData[]};
@@ -24,6 +25,20 @@
 
   function queueAll() {
     audioStore.update((value) => [...value, ...album.tracks]);
+  }
+
+  const unsubscribe = openAlbum.subscribe((value) => {
+    if (value === album.name && !deletePlaylist) open = true;
+  })
+
+  onDestroy(() => {
+    unsubscribe();
+  })
+
+  $: {
+    if (!open) {
+      openAlbum.set("");
+    }
   }
 </script>
 

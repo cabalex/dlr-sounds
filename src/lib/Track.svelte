@@ -2,12 +2,14 @@
   import PlaylistPlay from "svelte-material-icons/PlaylistPlay.svelte";
   import PlaylistPlus from "svelte-material-icons/PlaylistPlus.svelte";
   import PlaylistCheck from "svelte-material-icons/PlaylistCheck.svelte";
+  import OpenInNew from "svelte-material-icons/OpenInNew.svelte";
   import type { TrackData } from "../assets/Audio";
-  import { audioStore, audioStorePosition } from "../AudioStore";
+  import { audioStore, audioStorePosition, openAlbum } from "../AudioStore";
 
   export let track: TrackData;
   export let album: { title: string; poster: string, tracks: TrackData[]} | null = null;
   export let showAlbum = false;
+  export let showOpenAlbumBtn = false;
   export let number = -1;
 
   function playTrack(track: TrackData, e) {
@@ -49,6 +51,11 @@
       addToQueue(track, e);
     }
   }
+
+  function triggerOpenAlbum(track: TrackData, e) {
+    e.stopPropagation();
+    openAlbum.set(track.album);
+  }
 </script>
 
 <div
@@ -70,6 +77,9 @@
   {#if number != -1}
   <span class="number">{number}</span>
   {/if}
+  {#if showOpenAlbumBtn}
+  <span class="albumName">{track.album}</span>
+  {/if}
   <span class="title" title={track.title}>{track.title}</span>
   <button
     on:click={(e) => toggleQueue.call(null, track, e)}
@@ -89,6 +99,21 @@
     <PlaylistPlus />
     {/if}
   </button>
+  {#if showOpenAlbumBtn}
+  <button
+    on:click={(e) => triggerOpenAlbum.call(null, track, e)}
+    on:keydown={(e) => {
+      if (e.key === " " || e.key === "Enter") {
+        e.stopPropagation();
+        e.preventDefault();
+        openAlbum.set(album.title)
+      }
+    }}
+    title="Show album"
+    tabindex="0">
+    <OpenInNew />
+  </button>
+  {/if}
 </div>
 
 <style>
@@ -133,5 +158,14 @@
   }
   .track:hover {
     background-color: #aaa;
+  }
+  .track .albumName {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  @media screen and (max-width: 900px) {
+    .track .albumName {
+      display: none;
+    }
   }
 </style>

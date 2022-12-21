@@ -33,7 +33,7 @@
   {#if results}
   <div class="results">
     {#each results as track}
-      <Track track={track} showAlbum={true} />
+      <Track track={track} showAlbum={true} showOpenAlbumBtn={true} />
     {/each}
   </div>
   {/if}

@@ -72,8 +72,11 @@ button {
   height: 10px;
 }
 @media screen and (max-width: 700px) {
+  .audioPlayer:not(.fullscreen) .queue {
+    bottom: 110px !important;
+  }
   .audioPlayer:not(.fullscreen) .queue:after {
-    right: calc(calc(calc(100% - 100px) * 0.5) - 22%);
+    content: unset;
   }
 }
 

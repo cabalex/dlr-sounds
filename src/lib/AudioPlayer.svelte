@@ -13,8 +13,9 @@
 
   import clockFace from "../assets/smallWorldClockface.png";
   import type { TrackData } from "../assets/Audio";
-  import { audioStore, audioStorePosition, audioElem } from "../AudioStore";
+  import { audioStore, audioStorePosition, audioElem, repeat } from "../AudioStore";
   import Queue from './Queue.svelte';
+  
   let progress = 0;
   let duration = 0.01;
   let track: TrackData = $audioStore[0];
@@ -28,7 +29,12 @@
   // Audio listeners
   function onEnded() {
     // Play automatically the next track when audio ends.
-    if ($audioStorePosition < $audioStore.length - 1) {
+    if ($repeat === "once") {
+      audio.currentTime = 0;
+      audio.play();
+    } else if ($repeat === "on") {
+      audioStorePosition.set(($audioStorePosition + 1) % $audioStore.length);
+    } else if ($audioStorePosition < $audioStore.length - 1) {
       audioStorePosition.set($audioStorePosition + 1);
     } else {
       titleElem.textContent = "Sounds of the DLR";
@@ -236,9 +242,15 @@
   }
 </script>
 
-<div class="audioPlayer" class:fullscreen={fullscreen} on:click={(e) => e.stopPropagation()} bind:this={audioPlayer}>
+<div
+  class="audioPlayer"
+  class:fullscreen={fullscreen}
+  on:click={(e) => e.stopPropagation()}
+  bind:this={audioPlayer}
+  on:touchstart={(e) => e.stopPropagation()}
+>
   {#if (audio.readyState >= 3)}
-  <img alt={track.title} src={track.poster} on:click={() => { fullscreen = !fullscreen; updateScroller()}} />
+  <img style="cursor: pointer" alt={track.title} src={track.poster} on:click={() => { fullscreen = !fullscreen; updateScroller()}} />
   {:else}
   <img class="loadingClock" alt="Loading" src={clockFace} />
   {/if}

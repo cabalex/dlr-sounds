@@ -2,7 +2,12 @@
   import PlaylistRemove from "svelte-material-icons/PlaylistRemove.svelte";
   import Delete from "svelte-material-icons/Delete.svelte";
   import Shuffle from "svelte-material-icons/Shuffle.svelte";
-  import { audioStore, audioStorePosition } from "../AudioStore";
+  import Repeat from "svelte-material-icons/Repeat.svelte";
+  import RepeatOnce from "svelte-material-icons/RepeatOnce.svelte";
+  import RepeatOff from "svelte-material-icons/RepeatOff.svelte";
+  import ArrowUp from "svelte-material-icons/ArrowUp.svelte";
+  import ArrowDown from "svelte-material-icons/ArrowDown.svelte";
+  import { audioStore, audioStorePosition, repeat } from "../AudioStore";
   import PlayAnim from "../assets/PlayAnim.svelte";
   import Track from "./Track.svelte";
   export let shown = false;
@@ -39,17 +44,130 @@
       return [value[pos], ...shuffled];
     });
   }
+
+  /* drag and drop */
+  let mouseYCoordinate = null; // pointer y coordinate within client
+  let distanceTopGrabbedVsPointer = null;
+
+  let draggingItem = null;
+  let draggingItemId = null;
+  let draggingItemIndex = null;
+
+  let hoveredItemIndex = null;
+
+  $: {
+      // prevents the ghost flickering at the top
+      if (mouseYCoordinate == null || mouseYCoordinate == 0) {
+          // showGhost = false;
+      }
+  }
+
+  $: {
+      if (
+          draggingItemIndex != null &&
+          hoveredItemIndex != null &&
+          draggingItemIndex != hoveredItemIndex
+      ) {
+          // swap items
+          audioStore.update((value) => {
+            [value[draggingItemIndex], value[hoveredItemIndex]] = [
+              value[hoveredItemIndex],
+              value[draggingItemIndex],
+            ];
+            return value;
+          })
+
+          // balance
+          draggingItemIndex = hoveredItemIndex;
+      }
+  }
 </script>
 {#if shown}
-<div class="queue" bind:this={element}>
+<div class="queue" bind:this={element} on:touchstart={(e) => e.stopPropagation()}>
   <h3>
     <span>{$audioStore.length} {$audioStore.length == 1 ? "song" : "songs"} in queue</span>
-    <button on:click={clearQueue}><Delete /></button>
-    <button on:click={shuffleQueue}><Shuffle /></button>
+    <button title="Clear queue" on:click={clearQueue}><Delete /></button>
+    <button title="Repeat setting" on:click={() => repeat.update((value) => ["off", "on", "once"][(["off", "on", "once"].indexOf(value) + 1) % 3])}>
+      {#if $repeat === "on"}
+      <Repeat />
+      {:else if $repeat === "once"}
+      <RepeatOnce />
+      {:else}
+      <RepeatOff />
+      {/if}
+    </button>
+    <button title="Shuffle queue" on:click={shuffleQueue}><Shuffle /></button>
   </h3>
+  {#if mouseYCoordinate}
+  <div
+      class="track ghost"
+      class:playing={$audioStorePosition === draggingItemIndex}
+      style="top: {mouseYCoordinate + distanceTopGrabbedVsPointer}px; width: {element.getBoundingClientRect().width - 45}px"
+      draggable="true"
+    >
+      {#if $audioStorePosition === draggingItemIndex}
+      <PlayAnim className="thumb" />
+      {/if}
+      {#if $audioStorePosition !== draggingItemIndex}
+      <img class="thumb" src={draggingItem.poster} alt={draggingItem.title} />
+      {/if}
+      <span>{draggingItem.title}</span>
+      <button>
+        <PlaylistRemove />
+      </button>
+  </div>
+  {/if}
   {#each $audioStore as track, i}
     <div
-      class={"track" + ($audioStorePosition === i ? ' playing' : '')}
+      class="track"
+      class:playing={$audioStorePosition === i}
+      class:invisible={draggingItemId == track.mp3}
+      draggable="true"
+      on:dragstart={(e) => {
+        if ($audioStorePosition === i) return;
+        if (draggingItemId) {
+          // dragstart without dragdrop - mobile
+          // We want to drop the item here!
+          hoveredItemIndex = i;
+          audioStore.update((value) => {
+            [value[draggingItemIndex], value[hoveredItemIndex]] = [
+              value[hoveredItemIndex],
+              value[draggingItemIndex],
+            ];
+            return value;
+          })
+          draggingItemId = null; // makes item visible
+          hoveredItemIndex = null; // prevents instant swap
+          mouseYCoordinate = null;
+          return;
+        }
+        mouseYCoordinate = e.clientY;
+        //console.log('dragstart', mouseYCoordinate);
+
+        draggingItem = track;
+        draggingItemIndex = i;
+        draggingItemId = track.mp3;
+
+        // @ts-ignore
+        distanceTopGrabbedVsPointer = e.target.getBoundingClientRect().y - e.clientY;
+      }}
+      on:drag={(e) => {
+        mouseYCoordinate = e.clientY;
+        //console.log('drag', mouseYCoordinate);
+      }}
+      on:dragover={(e) => {
+        // we don't want this because the element can be sticky
+        if ($audioStorePosition !== i) hoveredItemIndex = i;
+      }}
+      on:dragend={(e) => {
+        //console.log('dragend', mouseYCoordinate);
+        //console.log('\n');
+
+        // mouseYCoordinate = e.clientY;
+
+        draggingItemId = null; // makes item visible
+        hoveredItemIndex = null; // prevents instant swap
+      }}
       on:click={() => audioStorePosition.set(i)}
       on:keydown={(e) => {
         if (e.key === "Enter" || e.key == " ") {
@@ -67,7 +185,7 @@
       {#if $audioStorePosition !== i}
       <img class="thumb" src={track.poster} alt={track.title} />
       {/if}
-      <span style="flex-grow: 1; text-align: left">{track.title}</span>
+      <span>{track.title}</span>
       <button
         on:click={(e) => { e.stopPropagation(); deleteTrack(i)}}
         on:keydown={(e) => {
@@ -98,11 +216,22 @@
     max-width: calc(100vw - 40px);
     margin-bottom: var(--safe-margin-bottom);
     overflow-y: auto;
-
     display: flex;
     flex-direction: column;
     gap: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  }
+  .invisible {
+    opacity: 0;
+  }
+  .ghost {
+    margin-bottom: 10px;
+    pointer-events: none;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    background-color: var(--alternate-dark);
+    filter: drop-shadow(0 0 10px #777);
   }
   .queue > h3 {
     display: flex;
@@ -130,6 +259,10 @@
     padding-right: 10px;
     user-select: none;
   }
+  .queue .track > span {
+    flex-grow: 1;
+    text-align: left;
+  }
   .queue .track > button, .queue button {
     font-size: 24px;
     line-height: 0;
@@ -154,5 +287,6 @@
   .queue .track .thumb {
     height: 30px;
     width: 30px;
+    pointer-events: none;
   }
 </style>
