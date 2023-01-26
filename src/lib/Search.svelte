@@ -8,6 +8,7 @@
   let inputRef;
 
   function onChange(e) {
+    e.stopPropagation();
     if (e.target.value.length >= 3) {
       let search = e.target.value.toLowerCase();
       results = tracks.filter((track) => {
@@ -21,7 +22,7 @@
 
 <div class="search">
   <div class="searchBar" style={results.length ? "border-bottom: 1px solid #777" : ""}>
-    <input bind:this={inputRef} on:keyup={onChange} type="text" placeholder={`Search ${tracks.length} magical tracks...`} />
+    <input bind:this={inputRef} on:keydown={(e) => e.stopPropagation()} on:keyup={onChange} type="text" placeholder={`Search ${tracks.length} magical tracks...`} />
     {#if (inputRef && inputRef.value)}
     <div style="cursor: pointer" on:click={() => {inputRef.value = ""; results = []}}>
       <Close />
