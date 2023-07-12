@@ -3,20 +3,21 @@
   import PlaylistPlus from "svelte-material-icons/PlaylistPlus.svelte";
   import PlaylistCheck from "svelte-material-icons/PlaylistCheck.svelte";
   import OpenInNew from "svelte-material-icons/OpenInNew.svelte";
-  import type { TrackData } from "../assets/Audio";
+  import { type TrackData, toTrackData } from "../assets/Audio";
   import { audioStore, audioStorePosition, openAlbum } from "../AudioStore";
 
   export let track: TrackData;
-  export let album: { title: string; poster: string, tracks: TrackData[]} | null = null;
   export let showAlbum = false;
   export let showOpenAlbumBtn = false;
+  export let showAddToQueueBtn = true;
+  export let onClick = null;
   export let number = -1;
 
   function playTrack(track: TrackData, e) {
     e.stopPropagation();
-    if (album) {
-      audioStore.set(album.tracks);
-      audioStorePosition.set(album.tracks.indexOf(track) || 0);
+    if (track.album && !showAlbum) {
+      audioStore.set(track.album.tracks.map(t => toTrackData(track.album, t)));
+      audioStorePosition.set(track.album.tracks.map(t => t.title).indexOf(track.title) || 0);
     } else {
       audioStorePosition.set(0);
       audioStore.update((value) => [track, ...value]);
@@ -60,27 +61,33 @@
 
 <div
   class="track"
-  on:click={(e) => playTrack.call(null, track, e)}
+  on:click={(e) => (onClick || playTrack).call(null, track, e)}
   on:keydown={(e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       e.stopPropagation();
-      playTrack.call(null, track, e);
+      (onClick || playTrack).call(null, track, e);
     }
   }}
   tabindex="0"
   role="button"
 >
-  {#if showAlbum}
-  <img src={track.poster} alt={track.title} />
-  {/if}
   {#if number != -1}
   <span class="number">{number}</span>
   {/if}
-  {#if showOpenAlbumBtn}
-  <span class="albumName">{track.album}</span>
+  {#if showAlbum}
+  <img src={track.album.poster} alt={track.title} />
   {/if}
-  <span class="title" title={track.title}>{track.title}</span>
+  {#if showAlbum}
+  <span class="albumName">{track.album.name}</span>
+  {/if}
+  <span class="title" title={track.title}>
+    {track.title}
+  </span>
+  {#each track.tags as tag}
+    <span class={"tag " + tag}>{tag}</span>
+  {/each}
+  {#if showAddToQueueBtn}
   <button
     on:click={(e) => toggleQueue.call(null, track, e)}
     on:keydown={(e) => {
@@ -99,6 +106,7 @@
     <PlaylistPlus />
     {/if}
   </button>
+  {/if}
   {#if showOpenAlbumBtn}
   <button
     on:click={(e) => triggerOpenAlbum.call(null, track, e)}
@@ -123,6 +131,7 @@
     text-align: left;
     user-select: none;
     cursor: pointer;
+    border-radius: 5px;
 
     display: flex;
     flex-direction: row;
@@ -132,7 +141,8 @@
     outline: 2px solid #777;
   }
   .track .number {
-    width: 20px;
+    min-width: 3ch;
+    text-align: center;
     margin-right: 10px;
   }
   .track img {
@@ -145,6 +155,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+  .tag {
+    background-color: #ccc;
+    color: black;
+    line-height: 20px;
+    border-radius: 100px;
+    padding: 5px 10px;
   }
   .track button {
     border: none;
@@ -162,6 +179,7 @@
   .track .albumName {
     font-weight: bold;
     margin-right: 10px;
+    white-space: nowrap;
   }
   @media screen and (max-width: 900px) {
     .track .albumName {

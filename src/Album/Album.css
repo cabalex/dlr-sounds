@@ -1,0 +1,157 @@
+.albumOuter {
+  width: 100%;
+  height: calc(100% - 70px);
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  transition: opacity 0.2s ease-in-out;
+}
+.albumInner {
+  width: calc(100% - 20px);
+  max-width: 500px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  background-color: var(--bg);
+  position: relative;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+header {
+  width: min(calc(100% - 20px), 510px);
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  height: 200px;
+  transition: background-color 0.2s ease-in-out, height 0.2s ease-in-out;
+}
+header .closeBtn {
+  background-color: transparent;
+  padding: 1em;
+  border: none;
+  line-height: 0;
+  cursor: pointer;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.smallHeader .closeBtn {
+    height: 100px;
+  }
+.closeBtn .backArrow {
+  display: none;
+}
+.playBtn {
+  background-color: #4bd075;
+  border: none;
+  border-radius: 100px;
+  padding: 10px;
+  line-height: 0;
+  cursor: pointer;
+}
+.playBtn:hover {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 1);
+}
+.btnrow {
+  align-items: center;
+  gap: 10px;
+}
+.btnrow button:not(.playBtn) {
+  background-color: transparent;
+  border: none;
+  line-height: 0;
+  cursor: pointer;
+}
+.smallHeader .playBtn {
+  margin-right: 50px;
+}
+.smallHeader .btnrow button:not(.playBtn) {
+  display: none;
+}
+header img {
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+header .info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+header h2 {
+  font-size: 2em;
+  line-height: 1em;
+  text-align: left;
+  margin: 0;
+}
+.headerOuter {
+  height: 200px;
+  width: 100%;
+}
+.smallHeader header {
+  position: fixed;
+  top: 50px;
+  bottom: 100%;
+  transform: translateX(-10px);
+  height: 100px;
+  padding: 0 5px;
+  background-color: #111;
+  flex-direction: row;
+}
+.smallHeader header .info {
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  justify-content: left;
+}
+.smallHeader header img {
+  width: 100px;
+}
+.smallHeader header h2 {
+  font-size: 1.5em;
+  flex-grow: 1;
+}
+@media screen and (max-width: 500px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+  }
+  .headerOuter:not(.smallHeader) h2 {
+    text-align: center;
+  }
+  .smallHeader header {
+    padding: 0 10px;
+  }
+  .smallHeader .playBtn {
+    margin-right: 0 !important;
+  }
+  .smallHeader header img {
+    margin-left: 50px;
+  }
+  .headerOuter {
+    height: 300px;
+  }
+  .closeBtn {
+    left: -10px;
+    width: 75px;
+    right: unset !important;
+  }
+  .closeBtn .close {
+    display: none !important;
+  }
+  .backArrow {
+    display: block !important;
+  }
+}

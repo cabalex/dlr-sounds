@@ -12,8 +12,8 @@
   import PlaylistMusicOutlined from "svelte-material-icons/PlaylistMusicOutline.svelte";
 
   import clockFace from "../assets/smallWorldClockface.png";
-  import type { TrackData } from "../assets/Audio";
-  import { audioStore, audioStorePosition, audioElem, repeat } from "../AudioStore";
+  import { albums, type TrackData } from "../assets/Audio";
+  import { audioStore, audioStorePosition, audioElem, repeat, openAlbum } from "../AudioStore";
   import Queue from './Queue.svelte';
   
   let progress = 0;
@@ -72,6 +72,9 @@
     // (MediaSession requires an element to work?)
     audioPlayer.appendChild(audio);
 
+    if (localStorage.getItem("volume")) {
+      audio.volume = parseFloat(localStorage.getItem("volume"));
+    }
     audio.addEventListener('play', onPlay);
     audio.addEventListener('pause', onPause);
     audio.addEventListener('ended', onEnded);
@@ -138,8 +141,8 @@
     navigator.mediaSession.metadata = new MediaMetadata({
       title: track.title,
       artist: track.artist,
-      album: track.album,
-      artwork: [{src: track.poster, sizes: "500x500", type: "image/jpeg"}]
+      album: track.album.name,
+      artwork: [{src: track.album.poster, sizes: "500x500", type: "image/jpeg"}]
     });
 
     updatePositionState();
@@ -211,6 +214,11 @@
   /* volume */
   let showingVolume = false;
 
+  function changeVolume(e:any) {
+    // save volume to localStorage
+    localStorage.setItem("volume", e.target.value);
+  }
+
 
   /* handle key presses */
   function handleKeyUp(e) {
@@ -257,9 +265,13 @@
   <div class="trackData">
     <div class="mainData">
       <h3 title={track.title}>
-        <span class="scroller" bind:this={scroller}>
+        <span
+          class="scroller"
+          bind:this={scroller}
+          on:click={() => openAlbum.set(albums.filter(a => a.name === track.album.name)[0])}
+        >
           {track.title}
-          <span>{track.album}</span>
+          <span>{track.album.name}</span>
         </span>
       </h3>
       <button
@@ -293,6 +305,7 @@
             min="0"
             max="1"
             step="0.01"
+            on:change={changeVolume}
             bind:value={audio.volume}
           />
         </div>
@@ -404,6 +417,7 @@
     overflow: hidden;
   }
   .mainData .scroller {
+    cursor: pointer;
     display: inline-block;
     animation: scroll 13s linear infinite;
     animation-delay: -5s;

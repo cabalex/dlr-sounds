@@ -141,6 +141,8 @@
           mouseYCoordinate = null;
           return;
         }
+        e.dataTransfer.setData("text/plain", `${track.title} - ${track.album.name} at ${location.href}`);
+        e.dataTransfer.dropEffect = "move";
         mouseYCoordinate = e.clientY;
         //console.log('dragstart', mouseYCoordinate);
 
@@ -220,8 +222,10 @@
     flex-direction: column;
     gap: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
   }
   .invisible {
+    cursor: grabbing;
     opacity: 0;
   }
   .ghost {
@@ -255,9 +259,12 @@
     flex-direction: row;
     align-items: center;
     cursor: pointer;
+    cursor: grab;
     gap: 10px;
     padding-right: 10px;
+    padding-left: 5px;
     user-select: none;
+    border-radius: 5px;
   }
   .queue .track > span {
     flex-grow: 1;
@@ -267,7 +274,7 @@
     font-size: 24px;
     line-height: 0;
     cursor: pointer;
-    border-radius: 0;
+    border-radius: 5px;
     border-color: transparent;
   }
   .queue .track:hover {
@@ -287,6 +294,7 @@
   .queue .track .thumb {
     height: 30px;
     width: 30px;
+    border-radius: 5px;
     pointer-events: none;
   }
 </style>

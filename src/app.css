@@ -6,8 +6,8 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  background-color: var(--bg);
+  --bg: #242424;
   --alternate: #444;
   --alternate-dark: #222;
   --safe-margin-bottom: 0px;
@@ -50,6 +50,14 @@ button {
 
 #app {
   text-align: center;
+}
+
+/* tags */
+.tag.HOLIDAY {
+  background: linear-gradient(90deg, #ff0000 0%, #ffff00 100%) !important;
+}
+.tag.HALLOWEEN {
+  background: linear-gradient(90deg, #ff8000 0%, #ffff00 100%) !important;
 }
 
 /* crosses components */
@@ -103,7 +111,7 @@ button {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    --bg: #ffffff;
     --alternate: #ccc;
     --alternate-dark: #ddd;
   }

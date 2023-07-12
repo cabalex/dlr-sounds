@@ -12,7 +12,7 @@
     if (e.target.value.length >= 3) {
       let search = e.target.value.toLowerCase();
       results = tracks.filter((track) => {
-        return `${track.album} - ${track.title}`.toLowerCase().includes(search);
+        return `${track.album.name} - ${track.title} ${track.tags.join(", ")}`.toLowerCase().includes(search);
       });
     } else {
       results = [];
@@ -21,21 +21,22 @@
 </script>
 
 <div class="search">
-  <div class="searchBar" style={results.length ? "border-bottom: 1px solid #777" : ""}>
+  <div class="searchBar" style={results.length ? "border-bottom: 1px solid #777; border-radius: 20px 20px 0 0" : ""}>
     <input bind:this={inputRef} on:keydown={(e) => e.stopPropagation()} on:keyup={onChange} type="text" placeholder={`Search ${tracks.length} magical tracks...`} />
     {#if (inputRef && inputRef.value)}
-    <div style="cursor: pointer" on:click={() => {inputRef.value = ""; results = []}}>
+    <div style="cursor: pointer; line-height: 0" on:click={() => {inputRef.value = ""; results = []}}>
       <Close />
     </div>
     {:else}
       <Magnify />
     {/if}
   </div>
-  {#if results}
+  {#if results && results.length}
   <div class="results">
     {#each results as track}
       <Track track={track} showAlbum={true} showOpenAlbumBtn={true} />
     {/each}
+    <div style="height: 40px">Showing {results.length} results</div>
   </div>
   {/if}
 </div>
@@ -47,7 +48,7 @@
     position: sticky;
     top: 5px;
     z-index: 2;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0 0 10px #111);
   }
   .searchBar {
     display: flex;
@@ -56,12 +57,14 @@
     background-color: var(--alternate);
     font-size: 24px;
     padding-right: 10px;
+    border-radius: 20px;
   }
   .search input {
     border: none;
     outline: none;
     width: calc(100% - 20px);
-    background-color: var(--alternate);
+    background-color: transparent;
+    margin-left: 5px;
     padding: 10px;
     font-size: 20px;
   }
@@ -73,5 +76,6 @@
     max-height: calc(100vh - 600%);
     overflow-y: auto;
     background-color: var(--alternate);
+    border-radius: 0 0 20px 20px;
   }
 </style>
