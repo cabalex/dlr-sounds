@@ -6062,6 +6062,90 @@ export const albums: Album[] = [
         "tags": []
       },
       {
+        "title": "Muppet*Vision 3D: The Muppet Show Theme",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ The Muppet Show Theme.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Muppet*Vision 3D: Bein' Green",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ Bein_ Green.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Muppet*Vision 3D: Mahna Mahna",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ Mahna Mahna.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Muppet*Vision 3D: The Rainbow Connection",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ The Rainbow Connection.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Muppet*Vision 3D: Movin' Right Along",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ Movin_ Right Along.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Muppet*Vision 3D: I Hope That Something Better Comes Along",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ I Hope That Something Better Comes Along.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Muppet*Vision 3D: Hey A Movie",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ Hey A Movie.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Muppet*Vision 3D: Happiness Hotel",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ Happiness Hotel.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Muppet*Vision 3D: Steppin' Out With A Star",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ Steppin_ Out With A Star.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Muppet*Vision 3D: Together Again",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ Together Again.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Muppet*Vision 3D: I'm Gonna Always Love You",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ I_m Gonna Always Love You.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Muppet*Vision 3D: Right Where I Belong",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ Right Where I Belong.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
         "title": "Disney Studios: Animation Courtyard Area Loop",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Hollywood Land-05 Disney Studios_ Animation Courtyard Area Loop.mp3",
