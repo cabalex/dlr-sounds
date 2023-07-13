@@ -106,7 +106,7 @@ header h2 {
   transform: translateX(-10px);
   height: 100px;
   padding: 0 5px;
-  background-color: #111;
+  background-color: var(--alternate);
   flex-direction: row;
 }
 .smallHeader header .info {

@@ -18,7 +18,7 @@
   function addPlaylist() {
     playlists.update(p => {
       p.push({
-        name: "New Playlist",
+        name: `${p.length + 1} New Playlist`,
         poster: "",
         tags: ["PLAYLIST"],
         location: [0, 0],
@@ -86,6 +86,14 @@
   .tags button.active {
     background-color: grey;
   }
+  @media (prefers-color-scheme: light) {
+    .tags button {
+      border-color: lightgrey;
+    }
+    .tags button.active {
+      background-color: lightgrey;
+    }
+  }
   .tags:before {
     content: "";
     position: absolute;
@@ -109,7 +117,7 @@
     object-fit: cover;
   }
   .addPlaylist {
-    background-color: #111;
+    background-color: var(--alternate);
     display: flex;
     justify-content: center;
     align-items: center;

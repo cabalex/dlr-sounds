@@ -61,7 +61,7 @@
     position: sticky;
     top: 5px;
     z-index: 2;
-    filter: drop-shadow(0 0 10px #111);
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
   }
   .searchBar {
     display: flex;

@@ -57,6 +57,7 @@
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   }
   header span {
+    color: white;
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 1));
   }
   main {

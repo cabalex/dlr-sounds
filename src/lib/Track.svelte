@@ -174,7 +174,12 @@
     background-color: transparent;
   }
   .track:hover {
-    background-color: #aaa;
+    background-color: #555;
+  }
+  @media (prefers-color-scheme: light) {
+    .track:hover {
+      background-color: #ddd;
+    }
   }
   .track .albumName {
     font-weight: bold;

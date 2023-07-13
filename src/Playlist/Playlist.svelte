@@ -159,22 +159,6 @@
     height: 200px;
     width: 100%;
   }
-  .smallHeader header {
-    position: fixed;
-    top: 50px;
-    bottom: 100%;
-    transform: translateX(-10px);
-    height: 100px;
-    padding: 0 5px;
-    background-color: #111;
-    flex-direction: row;
-  }
-  .smallHeader header .info {
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    justify-content: left;
-  }
   .smallHeader header .playlistImg {
     min-width: 100px;
     min-height: 100px;
