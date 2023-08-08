@@ -199,7 +199,16 @@
   }
 
   /* Seeking on the playback bar */
+  let scrubbing = false;
   function handleMouseCursor(e) {
+    if (e.type === "mousedown") {
+      scrubbing = true;
+    } else if (e.type === "mouseup" || e.type === "mouseout") {
+      scrubbing = false;
+    }
+    if (!scrubbing) {
+      return;
+    }
     let bounding = e.target.getBoundingClientRect();
     let width = bounding.width;
     let x = width + bounding.x - (e.clientX || e.touches[0].x);
@@ -257,7 +266,7 @@
   bind:this={audioPlayer}
   on:touchstart={(e) => e.stopPropagation()}
 >
-  {#if (audio.readyState >= 3)}
+  {#if (audio.readyState >= 3 || audio.currentTime !== 0)}
   <img style="cursor: pointer" alt={track.title} src={track.poster} on:click={() => { fullscreen = !fullscreen; updateScroller()}} />
   {:else}
   <img class="loadingClock" alt="Loading" src={clockFace} />
@@ -330,8 +339,14 @@
       </button>
     </div>
     <div class="progress">
-      <span class="fromTime">{readableTime(progress)}</span>
-      <div class="progressBarFrame" on:click={handleMouseCursor}>
+      <span class="fromTime" on:click={() => audio.currentTime = 0}>{readableTime(progress)}</span>
+      <div
+        class="progressBarFrame"
+        on:mousedown={handleMouseCursor}
+        on:mouseup={handleMouseCursor}
+        on:mouseout={handleMouseCursor}
+        on:mousemove={handleMouseCursor}
+      >
         <div class="progressBar" style={`width: ${progress / duration * 100}%`}></div>
       </div>
       <span class="toTime">{readableTime(duration)}</span>
@@ -448,11 +463,16 @@
     background-color: #222;
     overflow: hidden;
     border-radius: 5px;
+    user-select: none;
   }
   .progressBar {
     height: 100%;
     background-color: white;
     pointer-events: none;
+  }
+  .fromTime, .toTime {
+    user-select: none;
+    cursor: pointer;
   }
 
   /* fullscreen */
