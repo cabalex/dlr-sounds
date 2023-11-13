@@ -7067,7 +7067,7 @@ export const albums: Album[] = [
       {
         "title": "Festival of Holidays Loop (2016)",
         "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Festival Of Holidays Loop.mp3",
+        "mp3": BASE_URL + "/Festival of Holidays Loop.mp3",
         "comments": "",
         "tags": ["HOLIDAY"]
       }
