@@ -3383,14 +3383,7 @@ export const albums: Album[] = [
         "title": "Rivers of America Area Loop",
         "artist": "George Bruns",
         "mp3": BASE_URL + "/New Orleans Square-13 Rivers of America Area Loop.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Rivers of America Area Loop (Reconstruction)",
-        "artist": "George Bruns",
-        "mp3": BASE_URL + "/New Orleans Square-14 Rivers of America Area Loop (Reconstruction).mp3",
-        "comments": "",
+        "comments": "SuperHotLarry",
         "tags": []
       },
       {
@@ -7063,6 +7056,20 @@ export const albums: Album[] = [
         "mp3": BASE_URL + "/Paradise Pier-12 Paradise Park_ Area Loop (2010).mp3",
         "comments": "",
         "tags": []
+      },
+      {
+        "title": "Paradise Park: Area Loop (2010)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Paradise Pier-12 Paradise Park_ Area Loop (2010).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Festival of Holidays Loop (2016)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Festival Of Holidays Loop.mp3",
+        "comments": "",
+        "tags": ["HOLIDAY"]
       }
     ]
   },
@@ -7208,7 +7215,7 @@ export const albums: Album[] = [
         "tags": []
       },
       {
-        "title": "Main Street Electrical Parade",
+        "title": "Main Street Electrical Parade (2009)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Parades-12 Parade_ Main Street Electrical Parade.mp3",
         "comments": "",
@@ -7232,6 +7239,13 @@ export const albums: Album[] = [
         "title": "Paint the Night: Soundtrack (2015)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Parades-15 Parade_ Paint the Night_ Soundtrack (2015).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Magic Happens (2020)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Parades-Magic_Happens_Parade.mp3",
         "comments": "",
         "tags": []
       },

@@ -14,9 +14,11 @@ dist-ssr
 
 # Temporary
 public/AudioFiles*
+public/OriginalAudioFiles*
 public/AlbumArt-original
 public/*.py
 public/errors.json
+public/convert.bat
 
 # Editor directories and files
 .vscode/*
