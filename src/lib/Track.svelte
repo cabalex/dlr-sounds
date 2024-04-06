@@ -1,16 +1,17 @@
 <script lang="ts">
-  import PlaylistPlay from "svelte-material-icons/PlaylistPlay.svelte";
   import PlaylistPlus from "svelte-material-icons/PlaylistPlus.svelte";
   import PlaylistCheck from "svelte-material-icons/PlaylistCheck.svelte";
+  import Delete from "svelte-material-icons/Delete.svelte";
   import OpenInNew from "svelte-material-icons/OpenInNew.svelte";
   import { type TrackData, toTrackData } from "../assets/Audio";
-  import { audioStore, audioStorePosition, openAlbum } from "../AudioStore";
+  import { audioElem, audioStore, audioStorePosition, openAlbum } from "../AudioStore";
 
   export let track: TrackData;
   export let showAlbum = false;
   export let showOpenAlbumBtn = false;
   export let showAddToQueueBtn = true;
   export let onClick = null;
+  export let onDelete = null;
   export let number = -1;
 
   function playTrack(track: TrackData, e) {
@@ -18,6 +19,7 @@
     if (track.album && !showAlbum) {
       audioStore.set(track.album.tracks.map(t => toTrackData(track.album, t)));
       audioStorePosition.set(track.album.tracks.map(t => t.title).indexOf(track.title) || 0);
+      $audioElem.currentTime = 0;
     } else {
       audioStorePosition.set(0);
       audioStore.update((value) => [track, ...value]);
@@ -61,6 +63,7 @@
 
 <div
   class="track"
+  class:playing={$audioStorePosition === -1 ? false : $audioStore[$audioStorePosition].mp3 === track.mp3}
   on:click={(e) => (onClick || playTrack).call(null, track, e)}
   on:keydown={(e) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -122,6 +125,22 @@
     <OpenInNew />
   </button>
   {/if}
+  {#if onDelete}
+  <button
+    on:click={(e) => { onDelete.call(null, track, e); e.stopPropagation(); }}
+    on:keydown={(e) => {
+      if (e.key === " " || e.key === "Enter") {
+        e.stopPropagation();
+        e.preventDefault();
+        onDelete.call(null, track, e);
+      }
+    }}
+    style="color: rgb(237, 66, 69)"
+    title="Delete"
+    tabindex="0">
+    <Delete />
+  </button>
+  {/if}
 </div>
 
 <style>
@@ -139,6 +158,10 @@
   }
   .track:focus-visible, .track button:focus-visible {
     outline: 2px solid #777;
+  }
+  .track.playing {
+    color: var(--primary);
+    font-weight: bold;
   }
   .track .number {
     min-width: 3ch;

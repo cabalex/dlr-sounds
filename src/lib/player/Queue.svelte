@@ -1,15 +1,9 @@
 <script lang="ts">
   import PlaylistRemove from "svelte-material-icons/PlaylistRemove.svelte";
   import Delete from "svelte-material-icons/Delete.svelte";
-  import Shuffle from "svelte-material-icons/Shuffle.svelte";
-  import Repeat from "svelte-material-icons/Repeat.svelte";
-  import RepeatOnce from "svelte-material-icons/RepeatOnce.svelte";
-  import RepeatOff from "svelte-material-icons/RepeatOff.svelte";
-  import ArrowUp from "svelte-material-icons/ArrowUp.svelte";
-  import ArrowDown from "svelte-material-icons/ArrowDown.svelte";
-  import { audioStore, audioStorePosition, repeat } from "../AudioStore";
-  import PlayAnim from "../assets/PlayAnim.svelte";
-  import Track from "./Track.svelte";
+  import { audioStore, audioStorePosition, repeat } from "../../AudioStore";
+  import PlayAnim from "../../assets/PlayAnim.svelte";
+  import Track from "../Track.svelte";
   export let shown = false;
   export let onShown = (shown: boolean) => {};
   let element;
@@ -34,15 +28,6 @@
       return value.filter((v, i) => i === pos);
     })
     audioStorePosition.set(0);
-  }
-
-  function shuffleQueue() {
-    let pos = $audioStorePosition;
-    audioStore.update((value) => {
-      let shuffled = value.filter((v, i) => i !== pos).sort(() => Math.random() - 0.5);
-      audioStorePosition.set(0);
-      return [value[pos], ...shuffled];
-    });
   }
 
   /* drag and drop */
@@ -87,16 +72,6 @@
   <h3>
     <span>{$audioStore.length} {$audioStore.length == 1 ? "song" : "songs"} in queue</span>
     <button title="Clear queue" on:click={clearQueue}><Delete /></button>
-    <button title="Repeat setting" on:click={() => repeat.update((value) => ["off", "on", "once"][(["off", "on", "once"].indexOf(value) + 1) % 3])}>
-      {#if $repeat === "on"}
-      <Repeat />
-      {:else if $repeat === "once"}
-      <RepeatOnce />
-      {:else}
-      <RepeatOff />
-      {/if}
-    </button>
-    <button title="Shuffle queue" on:click={shuffleQueue}><Shuffle /></button>
   </h3>
   {#if mouseYCoordinate}
   <div
@@ -211,7 +186,7 @@
   .queue {
     position: fixed;
     right: 10px;
-    bottom: 90px;
+    bottom: 70px;
     background-color: var(--alternate-dark);
     padding: 10px;
     max-height: 50vh;

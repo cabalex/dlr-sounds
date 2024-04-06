@@ -2,12 +2,13 @@
   import { fade } from "svelte/transition";
   import ArrowLeft from "svelte-material-icons/ArrowLeft.svelte";
   import Play from "svelte-material-icons/Play.svelte";
+  import Pause from "svelte-material-icons/Pause.svelte";
   import PlaylistPlus from "svelte-material-icons/PlaylistPlus.svelte";
   import Shuffle from "svelte-material-icons/Shuffle.svelte";
   import Close from "svelte-material-icons/Close.svelte";
   import { type Album, toTrackData } from "../assets/Audio";
   import Track from "../lib/Track.svelte";
-  import { audioStore, audioStorePosition } from "../AudioStore";
+  import { audioStore, audioStorePosition, audioElem } from "../AudioStore";
   import './Album.css';
   
   export let album: Album;
@@ -32,6 +33,8 @@
   function queueAll() {
     audioStore.update((value) => [...value, ...album.tracks.map(t => toTrackData(album, t))]);
   }
+
+  $: playing = !$audioElem.paused;
 </script>
 
 <div class="albumOuter" on:click={close} on:scroll={handleScroll} in:fade={{duration: 100}}>
@@ -50,9 +53,21 @@
         <div class="info">
           <h2>{album.name}</h2>
           <div class="btnrow">
-            <button class="playBtn" on:click={playAll}>
-              <Play size="36px" />
-            </button>
+            {#if $audioStorePosition > -1 && album.tracks.map(x => x.mp3).includes($audioStore[$audioStorePosition]?.mp3)}
+              {#if !playing}
+                <button class="playBtn" on:click={() => {$audioElem.play(); playing = !$audioElem.paused}}>
+                  <Play size="36px" />
+                </button>
+              {:else}
+                <button class="playBtn" on:click={() => {$audioElem.pause(); playing = !$audioElem.paused}}>
+                  <Pause size="36px" />
+                </button>
+              {/if}
+            {:else}
+              <button class="playBtn" on:click={playAll}>
+                <Play size="36px" />
+              </button>
+            {/if}
             <button on:click={queueAll}>
               <PlaylistPlus size="24px" />
             </button>

@@ -3399,6 +3399,13 @@ export const albums: Album[] = [
         "mp3": BASE_URL + "/New Orleans Square-15 Tiana_s Showboat Jubilee_ Show.mp3",
         "comments": "",
         "tags": []
+      },
+      {
+        "title": "Tiana's Palace: Area Loop",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/New Orleans Square-Tianas Palace.mp3",
+        "comments": "",
+        "tags": []
       }
     ]
   },
@@ -3799,6 +3806,27 @@ export const albums: Album[] = [
         "title": "Breakdown Spiel (Narration Only)",
         "artist": "Allie Wrubel",
         "mp3": BASE_URL + "/Splash Mountain-22 Breakdown Spiel (Narration Only).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "How Do You Do? (1946)",
+        "artist": "Johnny Mercer",
+        "mp3": BASE_URL + "/Brair Patch Tribute-01 How Do You Do_ (1946).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Everybody's Got a Laughin' Place (1946)",
+        "artist": "Johnny Mercer",
+        "mp3": BASE_URL + "/Brair Patch Tribute-02 Everybody_s Got a Laughin_ Place (1946).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Zip-A-Dee-Doo-Dah (1946)",
+        "artist": "Johnny Mercer",
+        "mp3": BASE_URL + "/Brair Patch Tribute-03 Zip-A-Dee-Doo-Dah (1946).mp3",
         "comments": "",
         "tags": []
       }
@@ -4449,6 +4477,182 @@ export const albums: Album[] = [
         "title": "Nothing Can Stop Us Now",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Toontown Area Music-Nothing Can Stop Us Now.mp3",
+        "comments": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "name": "Fantasyland Theatre",
+    "poster": "AlbumArt/Fantasyland Theatre.jpeg",
+    "location": [33.81462859738958, -117.919057852397],
+    "tags": ["DL"],
+    "tracks": [
+      {
+        "title": "Videopolis Theatre: Area Loop",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Fantasyland Theatre-01 Videopolis Theatre_ Area Loop.mp3",
+        "comments": "Credit Chris Lyndon",
+        "tags": []
+      },
+      {
+        "title": "The Fantasyland Theatre: Beauty and the Beast",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Fantasyland Theatre-02 The Fantasyland Theatre_ Beauty and the Beast.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "The Fantasyland Theatre: Snow White, an Enchanting Musical",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Fantasyland Theatre-03 The Fantasyland Theatre_ Snow White, an Enchanting Musical.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "The Fantasyland Theatre: Animazement",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Fantasyland Theatre-04 The Fantasyland Theatre_ Animazement.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "The Fantasyland Theatre: Minnie's Christmas Party",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Holiday-33 Shows_ Minnie_s Christmas Party.mp3",
+        "comments": "Credit Chris Lyndon",
+        "tags": ["HOLIDAY"]
+      },
+      {
+        "title": "The Fantasyland Theatre: The Spirit of Pocahontas",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Fantasyland Theatre-05 The Fantasyland Theatre_ The Spirit of Pocahontas.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "The Festival of Fools: The Hunchback of Notre Dame Festival of Fools",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Fantasyland Theatre-06 The Festival of Fools_ The Hunchback of Notre Dame Festival of Fools.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey and the Magical Map: Area Music",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Fantasyland Theatre-07 Mickey and the Magical Map_ Area Music.mp3",
+        "comments": "Credit Chris Lyndon",
+        "tags": []
+      },
+      {
+        "title": "Mickey and the Magical Map: Soundtrack",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Fantasyland Theatre-08 Mickey and the Magical Map_ Soundtrack.mp3",
+        "comments": "Credit Chris Lyndon",
+        "tags": []
+      },
+      {
+        "title": "Mickey and the Magical Map: Ultimate Soundtrack Mix",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Fantasyland Theatre-09 Mickey and the Magical Map_ Ultimate Soundtrack Mix.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: Instrumental",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-10 Mickey_s Magical Party Time_ Instrumental.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: Theme",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-11 Mickey_s Magical Party Time_ Theme.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: Following The Leader",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-12 Mickey_s Magical Party Time_ Following The Leader.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: The Bare Necessities",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-13 Mickey_s Magical Party Time_ The Bare Necessities.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: Tigger Medley",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-14 Mickey_s Magical Party Time_ Tigger Medley.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: Hakuna Matata",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-15 Mickey_s Magical Party Time_ Hakuna Matata.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: Peter Pan Medley",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-16 Mickey_s Magical Party Time_ Peter Pan Medley.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: Mickey (Final)",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-17 Mickey_s Magical Party Time_ Mickey (Final).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: Main Street USA Version",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-18 Mickey_s Magical Party Time_ Main Street USA Version.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: Remix",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-19 Mickey_s Magical Party Time_ Remix.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: He's A Pirate (Remix)",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-20 Mickey_s Magical Party Time_ He_s A Pirate (Remix).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: The Hill Billy Trio",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-21 Mickey_s Magical Party Time_ The Hill Billy Trio.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey's Magical Party Time: The African Tam Tam",
+        "artist": "Scott Erickson",
+        "mp3": BASE_URL + "/Fantasyland Theatre-22 Mickey_s Magical Party Time_ The African Tam Tam.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Parades and Shows: Poppins in the Parks",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Fantasyland Theatre-23 Parades and Shows_ Poppins in the Parks.mp3",
         "comments": "",
         "tags": []
       }
@@ -5606,211 +5810,6 @@ export const albums: Album[] = [
         "title": "Adventure Through Inner Space: Miracles from Molecules Variation",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Carousel of Progress-27 Adventure Through Inner Space_ Miracles from Molecules Variation.mp3",
-        "comments": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "name": "Fantasyland Theatre",
-    "poster": "AlbumArt/Fantasyland Theatre.jpeg",
-    "location": [33.81462859738958, -117.919057852397],
-    "tags": ["DL"],
-    "tracks": [
-      {
-        "title": "Videopolis Theatre: Area Loop",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Fantasyland Theatre-01 Videopolis Theatre_ Area Loop.mp3",
-        "comments": "Credit Chris Lyndon",
-        "tags": []
-      },
-      {
-        "title": "The Fantasyland Theatre: Beauty and the Beast",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Fantasyland Theatre-02 The Fantasyland Theatre_ Beauty and the Beast.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "The Fantasyland Theatre: Snow White, an Enchanting Musical",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Fantasyland Theatre-03 The Fantasyland Theatre_ Snow White, an Enchanting Musical.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "The Fantasyland Theatre: Animazement",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Fantasyland Theatre-04 The Fantasyland Theatre_ Animazement.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "The Fantasyland Theatre: Minnie's Christmas Party",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Holiday-33 Shows_ Minnie_s Christmas Party.mp3",
-        "comments": "Credit Chris Lyndon",
-        "tags": ["HOLIDAY"]
-      },
-      {
-        "title": "The Fantasyland Theatre: The Spirit of Pocahontas",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Fantasyland Theatre-05 The Fantasyland Theatre_ The Spirit of Pocahontas.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "The Festival of Fools: The Hunchback of Notre Dame Festival of Fools",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Fantasyland Theatre-06 The Festival of Fools_ The Hunchback of Notre Dame Festival of Fools.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey and the Magical Map: Area Music",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Fantasyland Theatre-07 Mickey and the Magical Map_ Area Music.mp3",
-        "comments": "Credit Chris Lyndon",
-        "tags": []
-      },
-      {
-        "title": "Mickey and the Magical Map: Soundtrack",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Fantasyland Theatre-08 Mickey and the Magical Map_ Soundtrack.mp3",
-        "comments": "Credit Chris Lyndon",
-        "tags": []
-      },
-      {
-        "title": "Mickey and the Magical Map: Ultimate Soundtrack Mix",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Fantasyland Theatre-09 Mickey and the Magical Map_ Ultimate Soundtrack Mix.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: Instrumental",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-10 Mickey_s Magical Party Time_ Instrumental.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: Theme",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-11 Mickey_s Magical Party Time_ Theme.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: Following The Leader",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-12 Mickey_s Magical Party Time_ Following The Leader.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: The Bare Necessities",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-13 Mickey_s Magical Party Time_ The Bare Necessities.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: Tigger Medley",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-14 Mickey_s Magical Party Time_ Tigger Medley.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: Hakuna Matata",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-15 Mickey_s Magical Party Time_ Hakuna Matata.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: Peter Pan Medley",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-16 Mickey_s Magical Party Time_ Peter Pan Medley.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: Mickey (Final)",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-17 Mickey_s Magical Party Time_ Mickey (Final).mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: Main Street USA Version",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-18 Mickey_s Magical Party Time_ Main Street USA Version.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: Remix",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-19 Mickey_s Magical Party Time_ Remix.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: He's A Pirate (Remix)",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-20 Mickey_s Magical Party Time_ He_s A Pirate (Remix).mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: The Hill Billy Trio",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-21 Mickey_s Magical Party Time_ The Hill Billy Trio.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Mickey's Magical Party Time: The African Tam Tam",
-        "artist": "Scott Erickson",
-        "mp3": BASE_URL + "/Fantasyland Theatre-22 Mickey_s Magical Party Time_ The African Tam Tam.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Parades and Shows: Poppins in the Parks",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Fantasyland Theatre-23 Parades and Shows_ Poppins in the Parks.mp3",
-        "comments": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "name": "Briar Patch Tribute",
-    "poster": "AlbumArt/Brair Patch Tribute.jpeg",
-    "location": [33.811945994464764, -117.92288840558895],
-    "tags": ["DL"],
-    "tracks": [
-      {
-        "title": "How Do You Do? (1946)",
-        "artist": "Johnny Mercer",
-        "mp3": BASE_URL + "/Brair Patch Tribute-01 How Do You Do_ (1946).mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Everybody's Got a Laughin' Place (1946)",
-        "artist": "Johnny Mercer",
-        "mp3": BASE_URL + "/Brair Patch Tribute-02 Everybody_s Got a Laughin_ Place (1946).mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Zip-A-Dee-Doo-Dah (1946)",
-        "artist": "Johnny Mercer",
-        "mp3": BASE_URL + "/Brair Patch Tribute-03 Zip-A-Dee-Doo-Dah (1946).mp3",
         "comments": "",
         "tags": []
       }
@@ -7058,13 +7057,6 @@ export const albums: Album[] = [
         "tags": []
       },
       {
-        "title": "Paradise Park: Area Loop (2010)",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Paradise Pier-12 Paradise Park_ Area Loop (2010).mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
         "title": "Festival of Holidays Loop (2016)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Festival of Holidays Loop.mp3",
@@ -7563,6 +7555,13 @@ export const albums: Album[] = [
         "tags": ["HOLIDAY"]
       },
       {
+        "title": "A Dream is a Wish Your Heart Makes (Steps In Time, New Years)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/A Dream is A Wish Your Heart Makes (Steps In Time).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
         "title": "Disneyland Closing Music: When You Wish Upon a Star",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-15 Disneyland Closing Music_ When You Wish Upon a Star.mp3",
@@ -7845,7 +7844,7 @@ export const albums: Album[] = [
         "tags": []
       },
       {
-        "title": "Disneyland Esplanade: Area Loop",
+        "title": "Area Loop (Holiday)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Holiday-01 Disneyland Esplanade_ Area Loop.mp3",
         "comments": "",
@@ -7936,6 +7935,91 @@ export const albums: Album[] = [
         comments:"Credit Chris Lyndon",
         tags: []
       }
+    ]
+  },
+  /*{
+    "name": "The Grand Californian Hotel",
+    "poster": "AlbumArt/Grand Californian.jpeg",
+    "location": [33.8121, -117.9189],
+    "tags": ["DLR"],
+    "tracks": []
+  },*/
+  {
+    "name": "Pixar Place Hotel",
+    "poster": "AlbumArt/Pixar Place Hotel.jpeg",
+    "location": [33.8121, -117.9189],
+    "tags": ["DLR"],
+    "tracks": [
+      {
+        title:"The Incredits",
+        artist:"Cartographerr",
+        mp3:BASE_URL + "/Pixar Place Hotel-The Incredits.mp3",
+        comments:"",
+        tags: []
+      },
+      {
+        title:"Remember Me",
+        artist:"Chantry Johnson",
+        mp3:BASE_URL + "/Pixar Place Hotel-Remember Me.mp3",
+        comments:"",
+        tags: []
+      },
+      {
+        title:"Define Dancing",
+        artist:"Brain Tan",
+        mp3:BASE_URL + "/Pixar Place Hotel-Define Dancing.mp3",
+        comments:"",
+        tags: []
+      },
+      {
+        title:"Nobody Like U",
+        artist:"Last Trip To The Moon",
+        mp3:BASE_URL + "/Pixar Place Hotel-Nobody Like U.mp3",
+        comments:"",
+        tags: []
+      },
+      {
+        title:"Married Life",
+        artist:"PK, The Heavyweights",
+        mp3:BASE_URL + "/Pixar Place Hotel-Married Life.mp3",
+        comments:"",
+        tags: []
+      },
+      {
+        title:"Bundle of Joy",
+        artist:"Tomas Kovacs, Terry Joiner",
+        mp3:BASE_URL + "/Pixar Place Hotel-Bundle of Joy.mp3",
+        comments:"",
+        tags: []
+      },
+      {
+        title:"Le Festin",
+        artist:"ASHER YELO",
+        mp3:BASE_URL + "/Pixar Place Hotel-Le Festin.mp3",
+        comments:"",
+        tags: []
+      },
+      {
+        title:"You've Got a Friend in Me",
+        artist:"John Wilhelm, Keigan Jones",
+        mp3:BASE_URL + "/Pixar Place Hotel-You've Got a Friend in Me.mp3",
+        comments:"",
+        tags: []
+      },
+      {
+        title:"Touch the Sky",
+        artist:"Simon Oscroft",
+        mp3:BASE_URL + "/Pixar Place Hotel-Touch the Sky.mp3",
+        comments:"",
+        tags: []
+      },
+      {
+        title:"Born to Play",
+        artist:"Jintae Ko",
+        mp3:BASE_URL + "/Pixar Place Hotel-Born to Play.mp3",
+        comments:"",
+        tags: []
+      },
     ]
   }
 ]

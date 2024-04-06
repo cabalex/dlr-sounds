@@ -51,7 +51,7 @@ header .closeBtn {
   display: none;
 }
 .playBtn {
-  background-color: #4bd075;
+  background-color: var(--primary);
   border: none;
   border-radius: 100px;
   padding: 10px;
@@ -59,7 +59,7 @@ header .closeBtn {
   cursor: pointer;
 }
 .playBtn:hover {
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 1);
+  filter: brightness(1.1);
 }
 .btnrow {
   align-items: center;

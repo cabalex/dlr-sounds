@@ -5,7 +5,7 @@
   import { openAlbum, playlists } from "../AudioStore";
 
   let tag = null;
-  const defaultTags = [["DL", "Disneyland"], ["DCA", "California Adventure"], ["DLR", "Resort"], ["PLAYLIST", "Playlists"]];
+  const defaultTags = [["DL", "Disneyland"], ["DCA", "DCA"], ["DLR", "Resort"], ["PLAYLIST", "Playlists"]];
 
   function toggleTag(thisTag: string) {
     if (tag === thisTag) {
@@ -68,13 +68,13 @@
 
     display: flex;
     justify-content: left;
-    gap: 10px;
+    gap: 5px;
   }
   .tags button {
     border: 2px solid grey;
     background-color: transparent;
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 20px;
+    padding: 5px 10px;
     font-size: unset;
 
     display: flex;
@@ -115,6 +115,8 @@
     cursor: pointer;
     height: 200px;
     object-fit: cover;
+    border-radius: 10px;
+
   }
   .addPlaylist {
     background-color: var(--alternate);

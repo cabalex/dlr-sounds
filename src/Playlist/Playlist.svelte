@@ -44,6 +44,14 @@
     playlists.update(p => p);
   }
 
+  function deleteTrack(i) {
+    openAlbum.update((album) => {
+      album.tracks.splice(i, 1);
+      return album;
+    })
+    playlists.update(p => p);
+  }
+
   function deletePlaylist() {
     if (confirm("Are you sure you want to delete this playlist? It can't be undone.")) {
       playlists.update(p => p.filter(pl => pl.name !== album.name));
@@ -92,7 +100,7 @@
     </div>
     <main style="margin-top: 10px">
       {#each album.tracks as track, i}
-        <Track showAlbum={true} number={i + 1} track={track} />
+        <Track showAlbum={true} number={i + 1} track={track} onDelete={deleteTrack.bind(null, i)} />
       {/each}
     </main>
     <PlaylistAdder onTrackAdd={addTrack} filterTracks={album.tracks.map(t => toTrackData(album, t))} />
@@ -113,7 +121,7 @@
     font-weight: bold;
   }
   .playBtn {
-    background-color: #4bd075;
+    background-color: var(--primary);
     border: none;
     border-radius: 100px;
     padding: 10px;
