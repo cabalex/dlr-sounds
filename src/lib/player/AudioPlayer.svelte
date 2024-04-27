@@ -66,8 +66,8 @@
     // activate scroller
     function updateScroller() {
       if (
-        (window.innerWidth > 700 && window.innerWidth - 250 < scroller.clientWidth) ||
-        (window.innerWidth < 700 && window.innerWidth - 140 < scroller.clientWidth)
+        (window.innerWidth > 700 && window.innerWidth * 0.3 - 75 < scroller.clientWidth) ||
+        (window.innerWidth < 700 && window.innerWidth * 0.3 - 75 < scroller.clientWidth)
       ) {
         scroller.style.animation = "";
       } else {

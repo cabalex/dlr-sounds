@@ -6152,7 +6152,14 @@ export const albums: Album[] = [
         "tags": []
       },
       {
-        "title": "Mike and Sulley to the Rescue: Ride",
+        "title": "Monsters, Inc. Mike & Sulley to the Rescue!: Queue",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Monsters Inc Queue Music.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Monsters, Inc. Mike & Sulley to the Rescue!: Ride",
         "artist": "Randy Newman",
         "mp3": BASE_URL + "/Hollywood Land-07 Mike and Sulley to the Rescue_ Ride.mp3",
         "comments": "",
