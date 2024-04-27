@@ -35,6 +35,8 @@
   }
 
   $: playing = !$audioElem.paused;
+
+  $: tracksNoTitles = album.tracks.filter(x => typeof x !== "string");
 </script>
 
 <div class="albumOuter" on:click={close} on:scroll={handleScroll} in:fade={{duration: 100}}>
@@ -79,8 +81,12 @@
       </header>
     </div>
     <main style="margin-top: 10px">
-      {#each album.tracks as track, i}
-        <Track number={i + 1} track={toTrackData(album, track)} />
+      {#each album.tracks as track}
+        {#if typeof track === "string"}
+          <h4>{track}</h4>
+        {:else}
+          <Track number={tracksNoTitles.indexOf(track) + 1} track={toTrackData(album, track)} />
+        {/if}
       {/each}
     </main>
   </div>

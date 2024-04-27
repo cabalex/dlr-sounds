@@ -13,6 +13,8 @@
     if (e.target.value.length >= 3) {
       let search = e.target.value.toLowerCase();
       results = tracks.filter((track) => {
+        if (typeof track === "string") return false;
+        
         return `${track.album.name} - ${track.title} ${track.tags.join(", ")}`.toLowerCase().includes(search) &&
           !trackNames.includes(`${track.album.name} - ${track.title}`);
       });
@@ -25,7 +27,7 @@
   export let onTrackAdd: (track: TrackData) => void;
 
   $: trackNames = filterTracks.map((track) => `${track.album.name} - ${track.title}`);
-  $: defaults = tracks.slice(0, 200).filter((track) => !trackNames.includes(`${track.album.name} - ${track.title}`));
+  $: defaults = tracks.slice(0, 200).filter((track) => typeof track !== "string" && !trackNames.includes(`${track.album.name} - ${track.title}`));
 </script>
 
 <h2>Add new tracks</h2>

@@ -3,7 +3,7 @@ export interface Album {
   poster: string;
   location: [number, number],
   tags: string[],
-  tracks: AlbumTrackData[]
+  tracks: Array<AlbumTrackData|string>
 }
 export interface AlbumTrackData {
   title: string;
@@ -626,6 +626,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "The Disneyland Story",
       {
         "title": "The Disneyland Story: Lobby Area Music",
         "artist": "Walt Disney",
@@ -752,20 +753,6 @@ export const albums: Album[] = [
         "mp3": BASE_URL + "/Main Street Emporium-11 Main Street Shops_ The Main Street Cinema_ Music Loop.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
-      },
-      {
-        "title": "Main Street U.S.A. (1971-1975): Area Loop",
-        "artist": "Jack Wagner",
-        "mp3": BASE_URL + "/Main Street Emporium-12 Main Street U.S.A. (1971-1975)_ Area Loop.mp3",
-        "comments": "Credit Chris Lyndon",
-        "tags": []
-      },
-      {
-        "title": "Main Street U.S.A. (1971-1975): Area Loop",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Main Street Emporium-13 Main Street U.S.A. (1971-1975)_ Area Loop.mp3",
-        "comments": "",
-        "tags": []
       }
     ]
   },
@@ -775,6 +762,22 @@ export const albums: Album[] = [
     "location": [33.81199284408517, -117.9189859313244],
     "tags": ["DL"],
     "tracks": [
+      "Main Street U.S.A, 1971",
+      {
+        "title": "Morning Area Loop (1971)",
+        "artist": "Jack Wagner",
+        "mp3": BASE_URL + "/Main Street Emporium-12 Main Street U.S.A. (1971-1975)_ Area Loop.mp3",
+        "comments": "Credit Chris Lyndon",
+        "tags": []
+      },
+      {
+        "title": "Evening Area Loop (1971)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Main Street Emporium-13 Main Street U.S.A. (1971-1975)_ Area Loop.mp3",
+        "comments": "",
+        "tags": []
+      },
+      "Main Street U.S.A, 1976",
       {
         "title": "(1976) Black and White",
         "artist": "Albert White and his Gaslight Orchestra",
@@ -929,6 +932,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Main Street U.S.A, 1992",
       {
         "title": "(1992) Old Timers Medley",
         "artist": "Walt Disney",
@@ -1027,6 +1031,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Main Street U.S.A, 2013",
       {
         "title": "(2013) Married Life",
         "artist": "Walt Disney",
@@ -1439,6 +1444,7 @@ export const albums: Album[] = [
     "location": [33.81277527798908, -117.91898398572836],
     "tags": ["DL"],
     "tracks": [
+      "Sleeping Beauty Castle Walkthrough",
       {
         "title": "Sleeping Beauty Castle: Area Music (1983): When You Wish Upon A Star",
         "artist": "Walt Disney",
@@ -1537,6 +1543,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
+      "Casey Jr. Circus Train",
       {
         "title": "Casey Jr. Circus Train: Ride",
         "artist": "Walt Disney",
@@ -1544,11 +1551,20 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
+      "Mad Tea Party",
       {
         "title": "Mad Tea Party: Area Music",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Sleeping Beauty Castle-14 Mad Tea Party_ Area Music.mp3",
         "comments": "",
+        "tags": []
+      },
+      "Storybook Land Canal Boats",
+      {
+        "title": "Storybook Land: Grotto: Area Background Music",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Storybook Land-01 Storybook Land_ Grotto_ Area Background Music.mp3",
+        "comments": "Credit Chris Lyndon",
         "tags": []
       }
     ]
@@ -1566,6 +1582,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Snow White's Scary Adventures",
       {
         "title": "Snow White's Scary Adventures: The Witch's Dungeon (1983)",
         "artist": "Walt Disney",
@@ -1601,6 +1618,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Pinocchio's Daring Journey",
       {
         "title": "Pinocchio's Daring Journey: Queue Loop",
         "artist": "Walt Disney",
@@ -1636,6 +1654,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Peter Pan's Flight",
       {
         "title": "Peter Pan's Flight: Queue Loop",
         "artist": "Walt Disney",
@@ -1657,6 +1676,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Mr. Toad's Wild Ride",
       {
         "title": "Mr. Toad's Wild Ride: Queue Loop",
         "artist": "Walt Disney",
@@ -1836,6 +1856,77 @@ export const albums: Album[] = [
     ]
   },
   {
+    "name": "Dumbo Flying Elephants",
+    "poster": "AlbumArt/Dumbo Flying Elephants.jpeg",
+    "location": [33.81368691108213, -117.9189510831057],
+    "tags": ["DL"],
+    "tracks": [
+      {
+        "title": "Dumbo Flying Elephants: Area Music: Casey Jr.",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Dumbo Flying Elephants-01 Dumbo Flying Elephants_ Area Music_ Casey Jr.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Dumbo Flying Elephants: Area Music: Circus Parade",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Dumbo Flying Elephants-02 Dumbo Flying Elephants_ Area Music_ Circus Parade.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Dumbo Flying Elephants: Ride",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Dumbo Flying Elephants-03 Dumbo Flying Elephants_ Ride.mp3",
+        "comments": "Credit Chris Lyndon",
+        "tags": []
+      },
+      {
+        "title": "Fantasyland Band Organ: Once Upon a Dream",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Dumbo Flying Elephants-04 Fantasyland Band Organ_ Once Upon a Dream.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Fantasyland Band Organ: Sleeping Beauty Medley",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Dumbo Flying Elephants-05 Fantasyland Band Organ_ Sleeping Beauty Medley.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Fantasyland Band Organ: Mickey and Friends",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Dumbo Flying Elephants-06 Fantasyland Band Organ_ Mickey and Friends.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Fantasyland Band Organ: Bibbidi-Bobbidi-Boo",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Dumbo Flying Elephants-07 Fantasyland Band Organ_ Bibbidi-Bobbidi-Boo.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Fantasyland Band Organ: Loop (1983)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Dumbo Flying Elephants-08 Fantasyland Band Organ_ Loop (1983).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Fantasyland Band Organ: Loop (2012)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Dumbo Flying Elephants-09 Fantasyland Band Organ_ Loop (2012).mp3",
+        "comments": "",
+        "tags": []
+      }
+    ]
+  },
+  {
     "name": "It's a Small World",
     "poster": "AlbumArt/It_s a Small World.jpeg",
     "location": [33.81465336260636, -117.91785425635084],
@@ -1861,6 +1952,13 @@ export const albums: Album[] = [
         "mp3": BASE_URL + "/Holiday-20 It_s a Small World_ Projection Show.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": ["HOLIDAY"]
+      },
+      {
+        "title": "Small World Night Show: The Magic, the Memories, and You (2011)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Firework Shows-12 Small World Night Show_ The Magic, the Memories, and You.mp3",
+        "comments": "Credit Chris Lyndon",
+        "tags": []
       },
       {
         "title": "Area Music (1964)",
@@ -1984,21 +2082,6 @@ export const albums: Album[] = [
     ]
   },
   {
-    "name": "Storybook Land",
-    "poster": "AlbumArt/Storybook Land.jpeg",
-    "location": [33.81389366619835, -117.918540563665],
-    "tags": ["DL"],
-    "tracks": [
-      {
-        "title": "Storybook Land: Grotto: Area Background Music",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Storybook Land-01 Storybook Land_ Grotto_ Area Background Music.mp3",
-        "comments": "Credit Chris Lyndon",
-        "tags": []
-      }
-    ]
-  },
-  {
     "name": "Matterhorn Bobsleds",
     "poster": "AlbumArt/Matterhorn Bobsleds.jpeg",
     "location": [33.813036192464715, -117.91788129946362],
@@ -2064,77 +2147,6 @@ export const albums: Album[] = [
         "title": "Climbers Announcements",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Matterhorn Bobsleds-10 Climbers Announcements.mp3",
-        "comments": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "name": "Dumbo Flying Elephants",
-    "poster": "AlbumArt/Dumbo Flying Elephants.jpeg",
-    "location": [33.81368691108213, -117.9189510831057],
-    "tags": ["DL"],
-    "tracks": [
-      {
-        "title": "Dumbo Flying Elephants: Area Music: Casey Jr.",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Dumbo Flying Elephants-01 Dumbo Flying Elephants_ Area Music_ Casey Jr.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Dumbo Flying Elephants: Area Music: Circus Parade",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Dumbo Flying Elephants-02 Dumbo Flying Elephants_ Area Music_ Circus Parade.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Dumbo Flying Elephants: Ride",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Dumbo Flying Elephants-03 Dumbo Flying Elephants_ Ride.mp3",
-        "comments": "Credit Chris Lyndon",
-        "tags": []
-      },
-      {
-        "title": "Fantasyland Band Organ: Once Upon a Dream",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Dumbo Flying Elephants-04 Fantasyland Band Organ_ Once Upon a Dream.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Fantasyland Band Organ: Sleeping Beauty Medley",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Dumbo Flying Elephants-05 Fantasyland Band Organ_ Sleeping Beauty Medley.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Fantasyland Band Organ: Mickey and Friends",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Dumbo Flying Elephants-06 Fantasyland Band Organ_ Mickey and Friends.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Fantasyland Band Organ: Bibbidi-Bobbidi-Boo",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Dumbo Flying Elephants-07 Fantasyland Band Organ_ Bibbidi-Bobbidi-Boo.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Fantasyland Band Organ: Loop (1983)",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Dumbo Flying Elephants-08 Fantasyland Band Organ_ Loop (1983).mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Fantasyland Band Organ: Loop (2012)",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Dumbo Flying Elephants-09 Fantasyland Band Organ_ Loop (2012).mp3",
         "comments": "",
         "tags": []
       }
@@ -2217,6 +2229,7 @@ export const albums: Album[] = [
     "location": [33.81170779334197, -117.919615883569],
     "tags": ["DL"],
     "tracks": [
+      "Preshow",
       {
         "title": "Enchanted Tiki Garden: Tiki Room Preshow",
         "artist": "Walt Disney",
@@ -2273,6 +2286,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
+      "Walt Disney's Enchanted Tiki Room",
       {
         "title": "Enchanted Tiki Room: The Tiki Tiki Tiki Room",
         "artist": "Sherman & Sherman",
@@ -2350,6 +2364,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
+      "Tahitian Terrace",
       {
         "title": "Tahitian Terrace: Area Loop",
         "artist": "Walt Disney",
@@ -2928,6 +2943,7 @@ export const albums: Album[] = [
     "location": [33.81128958080381, -117.92055225570626],
     "tags": ["DL"],
     "tracks": [
+      "Swiss Family Robinsion Tree House (1962-1999)",
       {
         "title": "Swiss Family Robinson Tree House: Swisskapolka",
         "artist": "Walt Disney",
@@ -2942,6 +2958,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": ["HOLIDAY"]
       },
+      "Tarzan's Treehouse (1999-2021)",
       {
         "title": "Tarzan's Treehouse: Queue Loop",
         "artist": "Phil Collins",
@@ -3568,77 +3585,77 @@ export const albums: Album[] = [
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Haunted Mansion Holiday-01 Music Box_ Area Loop.mp3",
         "comments": "",
-        "tags": []
+        "tags": ["HOLIDAY"]
       },
       {
         "title": "Scarols: Area Loop",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Haunted Mansion Holiday-02 Scarols_ Area Loop.mp3",
         "comments": "Credit Chris Lyndon",
-        "tags": []
+        "tags": ["HOLIDAY"]
       },
       {
         "title": "Foyer (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Haunted Mansion Holiday-03 Foyer (2001).mp3",
         "comments": "",
-        "tags": []
+        "tags": ["HOLIDAY"]
       },
       {
         "title": "Endless Hall (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Haunted Mansion Holiday-04 Endless Hall (2001).mp3",
         "comments": "",
-        "tags": []
+        "tags": ["HOLIDAY"]
       },
       {
         "title": "Attic (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Haunted Mansion Holiday-06 Attic (2001).mp3",
         "comments": "",
-        "tags": []
+        "tags": ["HOLIDAY"]
       },
       {
         "title": "Ballroom (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Haunted Mansion Holiday-05 Ballroom (2001).mp3",
         "comments": "",
-        "tags": []
+        "tags": ["HOLIDAY"]
       },
       {
         "title": "Crypt Band (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Haunted Mansion Holiday-07 Crypt Band (2001).mp3",
         "comments": "",
-        "tags": []
+        "tags": ["HOLIDAY"]
       },
       {
         "title": "Crypt Party (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Haunted Mansion Holiday-08 Crypt Party (2001).mp3",
         "comments": "",
-        "tags": []
+        "tags": ["HOLIDAY"]
       },
       {
         "title": "Ride (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Haunted Mansion Holiday-09 Ride (2001).mp3",
         "comments": "Credit Chris Lyndon",
-        "tags": []
+        "tags": ["HOLIDAY"]
       },
       {
         "title": "Ride (2002)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Haunted Mansion Holiday-10 Ride (2002).mp3",
         "comments": "Credit Chris Lyndon",
-        "tags": []
+        "tags": ["HOLIDAY"]
       },
       {
         "title": "French Market: Area Loop",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Haunted Mansion Holiday-11 French Market_ Area Loop.mp3",
         "comments": "Credit Chris Lyndon",
-        "tags": []
+        "tags": ["HOLIDAY"]
       }
     ]
   },
@@ -3648,6 +3665,7 @@ export const albums: Album[] = [
     "location": [33.8121382567396, -117.92248355064625],
     "tags": ["DL"],
     "tracks": [
+      "Critter Country",
       {
         "title": "Critter Country: Area Loop",
         "artist": "Allie Wrubel",
@@ -3739,6 +3757,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Splash Mountain",
       {
         "title": "How Do You Do",
         "artist": "Allie Wrubel",
@@ -3809,6 +3828,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Brair Patch Tribute",
       {
         "title": "How Do You Do? (1946)",
         "artist": "Johnny Mercer",
@@ -4009,6 +4029,7 @@ export const albums: Album[] = [
     "location": [33.81321087531953, -117.92038409158245],
     "tags": ["DL"],
     "tracks": [
+      "Area Music",
       {
         "title": "Area Music: Big Thunder",
         "artist": "Walt Disney",
@@ -4086,6 +4107,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Big Thunder Mountain",
       {
         "title": "Queue Loop",
         "artist": "Walt Disney",
@@ -4114,6 +4136,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Big Thunder Ranch",
       {
         "title": "Big Thunder Ranch Barbecue: Little Patch of Heaven",
         "artist": "Walt Disney",
@@ -4142,6 +4165,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": ["HOLIDAY"]
       },
+      "The Golden Horseshoe",
       {
         "title": "The Golden Horseshoe Stage: Billy Hill and the Hillbillies",
         "artist": "Billy Hill and the Hillbillies",
@@ -4163,6 +4187,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": ["HOLIDAY"]
       },
+      "Mine Train Through Nature's Wonderland (1960-1977)",
       {
         "title": "Mine Train Through Nature's Wonderland: Ride",
         "artist": "Walt Disney",
@@ -4185,6 +4210,7 @@ export const albums: Album[] = [
     "location": [33.8122778389417, -117.92076417405109],
     "tags": ["DL"],
     "tracks": [
+      "Mark Twain River Boat",
       {
         "title": "Mark Twain River Boat: Queen of the River Theme",
         "artist": "Walt Disney",
@@ -4199,6 +4225,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Sailing Ship Columbia",
       {
         "title": "Sailing Ship Columbia: Float Through",
         "artist": "Walt Disney",
@@ -4262,6 +4289,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Tom Sawyer's Island",
       {
         "title": "Fort Wilderness: Nature Sounds Loop",
         "artist": "Walt Disney",
@@ -4389,6 +4417,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Mickey's Neighborhood",
       {
         "title": "Mickey's Neighborhood: Mickey's Movie Barn Area Music: Camping Out",
         "artist": "Walt Disney",
@@ -4431,6 +4460,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
+      "Roger Rabbit's Car Toon Spin",
       {
         "title": "Roger Rabbit's Car Toon Spin: Ride",
         "artist": "Walt Disney",
@@ -4438,6 +4468,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Area Loops",
       {
         "title": "Area Loop (1993)",
         "artist": "Walt Disney",
@@ -4459,6 +4490,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Mickey and Minnie's Runaway Railway",
       {
         "title": "Mickey and Minnie's Runaway Railway: Queue",
         "artist": "Christopher Willis",
@@ -4488,6 +4520,7 @@ export const albums: Album[] = [
     "location": [33.81462859738958, -117.919057852397],
     "tags": ["DL"],
     "tracks": [
+      "Videopolis Theatre (1985-1989)",
       {
         "title": "Videopolis Theatre: Area Loop",
         "artist": "Walt Disney",
@@ -4495,6 +4528,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
+      "Fantasyland Theatre",
       {
         "title": "The Fantasyland Theatre: Beauty and the Beast",
         "artist": "Walt Disney",
@@ -4537,6 +4571,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Mickey and the Magical Map",
       {
         "title": "Mickey and the Magical Map: Area Music",
         "artist": "Walt Disney",
@@ -4558,6 +4593,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Mickey's Magical Party Time",
       {
         "title": "Mickey's Magical Party Time: Instrumental",
         "artist": "Scott Erickson",
@@ -4649,13 +4685,6 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
-      {
-        "title": "Parades and Shows: Poppins in the Parks",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Fantasyland Theatre-23 Parades and Shows_ Poppins in the Parks.mp3",
-        "comments": "",
-        "tags": []
-      }
     ]
   },
   {
@@ -5504,6 +5533,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Captain E.O. (1986-1997, 2010-2014)",
       {
         "title": "Captain E.O.: Entrance Music",
         "artist": "Walt Disney",
@@ -5518,6 +5548,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Honey, I Shrunk the Audience (1998-2010)",
       {
         "title": "Honey, I Shrunk the Audience: Suite",
         "artist": "Bruce Broughton",
@@ -5581,6 +5612,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Finding Nemo Submarine Voyage",
       {
         "title": "20,000 Leagues Under the Sea: Medley",
         "artist": "Walt Disney",
@@ -5785,6 +5817,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Adventure Through Inner Space (1967-1985)",
       {
         "title": "Adventure Through Inner Space: Ride",
         "artist": "Walt Disney",
@@ -5836,12 +5869,13 @@ export const albums: Album[] = [
         "tags": ["HOLIDAY"]
       },
       {
-        "title": "Mickey's Not So Scary Halloween Party: Area Loop (2015-2018) (NEW)",
+        "title": "Mickey's Not So Scary Halloween Party: Area Loop (2015-2018)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Halloweentime-03 Mickey_s Not So Scary Halloween Party_ Area Loop (2015-2018).mp3",
         "comments": "",
         "tags": ["HALLOWEEN"]
       },
+      "Carthay Circle",
       {
         "title": "Some Day My Prince Will Come",
         "artist": "Walt Disney",
@@ -6053,6 +6087,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Muppet*Vision 3D",
       {
         "title": "Muppet*Vision 3D: The Muppet Show Theme",
         "artist": "Walt Disney",
@@ -6137,6 +6172,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Animation Courtyard",
       {
         "title": "Disney Studios: Animation Courtyard Area Loop",
         "artist": "Walt Disney",
@@ -6151,6 +6187,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Monsters, Inc. Mike & Sulley to the Rescue!",
       {
         "title": "Monsters, Inc. Mike & Sulley to the Rescue!: Queue",
         "artist": "Walt Disney",
@@ -6165,6 +6202,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Aladdin - A Musical Spectacular (2003-2016)",
       {
         "title": "Aladdin - A Musical Spectacular: Curtain Call",
         "artist": "Alan Menken",
@@ -6187,6 +6225,7 @@ export const albums: Album[] = [
     "location": [33.80682870253609, -117.917145302168],
     "tags": ["DCA"],
     "tracks": [
+      "Lobby",
       {
         "title": "Lobby: Queue Loop (Master Mix)",
         "artist": "Walt Disney",
@@ -6355,6 +6394,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Library",
       {
         "title": "Library: Pre-Show Video",
         "artist": "Bernard Herrmann",
@@ -6383,6 +6423,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Boiler Room",
       {
         "title": "Boiler Room: Ambience Audio",
         "artist": "Bernard Herrmann",
@@ -6397,6 +6438,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Elevator",
       {
         "title": "Elevator Sounds",
         "artist": "Bernard Herrmann",
@@ -6449,7 +6491,7 @@ export const albums: Album[] = [
     ]
   },
   {
-    "name": "Guardians of the Galaxy",
+    "name": "Avengers Campus",
     "poster": "AlbumArt/Guardians of the Galaxy.jpeg",
     "location": [33.80662585166978, -117.91691431318918],
     "tags": ["DCA"],
@@ -6468,10 +6510,26 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Guardians of the Galaxy: Mission BREAKOUT!",
       {
         "title": "The Collector's Warehouse: Queue Loop",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Guardians of the Galaxy-03 The Collector_s Warehouse_ Queue Loop.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Guardians of the Galaxy: Mission BREAKOUT! Preshow",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Guardians of the Galaxy-Preshow.mp3",
+        "comments": "",
+        "tags": []
+      },
+      "Spider-Man: Web Slingers",
+      {
+        "title": "Spider-Man: Web Slingers: Preshow",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Avengers Campus-Web Slingers Preshow.mp3",
         "comments": "",
         "tags": []
       }
@@ -6483,6 +6541,7 @@ export const albums: Album[] = [
     "location": [33.80799757160643, -117.92004628399128],
     "tags": ["DCA"],
     "tracks": [
+      "Condor Flats (2001)",
       {
         "title": "Area Music (2001-2010): The Right Stuff: Breaking the Sound Barrier",
         "artist": "Bill Conti",
@@ -6588,13 +6647,22 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Condor Flats (2011)",
       {
         "title": "Area Loop (2011-2015)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Condor Flats-16 Area Loop (2011-2015).mp3",
         "comments": "",
         "tags": []
-      }
+      },
+      "Grizzly Peak Airfield (2015)",
+      {
+        "title": "Airfield: Area Loop (2015)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Grizzly Peak-01 Airfield_ Area Loop (2015).mp3",
+        "comments": "",
+        "tags": []
+      },
     ]
   },
   {
@@ -6603,6 +6671,7 @@ export const albums: Album[] = [
     "location": [33.80841423888216, -117.92001816908882],
     "tags": ["DCA"],
     "tracks": [
+      "Queue",
       {
         "title": "Queue Loop (2001-2005)",
         "artist": "Walt Disney",
@@ -6694,6 +6763,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Ride",
       {
         "title": "Load Music",
         "artist": "Jerry Goldsmith",
@@ -6737,13 +6807,6 @@ export const albums: Album[] = [
     "location": [33.8070783843265, -117.9200004319301],
     "tags": ["DCA"],
     "tracks": [
-      {
-        "title": "Airfield: Area Loop (2015)",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Grizzly Peak-01 Airfield_ Area Loop (2015).mp3",
-        "comments": "",
-        "tags": []
-      },
       {
         "title": "Grand Californian Hotel: Entrance Path: Area Loop",
         "artist": "Walt Disney",
@@ -6807,6 +6870,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Grizzly River Run",
       {
         "title": "Grizzly River Run: Queue Loop",
         "artist": "Walt Disney",
@@ -6814,6 +6878,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Redwood Creek Challenge Trail",
       {
         "title": "Redwood Creek Challenge Trail: Area Loop",
         "artist": "Walt Disney",
@@ -6901,13 +6966,6 @@ export const albums: Album[] = [
         "tags": []
       },
       {
-        "title": "Mater's Junkyard Jamboree: Area Music",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Cars Land-05 Mater_s Junkyard Jamboree_ Area Music.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
         "title": "Flo's V8 Cafe: Area Loop",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Cars Land-06 Flo_s V8 Cafe_ Area Loop.mp3",
@@ -6942,6 +7000,15 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Mater's Junkyard Jamboree",
+      {
+        "title": "Mater's Junkyard Jamboree: Area Music",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Cars Land-05 Mater_s Junkyard Jamboree_ Area Music.mp3",
+        "comments": "",
+        "tags": []
+      },
+      "Luigi's Flying Tires",
       {
         "title": "Luigi's Flying Tires: Funiculi Funicula",
         "artist": "Walt Disney",
@@ -6956,6 +7023,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Radiator Springs Racers",
       {
         "title": "Radiator Springs Racers: Attraction Ride Through",
         "artist": "Walt Disney",
@@ -7008,34 +7076,6 @@ export const albums: Album[] = [
     "tags": ["DCA"],
     "tracks": [
       {
-        "title": "The Little Mermaid: Ariel's Undersea Adventure: Ride",
-        "artist": "Alan Menken",
-        "mp3": BASE_URL + "/Paradise Pier-01 The Little Mermaid_ Ariel_s Undersea Adventure_ Ride.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "The Little Mermaid: Ariel's Undersea Adventure: Ride Extended",
-        "artist": "Alan Menken",
-        "mp3": BASE_URL + "/Paradise Pier-02 The Little Mermaid_ Ariel_s Undersea Adventure_ Ride Extended.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Silly Symphony Swings: Ride",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Paradise Pier-03 Silly Symphony Swings_ Ride.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "California Screamin': Ride",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Paradise Pier-04 California Screamin__ Ride.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
         "title": "Paradise Pier: Area Loop (2001-2010)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Paradise Pier-05 Paradise Pier_ Area Loop (2001-2010).mp3",
@@ -7069,6 +7109,37 @@ export const albums: Album[] = [
         "mp3": BASE_URL + "/Festival of Holidays Loop.mp3",
         "comments": "",
         "tags": ["HOLIDAY"]
+      },
+      "The Little Mermaid: Ariel's Undersea Adventure",
+      {
+        "title": "The Little Mermaid: Ariel's Undersea Adventure: Ride",
+        "artist": "Alan Menken",
+        "mp3": BASE_URL + "/Paradise Pier-01 The Little Mermaid_ Ariel_s Undersea Adventure_ Ride.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "The Little Mermaid: Ariel's Undersea Adventure: Ride Extended",
+        "artist": "Alan Menken",
+        "mp3": BASE_URL + "/Paradise Pier-02 The Little Mermaid_ Ariel_s Undersea Adventure_ Ride Extended.mp3",
+        "comments": "",
+        "tags": []
+      },
+      "Silly Symphony Swings",
+      {
+        "title": "Silly Symphony Swings: Ride",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Paradise Pier-03 Silly Symphony Swings_ Ride.mp3",
+        "comments": "",
+        "tags": []
+      },
+      "California Screamin'",
+      {
+        "title": "California Screamin': Ride",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Paradise Pier-04 California Screamin__ Ride.mp3",
+        "comments": "",
+        "tags": []
       }
     ]
   },
@@ -7136,6 +7207,7 @@ export const albums: Album[] = [
     "location": [33.81213005249728, -117.91867181968192],
     "tags": ["DL"],
     "tracks": [
+      "Toy Story Block Party Bash (2005-2008)",
       {
         "title": "Toy Story Block Party Bash: Full Show",
         "artist": "Walt Disney",
@@ -7143,13 +7215,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
-      {
-        "title": "Fantillusion",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Parades-02 Parade_ Fantillusion.mp3",
-        "comments": "",
-        "tags": []
-      },
+      "Parade of Princesses",
       {
         "title": "Parade of Princesses: Overture",
         "artist": "Walt Disney",
@@ -7193,19 +7259,30 @@ export const albums: Album[] = [
         "tags": []
       },
       {
+        "title": "Parades and Shows: Poppins in the Parks",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Fantasyland Theatre-23 Parades and Shows_ Poppins in the Parks.mp3",
+        "comments": "",
+        "tags": []
+      },
+      "Parade of the Stars (2000-2005)",
+      {
         "title": "Parade of The Stars",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Parades-09 Parade_ Parade of The Stars.mp3",
         "comments": "",
         "tags": []
       },
+      "Walt Disney's Parade of Dreams (2005-2008)",
       {
-        "title": "Parade of Dreams Soundtrack",
+        "title": "Walt Disney's Parade of Dreams",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Parades-10 Parade_ Parade of Dreams Soundtrack.mp3",
         "comments": "",
         "tags": []
       },
+      //"Celebrate! A Street Party (2009-2010) (missing)",
+      "Mickey's Soundsational Parade (2011-2019)",
       {
         "title": "Mickey's Soundsational Parade",
         "artist": "Walt Disney",
@@ -7241,13 +7318,15 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Magic Happens (2020)",
       {
-        "title": "Magic Happens (2020)",
+        "title": "Magic Happens",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Parades-Magic_Happens_Parade.mp3",
         "comments": "",
         "tags": []
       },
+      "Mickey's Costume Party Cavalcade (2010-2012)",
       {
         "title": "Mickey's Costume Party Cavalcade",
         "artist": "Walt Disney",
@@ -7255,15 +7334,18 @@ export const albums: Album[] = [
         "comments": "",
         "tags": ["HALLOWEEN"]
       },
+      //"Frightfully Fun Parade (missing)",
+      "Mickey's Very Merry Christmas Parade (-1995)",
       {
-        "title": "Parades: Mickey's Very Merry Christmas Parade",
+        "title": "Mickey's Very Merry Christmas Parade",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Holiday-34 Parades_ Mickey_s Very Merry Christmas Parade.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": ["HOLIDAY"]
       },
+      "A Christmas Fantasy Parade (1995)",
       {
-        "title": "Parades: A Christmas Fantasy Parade",
+        "title": "A Christmas Fantasy Parade",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Holiday-35 Parades_ A Christmas Fantasy Parade.mp3",
         "comments": "Credit Chris Lyndon",
@@ -7277,6 +7359,7 @@ export const albums: Album[] = [
     "location": [33.81201782997649, -117.92118828573547],
     "tags": ["DL"],
     "tracks": [
+      "Fantasmic! (1992-2012)",
       {
         "title": "Soundtrack (1992-2012)",
         "artist": "Walt Disney",
@@ -7291,6 +7374,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Fantasmic! 1.0 (2013-2017)",
       {
         "title": "Soundtrack (2013)",
         "artist": "Walt Disney",
@@ -7319,6 +7403,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Fantasmic! 2.0 (2017-2022)",
       {
         "title": "Soundtrack (2017)",
         "artist": "Walt Disney",
@@ -7384,15 +7469,16 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "World of Color: Winter Dreams (2013-2015)",
       {
-        "title": "Winter Dreams: Theme (2013)",
+        "title": "Winter Dreams: Theme",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Holiday-38 Winter Dreams_ Theme.mp3",
         "comments": "",
         "tags": ["HOLIDAY"]
       },
       {
-        "title": "Winter Dreams: Soundtrack (2013)",
+        "title": "Winter Dreams: Soundtrack",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Holiday-39 World of Color_ Winter Dreams Soundtrack.mp3",
         "comments": "",
@@ -7405,27 +7491,31 @@ export const albums: Album[] = [
         "comments": "",
         "tags": ["HOLIDAY"]
       },
+      "World of Color: Season of Light (2016)",
       {
-        "title": "Celebrate: Soundtrack (2015)",
+        "title": "Season of Light: Exit Music (This Is My Wish)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/World of Color-08 Season of Light_ Exit Music (This Is My Wish, 2016).mp3",
+        "comments": "",
+        "tags": ["HOLIDAY"]
+      },
+      "World of Color: Celebrate! (2015-2016)",
+      {
+        "title": "Celebrate: Soundtrack",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/World of Color-06 Celebrate_ Soundtrack (2015).mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Celebrate: Exit Music (2015)",
+        "title": "Celebrate: Exit Music",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/World of Color-07 Celebrate_ Exit Music (2015).mp3",
         "comments": "",
         "tags": []
       },
-      {
-        "title": "Season of Light: Exit Music (This Is My Wish, 2016)",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/World of Color-08 Season of Light_ Exit Music (This Is My Wish, 2016).mp3",
-        "comments": "",
-        "tags": ["HOLIDAY"]
-      }
+      //"World of Color: Villainous (2019, missing)",
+      //"World of Color: ONE (2023, missing)",
     ]
   },
   {
@@ -7434,56 +7524,61 @@ export const albums: Album[] = [
     "location": [33.81247242624619, -117.91902105031294],
     "tags": ["DL"],
     "tracks": [
+      "Fantasy in the Sky (1966-2000)",
       {
-        "title": "Fantasy in the Sky (1966)",
+        "title": "Fantasy in the Sky",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-01 Tinkerbell_s Fantasy in the Sky.mp3",
         "comments": "",
         "tags": []
       },
+      "Believe... There's Magic in the Stars (2000-2004)",
       {
-        "title": "Believe... There's Magic in the Stars (2000)",
+        "title": "Believe... There's Magic in the Stars",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-02 Believe, There_s Magic in the Stars.mp3",
         "comments": "",
         "tags": []
       },
-      // TODO: Imagine... A Fantasy in the Sky (2004)
+      //"Imagine... A Fantasy in the Sky (2004-2005, missing)",
+      "Remember... Dreams Come True (2005-2009)",
       {
-        "title": "Remember... Dreams Come True (2005)",
+        "title": "Remember... Dreams Come True",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-03 Remember Dreams Come True.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Exit Music: Remember... Dreams Come True (Remember When)",
+        "title": "Exit Music: Remember When",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-07 Exit Music_ Remember Dreams Come True (Remember When).mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Exit Music: Remember... Dreams Come True (Extended, Remember When)",
+        "title": "Exit Music: Remember When (Extended)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-08 Exit Music_ Remember Dreams Come True (Extended).mp3",
         "comments": "",
         "tags": []
       },
+      "Magical! (2009-2015)",
       {
-        "title": "Magical! (2009)",
+        "title": "Magical!",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-04 Magical!.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Exit Music: Magical! (A Dream is a Wish)",
+        "title": "Exit Music: A Dream is a Wish",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-09 Exit Music_ Magical! (A Dream is a Wish).mp3",
         "comments": "",
         "tags": []
       },
+      "Disneyland Forever (2015-2018)",
       {
         "title": "Disneyland Forever (2015)",
         "artist": "Walt Disney",
@@ -7492,19 +7587,20 @@ export const albums: Album[] = [
         "tags": []
       },
       {
-        "title": "Exit Music: Disneyland Forever (A Kiss Goodnight)",
+        "title": "Exit Music: A Kiss Goodnight",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-11 Exit Music_ A Kiss Goodnight.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
       {
-        "title": "Exit Music: Disneyland Forever (Live the Magic)",
+        "title": "Exit Music: Live the Magic",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-10 Exit Music_ Disneyland Forever (Live the Magic).mp3",
         "comments": "",
         "tags": []
       },
+      "Together Forever: A Pixar Nighttime Spectacular (2018)",
       {
         "title": "Together Forever: A Pixar Nighttime Spectacular (2018)",
         "artist": "Walt Disney",
@@ -7512,55 +7608,53 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Mickey's Mix Magic (2019, 2021)",
       {
-        "title": "Mickey's Mix Magic (2019)",
+        "title": "Mickey's Mix Magic",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-Mickey_s Mix Magic.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Mickey & Minnie's 90th Celebration: It's a Good Time",
+        "title": "Theme: It's a Good Time",
         "artist": "The DeeKompressors",
         "mp3": BASE_URL + "/Firework Shows-06 Mickey & Minnie_s 90th Celebration_ It_s a Good Time.mp3",
         "comments": "",
         "tags": []
       },
+      "Wonderous Journeys (2023)",
       {
-        "title": "Small World Night Show: The Magic, the Memories, and You (2011)",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Firework Shows-12 Small World Night Show_ The Magic, the Memories, and You.mp3",
-        "comments": "Credit Chris Lyndon",
-        "tags": []
-      },
-      {
-        "title": "Wonderous Journeys (2023)",
+        "title": "Wonderous Journeys",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-Wonderous Journeys.mp3",
         "comments": "Credit @professorowlmusic",
         "tags": []
       },
       {
-        "title": "Exit Music: Wonderous Journeys (It's Wonderous, Lawrence Version)",
+        "title": "Exit Music: It's Wonderous (Lawrence Version)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-It_s Wonderous (Lawrence Version).mp3",
         "comments": "",
         "tags": []
       },
+      "Halloween Screams: A Villainous Surprise in the Skies",
       {
-        "title": "Fireworks Show: Halloween Screams: A Villainous Surprise in the Skies",
+        "title": "Halloween Screams: A Villainous Surprise in the Skies",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Halloweentime-06 Fireworks Show_ Halloween Screams_ A Villainous Surprise in the Skies.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": ["HALLOWEEN"]
       },
+      "Believe in Holiday Magic",
       {
-        "title": "Fireworks Show: Believe in Holiday Magic",
+        "title": "Believe in Holiday Magic",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Holiday-36 Fireworks Show_ Believe in Holiday Magic.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": ["HOLIDAY"]
       },
+      "New Years",
       {
         "title": "A Dream is a Wish Your Heart Makes (Steps In Time, New Years)",
         "artist": "Walt Disney",
@@ -7568,6 +7662,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Goodbye",
       {
         "title": "Disneyland Closing Music: When You Wish Upon a Star",
         "artist": "Walt Disney",
@@ -7597,6 +7692,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Mickey and Friends Tram",
       {
         "title": "Mickey and Friends Tram: Ride (2001-2005)",
         "artist": "Walt Disney",
@@ -7617,7 +7713,22 @@ export const albums: Album[] = [
         "mp3": BASE_URL + "/Welcome to Disneyland-04 Mickey and Friends Tram_ Ride (2006).mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
-      }
+      },
+      {
+        title:"Mickey and Friends Tram: CD version",
+        artist:"Walt Disney",
+        mp3:BASE_URL + "/Disneyland Hotel-02 Tram.mp3",
+        comments:"Credit Chris Lyndon",
+        tags: []
+      },
+      "Special Events",
+      {
+        title:"Disneyland: Pride Nite Soundtrack",
+        artist:"Walt Disney",
+        mp3:BASE_URL + "/Pride Nite.mp3",
+        comments:"Credit Magical Soundtracks",
+        tags: []
+      },
     ]
   },
   {
@@ -7880,13 +7991,6 @@ export const albums: Album[] = [
         "tags": ["HOLIDAY"]
       },
       {
-        title:"Tram",
-        artist:"Walt Disney",
-        mp3:BASE_URL + "/Disneyland Hotel-02 Tram.mp3",
-        comments:"Credit Chris Lyndon",
-        tags: []
-      },
-      {
         title:"Area Loop",
         artist:"Walt Disney",
         mp3:BASE_URL + "/Disneyland Hotel-03 Area Loop.mp3",
@@ -8031,6 +8135,6 @@ export const albums: Album[] = [
   }
 ]
 
-let tracks = albums.map(album => album.tracks.map(t => toTrackData(album, t))).flat();
+let tracks = albums.map(album => album.tracks.map(t => typeof t === "string" ? t : toTrackData(album, t))).flat();
 
 export default tracks;
