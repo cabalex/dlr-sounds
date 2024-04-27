@@ -66,8 +66,8 @@
     // activate scroller
     function updateScroller() {
       if (
-        (window.innerWidth > 700 && window.innerWidth * 0.3 - 75 < scroller.clientWidth) ||
-        (window.innerWidth < 700 && window.innerWidth * 0.3 - 75 < scroller.clientWidth)
+        (window.innerWidth > 700 && window.innerWidth * 0.3 - 200 < scroller.clientWidth) ||
+        (window.innerWidth < 700 && window.innerWidth - 167 < scroller.clientWidth)
       ) {
         scroller.style.animation = "";
       } else {
@@ -267,7 +267,7 @@
     <div class="trackInfo">
       <div class="albumImage">
         {#if (audio.readyState >= 3 || audio.currentTime !== 0)}
-        <img style="cursor: pointer" alt={track.title} src={track.poster} on:click={() => { setTimeout(() => fullscreen = !fullscreen, 0); updateScroller()}} />
+        <img style="cursor: pointer" alt={track.title} src={track.poster} on:click={() => { setTimeout(() => fullscreen = !fullscreen, 0); setTimeout(updateScroller, 100)}} />
         {:else}
         <img class="loadingClock" style="width: 65px" alt="Loading" src={clockFace} />
         {/if}

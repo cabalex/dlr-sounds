@@ -104,6 +104,7 @@
   .fromTime, .toTime {
     user-select: none;
     cursor: pointer;
+    width: 4ch;
   }
   :global(.audioPlayer.fullscreen .progress) {
     position: fixed;

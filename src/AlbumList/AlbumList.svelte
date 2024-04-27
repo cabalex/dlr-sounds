@@ -124,4 +124,10 @@
     justify-content: center;
     align-items: center;
   }
+  @media screen and (max-width: 615px) {
+    .albumList > * {
+      width: calc(50vw - 10px);
+      height: calc(50vw - 10px);
+    }
+  }
 </style>
