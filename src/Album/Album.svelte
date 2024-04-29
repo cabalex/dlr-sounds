@@ -18,12 +18,12 @@
 
   function playAll() {
     audioStorePosition.set(0);
-    audioStore.set(album.tracks.map(t => toTrackData(album, t)));
+    audioStore.set(album.tracks.filter(x => typeof x !== "string").map(t => toTrackData(album, t)));
   }
 
   function shufflePlayAll() {
     audioStorePosition.set(0);
-    audioStore.set(album.tracks.map(t => toTrackData(album, t)).sort(() => Math.random() - 0.5));
+    audioStore.set(album.tracks.filter(x => typeof x !== "string").map(t => toTrackData(album, t)).sort(() => Math.random() - 0.5));
   }
 
   function handleScroll(e) {
@@ -31,7 +31,7 @@
   }
 
   function queueAll() {
-    audioStore.update((value) => [...value, ...album.tracks.map(t => toTrackData(album, t))]);
+    audioStore.update((value) => [...value, ...album.tracks.filter(x => typeof x !== "string").map(t => toTrackData(album, t))]);
   }
 
   $: playing = !$audioElem.paused;

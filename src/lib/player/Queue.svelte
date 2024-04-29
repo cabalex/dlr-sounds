@@ -1,9 +1,8 @@
 <script lang="ts">
   import PlaylistRemove from "svelte-material-icons/PlaylistRemove.svelte";
   import Delete from "svelte-material-icons/Delete.svelte";
-  import { audioStore, audioStorePosition, repeat } from "../../AudioStore";
+  import { audioStore, audioStorePosition, } from "../../AudioStore";
   import PlayAnim from "../../assets/PlayAnim.svelte";
-  import Track from "../Track.svelte";
   export let shown = false;
   export let onShown = (shown: boolean) => {};
   let element;
@@ -71,7 +70,7 @@
 <div class="queue" bind:this={element} on:touchstart={(e) => e.stopPropagation()}>
   <h3>
     <span>{$audioStore.length} {$audioStore.length == 1 ? "song" : "songs"} in queue</span>
-    <button title="Clear queue" on:click={clearQueue}><Delete /></button>
+    <button title="Clear queue" on:click={clearQueue} disabled={$audioStore.length == 0}><Delete /></button>
   </h3>
   {#if mouseYCoordinate}
   <div
@@ -163,6 +162,7 @@
       <img class="thumb" src={track.poster} alt={track.title} />
       {/if}
       <span>{track.title}</span>
+      {#if $audioStore.length > 1}
       <button
         on:click={(e) => { e.stopPropagation(); deleteTrack(i)}}
         on:keydown={(e) => {
@@ -175,6 +175,7 @@
       >
         <PlaylistRemove />
       </button>
+      {/if}
     </div>
   {/each}
 </div>
@@ -240,6 +241,7 @@
     padding-left: 5px;
     user-select: none;
     border-radius: 5px;
+    min-height: 36px;
   }
   .queue .track > span {
     flex-grow: 1;

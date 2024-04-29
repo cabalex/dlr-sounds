@@ -17,8 +17,8 @@
   function playTrack(track: TrackData, e) {
     e.stopPropagation();
     if (track.album && !showAlbum) {
-      audioStore.set(track.album.tracks.map(t => toTrackData(track.album, t)));
-      audioStorePosition.set(track.album.tracks.map(t => t.title).indexOf(track.title) || 0);
+      audioStore.set(track.album.tracks.filter(x => typeof x !== "string").map(t => toTrackData(track.album, t)));
+      audioStorePosition.set(track.album.tracks.filter(x => typeof x !== "string").map(t => t.title).indexOf(track.title) || 0);
       $audioElem.currentTime = 0;
     } else {
       audioStorePosition.set(0);

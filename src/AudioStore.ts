@@ -2,7 +2,7 @@ import tracks from "./assets/Audio";
 import { writable, readable, get } from "svelte/store";
 
 export const audioStore = writable(
-  localStorage.getItem("audioStore") ?
+  localStorage.getItem("audioStore") && JSON.parse(localStorage.getItem("audioStore")).length ?
   JSON.parse(localStorage.getItem("audioStore")) :
   [ tracks[Math.floor(Math.random() * tracks.length)] ]
 );
