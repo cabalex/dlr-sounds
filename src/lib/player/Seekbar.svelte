@@ -4,6 +4,7 @@
   export let updatePositionState: () => void;
   export let progress: number;
   export let duration: number;
+  export let chapters: {startTime: number, title: string}[] = [];
 
   let barElem;
 
@@ -33,6 +34,13 @@
     let bounding = barElem.getBoundingClientRect();
     let secondsPerPixel = duration / bounding.width;
     scrubbing.tempCurrentTime = Math.max(0, Math.min(duration, (x - bounding.left) * secondsPerPixel));
+    
+    for (let chapter of chapters) {
+      if (Math.abs(scrubbing.tempCurrentTime - chapter.startTime) < 30) {
+        scrubbing.tempCurrentTime = chapter.startTime;
+      }
+    }
+    
     updatePositionState();
     e.stopPropagation();
   }
@@ -53,8 +61,19 @@
     bind:this={barElem}
   >
     <div class="progressBar" style={`width: ${(scrubbing ? scrubbing.tempCurrentTime : progress) / duration * 100}%`}>
-      <div class="progressBarHead" class:active={scrubbing} />
+        <div class="progressBarHead" class:active={scrubbing}>
+          {#if scrubbing && chapters}
+            {#each chapters as chapter}
+              {#if Math.abs(scrubbing.tempCurrentTime - chapter.startTime) < 30}
+                <span class="chapterTooltip">{chapter.name}</span>
+              {/if}
+            {/each}
+          {/if}
+        </div>
     </div>
+    {#each chapters as chapter}
+      <div class="chapterMarker" style={`left: ${chapter.startTime / duration * 100}%`} title={chapter.title} />
+    {/each}
   </div>
   <span class="toTime">{readableTime(duration)}</span>
 </div>
@@ -73,14 +92,14 @@
   .progressBarFrame {
     height: 10px;
     flex-grow: 1;
-    bottom: 10px;
-    left: 100px;
     background-color: #222;
     border-radius: 5px;
     user-select: none;
+    position: relative;
   }
   .progressBar {
     height: 100%;
+    max-width: 100%;
     background-color: white;
     border-radius: 10px;
     pointer-events: none;
@@ -93,18 +112,40 @@
     top: -5px;
     width: 20px;
     border-radius: 50%;
+    z-index: 2;
     transform: scale(0);
     background-color: white;
     transition: transform 0.1s ease-in-out, background-color 0.1s ease-in-out;
+  }
+  .chapterTooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    white-space: nowrap;
   }
   .progressBarFrame:hover .progressBarHead, .progressBarHead.active {
     background-color: #ccc;
     transform: scale(1);
   }
+  .chapterMarker {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    left: 0;
+    background-color: #666;
+    z-index: 1;
+  }
   .fromTime, .toTime {
     user-select: none;
     cursor: pointer;
-    width: 4ch;
+    width: 6ch;
   }
   :global(.audioPlayer.fullscreen .progress) {
     position: fixed;

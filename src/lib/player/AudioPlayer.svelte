@@ -17,7 +17,7 @@
     import Castle from "../../assets/Castle.svelte";
   
     import clockFace from "../../assets/smallWorldClockface.png";
-    import { albums, type TrackData } from "../../assets/Audio";
+    import { albums, parseChapters, type TrackData } from "../../assets/Audio";
     import { audioStore, audioStorePosition, audioElem, repeat, openAlbum } from "../../AudioStore";
     import Queue from './Queue.svelte';
     import Seekbar from './Seekbar.svelte';
@@ -61,6 +61,7 @@
     function onTimeUpdate() {
       progress = audio.currentTime;
       duration = audio.duration || 0.01;
+      detectChapter();
     }
   
     // activate scroller
@@ -222,6 +223,19 @@
       // save volume to localStorage
       localStorage.setItem("volume", e.target.value);
     }
+
+    /* chapters */
+    let chapters = track.chapters ? parseChapters(track.chapters) : null;
+    let currentChapter = null;
+    function detectChapter() {
+      if (!$audioElem.duration || !track.chapters) return;
+      
+      for (let i = 0; i < chapters.length; i++) {
+        if ($audioElem.currentTime >= chapters[i].startTime) {
+          currentChapter = i;
+        }
+      }
+    }
   
   
     /* handle key presses */
@@ -235,10 +249,18 @@
           }
           break;
         case "ArrowLeft":
-          previousTrack();
+          if (e.ctrlKey) {
+            previousTrack();
+          } else {
+            audio.currentTime -= 5;
+          }
           break;
         case "ArrowRight":
-          nextTrack();
+          if (e.ctrlKey) {
+            nextTrack();
+          } else {
+            audio.currentTime += 5;
+          }
           break;
         case "Escape":
           fullscreen = false;
@@ -281,7 +303,7 @@
             {track.title}
           </span>
         </h3>
-        <h3 class="album">{track.album.name}</h3>
+        <h3 class="album">{currentChapter !== null && currentChapter !== -1 ? chapters[currentChapter].name : track.album.name}</h3>
       </div>
     </div>
     <div class="centerBar">
@@ -308,7 +330,7 @@
           {/if}
         </button>
       </div>
-      <Seekbar bind:progress={progress} bind:duration={duration} audio={audio} updatePositionState={updatePositionState} />
+      <Seekbar bind:progress={progress} bind:duration={duration} chapters={chapters} audio={audio} updatePositionState={updatePositionState} />
     </div>
     <div class="actions">
       <button

@@ -3,8 +3,13 @@
   import PlaylistCheck from "svelte-material-icons/PlaylistCheck.svelte";
   import Delete from "svelte-material-icons/Delete.svelte";
   import OpenInNew from "svelte-material-icons/OpenInNew.svelte";
-  import { type TrackData, toTrackData } from "../assets/Audio";
+  import ChevronDown from "svelte-material-icons/ChevronDown.svelte";
+  import ChevronUp from "svelte-material-icons/ChevronUp.svelte";
+  import Information from "svelte-material-icons/Information.svelte";
+  import { type TrackData, toTrackData, parseChapters } from "../assets/Audio";
   import { audioElem, audioStore, audioStorePosition, openAlbum } from "../AudioStore";
+  import { slide } from "svelte/transition";
+  import { onDestroy, onMount } from "svelte";
 
   export let track: TrackData;
   export let showAlbum = false;
@@ -14,12 +19,12 @@
   export let onDelete = null;
   export let number = -1;
 
-  function playTrack(track: TrackData, e) {
+  function playTrack(track: TrackData, e, time=0) {
     e.stopPropagation();
     if (track.album && !showAlbum) {
       audioStore.set(track.album.tracks.filter(x => typeof x !== "string").map(t => toTrackData(track.album, t)));
       audioStorePosition.set(track.album.tracks.filter(x => typeof x !== "string").map(t => t.title).indexOf(track.title) || 0);
-      $audioElem.currentTime = 0;
+      $audioElem.currentTime = time;
     } else {
       audioStorePosition.set(0);
       audioStore.update((value) => [track, ...value]);
@@ -59,11 +64,40 @@
     e.stopPropagation();
     openAlbum.set(track.album);
   }
+
+  onMount(() => {
+    if ($audioElem) {
+      $audioElem.addEventListener("timeupdate", detectChapter);
+    }
+  })
+
+  onDestroy(() => {
+    if ($audioElem) {
+      $audioElem.removeEventListener("timeupdate", detectChapter);
+    }
+  })
+
+  let currentChapter = null;
+  let chapters = track.chapters ? parseChapters(track.chapters) : null;
+  function detectChapter() {
+    if (!playing || !$audioElem || !$audioElem.duration || !track.chapters) return;
+    
+    for (let i = 0; i < chapters.length; i++) {
+      if ($audioElem.currentTime >= chapters[i].startTime) {
+        currentChapter = i;
+      }
+    }
+  }
+
+  $: playing = $audioStorePosition === -1 ? false : $audioStore[$audioStorePosition].mp3 === track.mp3;
+
+  let chaptersOpen = false;
 </script>
 
+<div class="trackOuter">
 <div
   class="track"
-  class:playing={$audioStorePosition === -1 ? false : $audioStore[$audioStorePosition].mp3 === track.mp3}
+  class:playing={playing}
   on:click={(e) => (onClick || playTrack).call(null, track, e)}
   on:keydown={(e) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -90,6 +124,30 @@
   {#each track.tags as tag}
     <span class={"tag " + tag}>{tag}</span>
   {/each}
+  {#if track.chapters && !showAlbum}
+  <button
+    on:click={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        chaptersOpen = !chaptersOpen;
+      }
+    }
+    on:keydown={(e) => {
+      if (e.key === " " || e.key === "Enter") {
+        e.stopPropagation();
+        e.preventDefault();
+        chaptersOpen = !chaptersOpen;
+      }
+    }}
+    title="Show/hide chapters"
+    tabindex="0">
+    {#if chaptersOpen}
+    <ChevronUp />
+    {:else}
+    <ChevronDown />
+    {/if}
+  </button>
+  {/if}
   {#if showAddToQueueBtn}
   <button
     on:click={(e) => toggleQueue.call(null, track, e)}
@@ -104,8 +162,7 @@
     tabindex="0">
     {#if $audioStore.map(track => track.mp3).includes(track.mp3)}
     <PlaylistCheck />
-    {/if}
-    {#if !$audioStore.map(track => track.mp3).includes(track.mp3)}
+    {:else}
     <PlaylistPlus />
     {/if}
   </button>
@@ -142,9 +199,31 @@
   </button>
   {/if}
 </div>
+{#if chaptersOpen && chapters}
+<div class="chapters" transition:slide={{duration: 100}}>
+  <div class="chapterNote">
+    <Information />
+    Due to Web Audio limitations, chapters may not be exactly correct.
+  </div>
+  {#each chapters as chapter, i}
+  <div class="chapter" class:playing={playing && currentChapter === i} on:click={(e) => {
+    e.stopPropagation();
+    if ($audioElem && playing) {
+      playTrack(track, e, chapter.startTime);
+    } else {
+      playTrack(track, e, chapter.startTime);
+    }
+  }}>
+    <span class="time">{chapter.originalTime}</span>
+    <span class="title">{chapter.name}</span>
+  </div>
+  {/each}
+</div>
+{/if}
+</div>
 
 <style>
-  .track {
+  .track, .chapter {
     height: 1em;
     padding: 10px;
     text-align: left;
@@ -156,12 +235,37 @@
     flex-direction: row;
     align-items: center;
   }
+  .track {
+    position: sticky;
+    top: 100px;
+    background-color: var(--bg);
+  }
   .track:focus-visible, .track button:focus-visible {
     outline: 2px solid #777;
   }
-  .track.playing {
+  .track.playing, .chapter.playing {
     color: var(--primary);
     font-weight: bold;
+  }
+  .chapterNote {
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    padding: 0 20px;
+  }
+  .chapter .time {
+    font-family: monospace;
+    width: 7ch;
+    padding: 10px;
+    text-align: right;
+  }
+  .chapter .title {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .track .number {
     min-width: 3ch;
@@ -198,6 +302,9 @@
   }
   .track:hover {
     background-color: #555;
+  }
+  .chapter:hover {
+    background-color: #333;
   }
   @media (prefers-color-scheme: light) {
     .track:hover {

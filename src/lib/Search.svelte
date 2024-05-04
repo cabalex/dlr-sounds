@@ -12,7 +12,7 @@
     if (e.target.value.length >= 3) {
       let search = e.target.value.toLowerCase();
       results = tracks.filter((track) => {
-        return `${track.album.name} - ${track.title} ${track.tags.join(", ")}`.toLowerCase().includes(search);
+        return typeof track !== "string" && `${track.album.name} - ${track.title} ${track.tags.join(", ")}`.toLowerCase().includes(search);
       });
     } else {
       results = [];
@@ -49,6 +49,9 @@
     top: 5px;
     z-index: 2;
     filter: drop-shadow(0 0 10px #111);
+  }
+  :global(.results .track:not(:hover)) {
+    background-color: var(--alternate) !important;
   }
   .searchBar {
     display: flex;

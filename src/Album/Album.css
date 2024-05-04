@@ -108,6 +108,7 @@ header h2 {
   padding: 0 5px;
   background-color: var(--alternate);
   flex-direction: row;
+  z-index: 2;
 }
 .smallHeader header .info {
   flex-direction: row;

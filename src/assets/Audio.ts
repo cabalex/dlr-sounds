@@ -10,7 +10,8 @@ export interface AlbumTrackData {
 	artist: string;
 	mp3: string;
   comments: string;
-  tags: string[]
+  tags: string[];
+  chapters?: {[time: string]: string};
 }
 export interface TrackData extends AlbumTrackData {
 	album: Album;
@@ -23,6 +24,14 @@ export function toTrackData(album: Album, albumTrackData: AlbumTrackData): Track
     album,
     poster: album.poster
   }
+}
+
+export function parseChapters(chapters: {[time: string]: string}): Array<{startTime: number, name: string}> {
+  return Object.entries(chapters).map(([time, name]) => ({
+    startTime: time.split(":").reduce((acc, time) => acc * 60 + +time, 0),
+    name,
+    originalTime: time
+  }))
 }
 
 const BASE_URL = "https://pub-9c3443886f92462bbbffc7cfe4e2b3a8.r2.dev"
@@ -7727,7 +7736,44 @@ export const albums: Album[] = [
         artist:"Walt Disney",
         mp3:BASE_URL + "/Pride Nite.mp3",
         comments:"Credit Magical Soundtracks",
-        tags: []
+        tags: [],
+        chapters: {
+          "0:00": "Love Yourself - Billy Porter",
+          "4:19": "Physical - Dua Lipa",
+          "7:23": "Welcome - The Blind Boys of Alambama",
+          "10:30": "Believe - Cher",
+          "13:36": "Man! I Feel Like A Woman! - Shania Twain",
+          "17:45": "We're All In This Together - High School Musical Cast",
+          "21:32": "Show Me Love - Robin S.",
+          "25:49": "Dancing Queen - ABBA",
+          "29:11": "Zero to Hero - Ariana Grande",
+          "31:34": "Finally - CeCe Peniston",
+          "35:29": "I Wanna Dance with Somebody - Whitney Houston",
+          "40:09": "True to Your Heart - The Wailing Souls",
+          "44:20": "I Feel Like Dancing - Jason Mraz",
+          "48:08": "Together Again - Janet Jackson",
+          "51:51": "Bajo El Mar - Alejandro Sanz",
+          "55:43": "We Are Family - Sister Sledge",
+          "58:53": "Stupid Love - Lady Gaga",
+          "1:02:27": "Friend Like Me - Ne-Yo",
+          "1:05:22": "Waiting for Tonight - Jennifer Lopez",
+          "1:09:34": "I Am What I Am (Remix) - A. Williams, Gloria Gaynor",
+          "1:13:00": "Dig a Little Deeper - China Anne McClain",
+          "1:15:29": "Free Yourself - Jessie Ware",
+          "1:19:10": "Spice Up Your Life - Spice Girls",
+          "1:21:32": "I Wan'na Be Like You (The Monkey Song) - DCappella",
+          "1:24:27": "I'm Coming Out / Upside Down (Eric Kupper Remix) - Diana Ross",
+          "1:27:24": "Hold Me Closer - Elton John & Britney Spears",
+          "1:30:15": "Let It Go (From \"Frozen\") - Rascal Flatts & Lucy Hale",
+          "1:34:22": "Finally Ready - The Shapeshifters, Billy Porter",
+          "1:38:17": "Express Yourself - Madonna",
+          "1:42:06": "Try Everything - Shakira",
+          "1:45:17": "Kill the Lights (with Nile Rodgers) [Audien Remix] - Alex Newell, Jess Glynne & DJ Cassidy",
+          "1:48:40": "I Will Survive - Gloria Gaynor",
+          "1:53:24": "What We Got (Mickey's Birthday Song) - Tony Ferrari",
+          "1:54:12": "Magic - Kylie Minogue",
+          "1:58:12": "A Dream Is a Wish (Reggae) - Shyam Moses"
+        }
       },
     ]
   },

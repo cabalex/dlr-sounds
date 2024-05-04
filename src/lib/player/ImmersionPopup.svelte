@@ -12,7 +12,7 @@
 
 {#if !shown}
 <div class="popup" style="bottom: {bottom}; right: {right}">
-    Want more immersion? Simulate the soundscape of the parks by clicking here!
+    Want more immersion? Play a track and click here to simulate the park speakers!
 </div>
 {/if}
 
