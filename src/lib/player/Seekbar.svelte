@@ -4,7 +4,7 @@
   export let updatePositionState: () => void;
   export let progress: number;
   export let duration: number;
-  export let chapters: {startTime: number, title: string}[] = [];
+  export let chapters: {startTime: number, title: string}[]|null = null;
 
   let barElem;
 
@@ -62,7 +62,7 @@
   >
     <div class="progressBar" style={`width: ${(scrubbing ? scrubbing.tempCurrentTime : progress) / duration * 100}%`}>
         <div class="progressBarHead" class:active={scrubbing}>
-          {#if scrubbing && chapters}
+          {#if scrubbing && chapters !== null}
             {#each chapters as chapter}
               {#if Math.abs(scrubbing.tempCurrentTime - chapter.startTime) < 30}
                 <span class="chapterTooltip">{chapter.name}</span>
@@ -71,9 +71,11 @@
           {/if}
         </div>
     </div>
-    {#each chapters as chapter}
-      <div class="chapterMarker" style={`left: ${chapter.startTime / duration * 100}%`} title={chapter.title} />
-    {/each}
+    {#if chapters !== null}
+      {#each chapters as chapter}
+        <div class="chapterMarker" style={`left: ${chapter.startTime / duration * 100}%`} title={chapter.title} />
+      {/each}
+    {/if}
   </div>
   <span class="toTime">{readableTime(duration)}</span>
 </div>

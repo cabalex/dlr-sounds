@@ -134,6 +134,7 @@
       if (!decodeURIComponent(audio.src).includes(track.mp3)) {
         audio.src = track.mp3;
       }
+      chapters = track.chapters ? parseChapters(track.chapters) : null;
   
       updateMetadata();
       await audio.play();
@@ -228,7 +229,7 @@
     let chapters = track.chapters ? parseChapters(track.chapters) : null;
     let currentChapter = null;
     function detectChapter() {
-      if (!$audioElem.duration || !track.chapters) return;
+      if (!$audioElem.duration || !chapters) return;
       
       for (let i = 0; i < chapters.length; i++) {
         if ($audioElem.currentTime >= chapters[i].startTime) {
@@ -303,7 +304,7 @@
             {track.title}
           </span>
         </h3>
-        <h3 class="album">{currentChapter !== null && currentChapter !== -1 ? chapters[currentChapter].name : track.album.name}</h3>
+        <h3 class="album">{chapters !== null && currentChapter !== null && currentChapter !== -1 ? chapters[currentChapter].name : track.album.name}</h3>
       </div>
     </div>
     <div class="centerBar">
@@ -745,6 +746,14 @@
         font-size: 1.5em;
         line-height: 1.2em;
         text-align: center;
+      }
+      :global(.audioPlayer.fullscreen .fromTime, .audioPlayer.fullscreen .toTime) {
+        position: absolute;
+        top: 10px;
+        font-size: 0.6em;
+      }
+      :global(.audioPlayer.fullscreen .toTime) {
+        right: 0;
       }
     }
   </style>
