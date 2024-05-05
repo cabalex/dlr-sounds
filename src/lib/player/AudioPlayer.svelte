@@ -665,12 +665,12 @@
         width: 100%;
       }
       .mobileSeekbarInner {
-        height: 3px;
+        height: max(3px, var(--safe-margin-bottom));
         background-color: var(--primary);
       }
       .audioPlayer:not(.fullscreen) {
         display: flex;
-        padding-bottom: 3px;
+        padding-bottom: max(3px, var(--safe-margin-bottom));
         align-items: center;
         cursor: pointer;
       }

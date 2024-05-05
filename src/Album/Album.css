@@ -102,8 +102,7 @@ header h2 {
 }
 .smallHeader header {
   position: fixed;
-  top: 50px;
-  bottom: 100%;
+  top: 0;
   transform: translateX(-10px);
   height: 100px;
   padding: 0 10px;
