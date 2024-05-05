@@ -292,7 +292,7 @@
         {#if (audio.readyState >= 3 || audio.currentTime !== 0)}
         <img style="cursor: pointer" alt={track.title} src={track.poster} on:click={() => { setTimeout(() => fullscreen = !fullscreen, 0); setTimeout(updateScroller, 100)}} />
         {:else}
-        <img class="loadingClock" style="width: 65px" alt="Loading" src={clockFace} />
+        <img style="cursor: pointer" class="loadingClock" alt="Loading" src={clockFace} on:click={() => { setTimeout(() => fullscreen = !fullscreen, 0); setTimeout(updateScroller, 100)}} />
         {/if}
       </div>
       <div class="title" on:click={() => { setTimeout(() => fullscreen = false, 0); openAlbum.set(albums.filter(a => a.name === track.album.name)[0])} }>
@@ -531,6 +531,7 @@
     .title .album {
       font-size: 0.9em;
       color: #888;
+      max-width: 100%;
     }
     .albumImage {
       width: 75px;

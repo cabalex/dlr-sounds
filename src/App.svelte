@@ -6,14 +6,6 @@
   import { openAlbum } from './AudioStore';
   import Album from './Album/Album.svelte';
   import Playlist from './Playlist/Playlist.svelte';
-
-  $: {
-    if ($openAlbum) {
-      document.body.classList.add('noScroll');
-    } else {
-      document.body.classList.remove('noScroll');
-    }
-  }
 </script>
 <header>
   <span>Sounds of the DLR</span>
@@ -70,9 +62,6 @@
   }
   footer {
     margin-bottom: 100px;
-  }
-  :global(.noScroll) {
-    overflow: hidden;
   }
   @media screen and (max-width: 650px) {
     main {

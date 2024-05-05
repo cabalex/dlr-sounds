@@ -775,15 +775,41 @@ export const albums: Album[] = [
       {
         "title": "Morning Area Loop (1971)",
         "artist": "Jack Wagner",
-        "mp3": BASE_URL + "/Main Street Emporium-12 Main Street U.S.A. (1971-1975)_ Area Loop.mp3",
-        "comments": "Credit Chris Lyndon",
-        "tags": []
+        "mp3": BASE_URL + "/Main Street Emporium-13 Main Street U.S.A. (1971-1975)_ Area Loop.mp3",
+        "comments": "",
+        "tags": [],
+        "chapters": {
+          "0:00": "Frisco Rag - San Francisco Harry & the Barbary Coast Bandits",
+          "2:14": "Tammany Picnic - The Gaslight Orchestra",
+          "4:25": "Unknown",
+          "7:52": "The Old Grey Mare - Albert White & the Gaslight Orchestra",
+          "10:19": "Golden Arrow - Albert White & the Gaslight Orchestra",
+          "12:10": "Sidewalks of New York - Gay Nineties Waltzes (Somerset, P-3400)",
+          "14:25": "Pretty Baby - Albert White & the Gaslight Orchestra",
+          "16:23": "Mississippi Cabaret - Albert White & the Gaslight Orchestra",
+          "18:36": "Strolling Through the Park--Mary - Gay Nineties Waltzes (Somerset, P-3400)",
+          "22:13": "'Lasses Trombone - Albert White & the Gaslight Orchestra",
+          "24:44": "Good Old Timers - Albert White & the Gaslight Orchestra",
+          "28:31": "School Days - Gay Nineties Waltzes (Somerset, P-3400)",
+          "31:36": "Old Timers Waltz Medley - Albert White & the Gaslight Orchestra",
+          "35:53": "Horse Cars - Gay Nineties Waltzes (Somerset, P-3400)",
+          "38:47": "Sweet Rosie O'Grady - Gay Nineties Waltzes (Somerset, P-3400)",
+          "41:03": "Silver Heels - Albert White & the Gaslight Orchestra",
+          "42:59": "Wisha Wurra - The Pete King Orchestra",
+          "44:41": "Theme from 'Minnie's Boys' - Merv Griffin",
+          "46:44": "Man With a Load of Mischief - Ralph Carmichael and his Orchestra",
+          "48:29": "I Wouldn't Bet One Penny - The Pete King Orchestra",
+          "50:24": "Medley: Bird in a Gilded Cage / Two Girls / Good Old Summertime - San Francisco Harry & the Barbary Coast Bandits",
+          "52:05": "Little Annie Rooney - Gay Nineties Waltzes (Somerset, P-3400)",
+          "54:27": "On a Sunday Afternoon - San Francisco Harry & the Barbary Coast Bandits",
+          "55:40": "Bicycle Built for Two - Gay Nineties Waltzes (Somerset, P-3400)",
+        }
       },
       {
         "title": "Evening Area Loop (1971)",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Main Street Emporium-13 Main Street U.S.A. (1971-1975)_ Area Loop.mp3",
-        "comments": "",
+        "artist": "Jack Wagner",
+        "mp3": BASE_URL + "/Main Street Emporium-12 Main Street U.S.A. (1971-1975)_ Area Loop.mp3",
+        "comments": "Credit Chris Lyndon",
         "tags": []
       },
       "Main Street U.S.A, 1976",
@@ -1489,6 +1515,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
+      "Area Music",
       {
         "title": "Area Loop (1983): Castle Courtyard",
         "artist": "Walt Disney",
@@ -1941,6 +1968,7 @@ export const albums: Album[] = [
     "location": [33.81465336260636, -117.91785425635084],
     "tags": ["DL"],
     "tracks": [
+      "Toy Clock Parade",
       {
         "title": "Toy Clock Parade",
         "artist": "Sherman & Sherman",
@@ -1955,24 +1983,47 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": ["HOLIDAY"]
       },
+      "Nighttime Projection Shows",
       {
-        "title": "It's a Small World: Projection Show",
+        "title": "Projection Show: Holidays",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Holiday-20 It_s a Small World_ Projection Show.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": ["HOLIDAY"]
       },
       {
-        "title": "Small World Night Show: The Magic, the Memories, and You (2011)",
+        "title": "Projection Show: The Magic, the Memories, and You (2011)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Firework Shows-12 Small World Night Show_ The Magic, the Memories, and You.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
+      "Area Music",
       {
-        "title": "Area Music (1964)",
+        "title": "Area Music (1964 World's Fair)",
         "artist": "Sherman & Sherman",
         "mp3": BASE_URL + "/It's a Small World-02 Area Music (1964).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Entrance Music (1964 World's Fair)",
+        "artist": "Sherman & Sherman",
+        "mp3": BASE_URL + "/It's a Small World-03 Entrance Music (1964).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Area Loop (1993-2003)",
+        "artist": "Sherman & Sherman",
+        "mp3": BASE_URL + "/It's a Small World-05 Queue Loop (1983).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Area Loop (1964, 2003)",
+        "artist": "Sherman & Sherman",
+        "mp3": BASE_URL + "/It's a Small World-04 Queue Loop (1964).mp3",
         "comments": "",
         "tags": []
       },
@@ -1983,27 +2034,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": ["HOLIDAY"]
       },
-      {
-        "title": "Entrance Music (1964)",
-        "artist": "Sherman & Sherman",
-        "mp3": BASE_URL + "/It's a Small World-03 Entrance Music (1964).mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Loop (1964)",
-        "artist": "Sherman & Sherman",
-        "mp3": BASE_URL + "/It's a Small World-04 Queue Loop (1964).mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Loop (1983)",
-        "artist": "Sherman & Sherman",
-        "mp3": BASE_URL + "/It's a Small World-05 Queue Loop (1983).mp3",
-        "comments": "",
-        "tags": []
-      },
+      "Ride",
       {
         "title": "Theme",
         "artist": "Sherman & Sherman",
@@ -2074,6 +2105,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
+      "Others",
       {
         "title": "Safety Spiel",
         "artist": "Sherman & Sherman",
@@ -2126,13 +2158,6 @@ export const albums: Album[] = [
       },
       {
         "title": "Queue Loop",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Matterhorn Bobsleds-05 Queue Loop.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Loop Reconstruction",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Matterhorn Bobsleds-06 Queue Loop Reconstruction.mp3",
         "comments": "",
@@ -3837,7 +3862,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
-      "Brair Patch Tribute",
+      "Briar Patch Tribute",
       {
         "title": "How Do You Do? (1946)",
         "artist": "Johnny Mercer",
@@ -5054,6 +5079,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
+      "Tomorrowland 2055",
       {
         "title": "Tomorrowland 2055: Theme",
         "artist": "Bruce Broughton",
@@ -5082,8 +5108,9 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Buzz Lightyear's Astro Blasters",
       {
-        "title": "Buzz Light Year's Astro Blasters: Ride",
+        "title": "Buzz Lightyear's Astro Blasters: Ride",
         "artist": "Randy Newman",
         "mp3": BASE_URL + "/Tomorrowland-10 Buzz Light Year_s Astro Blasters_ Ride.mp3",
         "comments": "",
@@ -6682,13 +6709,13 @@ export const albums: Album[] = [
     "tracks": [
       "Queue",
       {
-        "title": "Queue Loop (2001-2005)",
+        "title": "Queue Loop (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Soarin' Over California-01 Queue Loop (2001-2005).mp3",
         "comments": "",
         "tags": []
       },
-      {
+      /*{
         "title": "Queue Music (2005): Distinguished Gentleman: Girls of Many Nations",
         "artist": "Randy Edelman",
         "mp3": BASE_URL + "/Soarin' Over California-02 Queue Music (2005)_ Distinguished Gentleman_ Girls of Many Nations.mp3",
@@ -6764,13 +6791,26 @@ export const albums: Album[] = [
         "mp3": BASE_URL + "/Soarin' Over California-12 Queue Music (2005)_ The Generals.mp3",
         "comments": "",
         "tags": []
-      },
+      },*/
       {
         "title": "Queue Loop (2005)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Soarin' Over California-13 Queue Loop (2005).mp3",
         "comments": "",
-        "tags": []
+        "tags": [],
+        "chapters": {
+          "0:00": "Distinguished Gentleman: Girls of Many Nations - Randy Edelman",
+          "1:41": "Distinguished Gentleman: Soft Rebellion - Randy Edelman",
+          "2:50": "Distinguished Gentleman: Reprise - Randy Edelman",
+          "5:15": "The American President: Main Titles - Marc Shaiman",
+          "7:38": "Battle of the Atlantic Suite: Evening Tide - Dave Roylance & Bob Gavlin",
+          "9:54": "Dave: You're On - James Newton Howard",
+          "11:35": "Dragon: Victory at Ed Parker's - Randy Edelman",
+          "12:34": "Dragon: The Premier of the Big Boss",
+          "14:07": "The American President: End Titles - Marc Shaiman",
+          "19:06": "The Blue Max Suite - Jerry Goldsmith",
+          "20:54": "The Generals - Jerry Goldsmith"
+        }
       },
       "Ride",
       {
@@ -7216,14 +7256,6 @@ export const albums: Album[] = [
     "location": [33.81213005249728, -117.91867181968192],
     "tags": ["DL"],
     "tracks": [
-      "Toy Story Block Party Bash (2005-2008)",
-      {
-        "title": "Toy Story Block Party Bash: Full Show",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Parades-01 Toy Story Block Party Bash_ Full Show.mp3",
-        "comments": "",
-        "tags": []
-      },
       "Parade of Princesses",
       {
         "title": "Parade of Princesses: Overture",
@@ -7267,10 +7299,27 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Poppins in the Parks",
       {
-        "title": "Parades and Shows: Poppins in the Parks",
+        "title": "Poppins in the Parks",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Fantasyland Theatre-23 Parades and Shows_ Poppins in the Parks.mp3",
+        "comments": "",
+        "tags": []
+      },
+      "Main Street Electrical Parade (1977-1996, 2010, 2022)",
+      {
+        "title": "Main Street Electrical Parade (2010)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Parades-12 Parade_ Main Street Electrical Parade.mp3",
+        "comments": "",
+        "tags": []
+      },
+      "Light Magic (1997)",
+      {
+        "title": "Light Magic",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Parades-13 Parade_ Light Magic (1996).mp3",
         "comments": "",
         "tags": []
       },
@@ -7290,6 +7339,14 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Toy Story Block Party Bash (2005-2008)",
+      {
+        "title": "Toy Story Block Party Bash",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Parades-01 Toy Story Block Party Bash_ Full Show.mp3",
+        "comments": "",
+        "tags": []
+      },
       //"Celebrate! A Street Party (2009-2010) (missing)",
       "Mickey's Soundsational Parade (2011-2019)",
       {
@@ -7299,31 +7356,26 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Pixar Play Parade (2012, 2018)",
       {
-        "title": "Main Street Electrical Parade (2009)",
+        "title": "Pixar Play Parade",
         "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Parades-12 Parade_ Main Street Electrical Parade.mp3",
+        "mp3": BASE_URL + "/Parades-Pixar Play Parade.mp3",
         "comments": "",
         "tags": []
       },
+      "Paint The Night (2015-2018)",
       {
-        "title": "Light Magic (1996)",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Parades-13 Parade_ Light Magic (1996).mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Paint The Night: Score (2015)",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Parades-14 Parade_ Paint The Night_ Score (2015).mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Paint the Night: Soundtrack (2015)",
+        "title": "Paint the Night: Soundtrack",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Parades-15 Parade_ Paint the Night_ Soundtrack (2015).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Paint The Night: Score",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Parades-14 Parade_ Paint The Night_ Score (2015).mp3",
         "comments": "",
         "tags": []
       },
@@ -7344,7 +7396,7 @@ export const albums: Album[] = [
         "tags": ["HALLOWEEN"]
       },
       //"Frightfully Fun Parade (missing)",
-      "Mickey's Very Merry Christmas Parade (-1995)",
+      "Mickey's Very Merry Christmas Parade (1977-1995)",
       {
         "title": "Mickey's Very Merry Christmas Parade",
         "artist": "Walt Disney",
@@ -7487,14 +7539,14 @@ export const albums: Album[] = [
         "tags": ["HOLIDAY"]
       },
       {
-        "title": "Winter Dreams: Soundtrack",
+        "title": "World of Color: Winter Dreams",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Holiday-39 World of Color_ Winter Dreams Soundtrack.mp3",
         "comments": "",
         "tags": ["HOLIDAY"]
       },
       {
-        "title": "Winter Dreams: Glow",
+        "title": "Glow",
         "artist": "Eric Whitacre Virtual Choir",
         "mp3": BASE_URL + "/Holiday-37 Glow.mp3",
         "comments": "",
@@ -7502,7 +7554,7 @@ export const albums: Album[] = [
       },
       "World of Color: Season of Light (2016)",
       {
-        "title": "Season of Light: Exit Music (This Is My Wish)",
+        "title": "Exit Music (This Is My Wish)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/World of Color-08 Season of Light_ Exit Music (This Is My Wish, 2016).mp3",
         "comments": "",
@@ -7510,14 +7562,14 @@ export const albums: Album[] = [
       },
       "World of Color: Celebrate! (2015-2016)",
       {
-        "title": "Celebrate: Soundtrack",
+        "title": "World of Color: Celebrate!",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/World of Color-06 Celebrate_ Soundtrack (2015).mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Celebrate: Exit Music",
+        "title": "Exit Music: Forever Young & Disneyland",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/World of Color-07 Celebrate_ Exit Music (2015).mp3",
         "comments": "",
@@ -7617,7 +7669,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
-      "Mickey's Mix Magic (2019, 2021)",
+      "Mickey's Mix Magic (2019)",
       {
         "title": "Mickey's Mix Magic",
         "artist": "Walt Disney",
@@ -7647,7 +7699,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
-      "Halloween Screams: A Villainous Surprise in the Skies",
+      "Halloween Screams: A Villainous Surprise in the Skies (2009)",
       {
         "title": "Halloween Screams: A Villainous Surprise in the Skies",
         "artist": "Walt Disney",
@@ -7655,9 +7707,9 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": ["HALLOWEEN"]
       },
-      "Believe in Holiday Magic",
+      "Believe... in Holiday Magic (2000)",
       {
-        "title": "Believe in Holiday Magic",
+        "title": "Believe... in Holiday Magic",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Holiday-36 Fireworks Show_ Believe in Holiday Magic.mp3",
         "comments": "Credit Chris Lyndon",
@@ -7703,7 +7755,7 @@ export const albums: Album[] = [
       },
       "Mickey and Friends Tram",
       {
-        "title": "Mickey and Friends Tram: Ride (2001-2005)",
+        "title": "Mickey and Friends Tram: Ride (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Welcome to Disneyland-02 Mickey and Friends Tram_ Ride (2001-2005).mp3",
         "comments": "Credit Chris Lyndon",
@@ -7980,14 +8032,14 @@ export const albums: Album[] = [
         "tags": []
       },
       {
-        "title": "Area Loop 1 (2001-2005)",
+        "title": "Area Loop 1 (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Disneyland Esplanade-29 Area Loop 1 (2001-2005).mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Area Loop 2 (2001-2005)",
+        "title": "Area Loop 2 (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Disneyland Esplanade-30 Area Loop 2 (2001-2005).mp3",
         "comments": "Credit Chris Lyndon",

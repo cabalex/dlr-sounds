@@ -251,13 +251,19 @@
     color: #888;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     font-size: 14px;
-    padding: 0 20px;
+    padding: 5px;
+    padding-left: 20px;
+    text-align: left;
+    line-height: 1em;
   }
   .chapter .time {
     font-family: monospace;
     width: 7ch;
+    flex-shrink: 0;
+    height: 100%;
+    line-height: 1em;
     padding: 10px;
     text-align: right;
   }
@@ -268,7 +274,7 @@
     white-space: nowrap;
   }
   .track .number {
-    min-width: 3ch;
+    width: 3ch;
     text-align: center;
     margin-right: 10px;
   }

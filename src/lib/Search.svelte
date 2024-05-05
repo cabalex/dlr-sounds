@@ -12,7 +12,7 @@
     if (e.target.value.length >= 3) {
       let search = e.target.value.toLowerCase();
       results = tracks.filter((track) => {
-        return typeof track !== "string" && `${track.album.name} - ${track.title} ${track.tags.join(", ")}`.toLowerCase().includes(search);
+        return typeof track !== "string" && `${track.album.name} - ${track.title} ${track.tags.join(", ")} ${track.chapters ? Object.values(track.chapters).join(", ") : ""}`.toLowerCase().includes(search);
       });
     } else {
       results = [];

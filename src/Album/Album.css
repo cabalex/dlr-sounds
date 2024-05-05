@@ -8,6 +8,7 @@
   left: 0;
   z-index: 3;
   transition: opacity 0.2s ease-in-out;
+  overscroll-behavior: contain;
 }
 .albumInner {
   width: calc(100% - 20px);
@@ -24,7 +25,7 @@
   border-radius: 10px;
 }
 header {
-  width: min(calc(100% - 20px), 510px);
+  width: min(calc(100% - 20px), 500px);
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -45,8 +46,8 @@ header .closeBtn {
   top: 0;
 }
 .smallHeader .closeBtn {
-    height: 100px;
-  }
+  height: 100px;
+}
 .closeBtn .backArrow {
   display: none;
 }
@@ -79,7 +80,7 @@ header .closeBtn {
 }
 header img {
   border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
 }
 header .info {
   flex-grow: 1;
@@ -105,7 +106,7 @@ header h2 {
   bottom: 100%;
   transform: translateX(-10px);
   height: 100px;
-  padding: 0 5px;
+  padding: 0 10px;
   background-color: var(--alternate);
   flex-direction: row;
   z-index: 2;
@@ -117,7 +118,9 @@ header h2 {
   justify-content: left;
 }
 .smallHeader header img {
-  width: 100px;
+  box-shadow: none;
+  width: 80px;
+  margin: 10px 0;
 }
 .smallHeader header h2 {
   font-size: 1.5em;
@@ -159,7 +162,7 @@ h4 {
     margin: auto;
   }
   .closeBtn {
-    left: -10px;
+    left: 0px;
     width: 75px;
     right: unset !important;
   }
