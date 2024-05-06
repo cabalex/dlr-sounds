@@ -275,6 +275,7 @@
   }
   .track .number {
     width: 3ch;
+    flex-shrink: 0;
     text-align: center;
     margin-right: 10px;
   }

@@ -6123,7 +6123,7 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
-      "Muppet*Vision 3D",
+      "Muppet*Vision 3D (2001-2014)",
       {
         "title": "Muppet*Vision 3D: The Muppet Show Theme",
         "artist": "Walt Disney",
@@ -6205,6 +6205,14 @@ export const albums: Album[] = [
         "title": "Muppet*Vision 3D: Right Where I Belong",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Hollywood Land-Muppet_Vision 3D_ Right Where I Belong.mp3",
+        "comments": "",
+        "tags": []
+      },
+      "PhilharMagic (2019)",
+      {
+        "title": "Philharmagic (2022)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Hollywood Land-Philharmagic (with Coco).mp3",
         "comments": "",
         "tags": []
       },
@@ -7089,6 +7097,21 @@ export const albums: Album[] = [
     "tags": ["DCA"],
     "tracks": [
       {
+        "title": "The Bakery: Theme",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Pacific Wharf-03 The Bakery_ Theme.mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Cocina Cucamonga: Area Loop",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Pacific Wharf-04 Cocina Cucamonga_ Area Loop.mp3",
+        "comments": "",
+        "tags": []
+      },
+      "Golden Vine Winery",
+      {
         "title": "Golden Vine Winery: Area Loop",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Pacific Wharf-01 Golden Vine Winery_ Area Loop.mp3",
@@ -7102,20 +7125,36 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "San Fransokyo Square (2023)",
       {
-        "title": "The Bakery: Theme",
+        "title": "San Fransokyo Square: Area Loop",
         "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Pacific Wharf-03 The Bakery_ Theme.mp3",
-        "comments": "",
-        "tags": []
+        "mp3": BASE_URL + "/San Fransokyo Square-Area Loop.mp3",
+        "comments": "Credit Mouskegamer and tox1cboy",
+        "tags": [],
+        "chapters": {
+          "0:00": "ピュアなソルジャー (Pure Soldier) - Shiggy Jr.",
+          "4:34": "Tokyo Highway - Kyary Pamyu Pamyu",
+          "9:31": "One Sweet Ride (Instrumental) - Tokyo Disneyland",
+          "11:03": "Spending All My Time - Perfume",
+          "14:55": "Spinning World - Perfume",
+          "18:50": "夜に駆ける (Yoru Ni Kakeru) - YOASOBI",
+          "22:54": "飛燕 (Hien) - Kenshi Yonezu",
+          "27:03": "再生 (Saisei) - Perfume",
+          "31:37": "Go Way! - SILENT SIREN",
+          "34:58": "19 summer note. - SILENT SIREN",
+          "38:49": "だいじょばない (Daijyobanai) - Perfume",
+          "41:43": "A New Angle (Instrumental) - Tokyo Disneyland",
+          "43:16": "脱・借りてきた猫症候群 (Datsu Karitekita Neko Syoukougun) - Uru",
+          "46:57": "ESCAPADE - Hige Dandism",
+          "51:30": "Mela! - Ryokuoushoku Shakai",
+          "55:03": "MY COLOR - Perfume",
+          "59:57": "Happy Song (Instrumental) - Tokyo Disneyland",
+          "1:01:36": "Peace Sign (Instrumental) - Kenshi Yonezu",
+          "1:05:36": "PONPONPON - Kyary Pamyu Pamyu",
+          "1:09:38": "レーザービーム (Laser Beam) - Perfume",
+        }
       },
-      {
-        "title": "Cocina Cucamonga: Area Loop",
-        "artist": "Walt Disney",
-        "mp3": BASE_URL + "/Pacific Wharf-04 Cocina Cucamonga_ Area Loop.mp3",
-        "comments": "",
-        "tags": []
-      }
     ]
   },
   {
@@ -7232,15 +7271,8 @@ export const albums: Album[] = [
         "mp3": BASE_URL + "/Pixar Pier-05 Toy Story Midway Mania_ Theme.mp3",
         "comments": "",
         "tags": []
-      }
-    ]
-  },
-  {
-    "name": "Plaza de la Familia",
-    "poster": "AlbumArt/Plaza de la Familia.jpeg",
-    "location": [33.80615190126632, -117.92316496991248],
-    "tags": ["DCA"],
-    "tracks": [
+      },
+      "Plaza de la Familia",
       {
         "title": "Plaza de la Familia: Area Loop",
         "artist": "Michael Giacchino",
@@ -7835,6 +7867,7 @@ export const albums: Album[] = [
     "location": [33.80909460542662, -117.91898560453289],
     "tags": ["DLR"],
     "tracks": [
+      "Esplanade, 2001",
       {
         "title": "When You Wish Upon a Star",
         "artist": "Walt Disney",
@@ -8045,6 +8078,7 @@ export const albums: Album[] = [
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
+      "Esplanade, 2006",
       {
         "title": "Area Loop (2006)",
         "artist": "Walt Disney",
@@ -8052,10 +8086,18 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Esplanade, Special Events",
       {
         "title": "Pixar Fest Area Loop (2018)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Disneyland Esplanade-32 Pixar Fest Area Loop (2018).mp3",
+        "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Pixar Fest Area Loop (2024)",
+        "artist": "Walt Disney",
+        "mp3": BASE_URL + "/Esplanade-Area Loop (Pixar Fest, 2024).mp3",
         "comments": "",
         "tags": []
       },
