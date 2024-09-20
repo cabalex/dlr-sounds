@@ -2263,51 +2263,51 @@ export const albums: Album[] = [
     "location": [33.81170779334197, -117.919615883569],
     "tags": ["DL"],
     "tracks": [
-      "Preshow",
+      "Enchanted Tiki Garden",
       {
-        "title": "Enchanted Tiki Garden: Tiki Room Preshow",
+        "title": "Tiki Room Preshow",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-01 Enchanted Tiki Garden_ Tiki Room Preshow.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Garden: Tiki Room Preshow with background",
+        "title": "Tiki Room Preshow with background",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-02 Enchanted Tiki Garden_ Tiki Room Preshow with background.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Garden: Tiki Room Preshow - United Airlines",
+        "title": "Tiki Room Preshow - United Airlines",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-03 Enchanted Tiki Garden_ Tiki Room Preshow - United Airlines.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Garden: Moonlight Time in Old Hawaii (1963)",
+        "title": "Moonlight Time in Old Hawaii (1963)",
         "artist": "George Bruns",
         "mp3": BASE_URL + "/Enchanted Tiki Room-04 Enchanted Tiki Garden_ Moonlight Time in Old Hawaii (1963).mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Garden: Area Loop (1963-1970)",
+        "title": "Area Loop (1963-1970)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-05 Enchanted Tiki Garden_ Area Loop (1963-1970).mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Garden: Area Loop (1971-1985)",
+        "title": "Area Loop (1971-1985)",
         "artist": "Jack Wagner",
         "mp3": BASE_URL + "/Enchanted Tiki Room-06 Enchanted Tiki Garden_ Area Loop (1971-1985).mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Garden: Area Loop (1986)",
+        "title": "Area Loop (1986)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-07 Enchanted Tiki Garden_ Area Loop (1986).mp3",
         "comments": "Credit Chris Lyndon",
@@ -2322,77 +2322,77 @@ export const albums: Album[] = [
       },
       "Walt Disney's Enchanted Tiki Room",
       {
-        "title": "Enchanted Tiki Room: The Tiki Tiki Tiki Room",
+        "title": "The Tiki Tiki Tiki Room",
         "artist": "Sherman & Sherman",
         "mp3": BASE_URL + "/Enchanted Tiki Room-10 Enchanted Tiki Room_ The Tiki Tiki Tiki Room.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Room: Let's All Sing Like the Birdies Sing",
+        "title": "Let's All Sing Like the Birdies Sing",
         "artist": "Sherman & Sherman",
         "mp3": BASE_URL + "/Enchanted Tiki Room-11 Enchanted Tiki Room_ Let_s All Sing Like the Birdies Sing.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Room: War Chant",
+        "title": "War Chant",
         "artist": "Sherman & Sherman",
         "mp3": BASE_URL + "/Enchanted Tiki Room-12 Enchanted Tiki Room_ War Chant.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Room: Finale",
+        "title": "Finale",
         "artist": "Sherman & Sherman",
         "mp3": BASE_URL + "/Enchanted Tiki Room-13 Enchanted Tiki Room_ Finale.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Room: Full Show",
+        "title": "Full Show",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-14 Enchanted Tiki Room_ Full Show.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Room: The Tiki Tiki Tiki Room Score",
+        "title": "The Tiki Tiki Tiki Room Score",
         "artist": "Sherman & Sherman",
         "mp3": BASE_URL + "/Enchanted Tiki Room-15 Enchanted Tiki Room_ The Tiki Tiki Tiki Room Score.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Room: Elfenchor from Die Rheinnixen Barcarolle Score",
+        "title": "Elfenchor from Die Rheinnixen Barcarolle Score",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-16 Enchanted Tiki Room_ Elfenchor from Die Rheinnixen Barcarolle Score.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Room: Lets All Sing Like the Birdies Sing Score",
+        "title": "Lets All Sing Like the Birdies Sing Score",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-17 Enchanted Tiki Room_ Lets All Sing Like the Birdies Sing Score.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Room: Hawaiian War Chant Score",
+        "title": "Hawaiian War Chant Score",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-18 Enchanted Tiki Room_ Hawaiian War Chant Score.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Room: Farewell to You Heigh Ho Score",
+        "title": "Farewell to You Heigh Ho Score",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-19 Enchanted Tiki Room_ Farewell to You Heigh Ho Score.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
       {
-        "title": "Enchanted Tiki Room: Demo Recording",
+        "title": "Demo Recording",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-20 Enchanted Tiki Room_ Demo Recording.mp3",
         "comments": "Credit Chris Lyndon",
@@ -2400,28 +2400,28 @@ export const albums: Album[] = [
       },
       "Tahitian Terrace",
       {
-        "title": "Tahitian Terrace: Area Loop",
+        "title": "Area Loop",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-21 Tahitian Terrace_ Area Loop.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
       {
-        "title": "Tahitian Terrace: The Liki Tikis",
+        "title": "The Liki Tikis",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-22 Tahitian Terrace_ The Liki Tikis.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Tahitian Terrace: Polynesian War Dance",
+        "title": "Polynesian War Dance",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-23 Tahitian Terrace_ Polynesian War Dance.mp3",
         "comments": "Credit Chris Lyndon",
         "tags": []
       },
       {
-        "title": "Tahitian Terrace: The Legend of the Island Jewel",
+        "title": "The Legend of the Island Jewel",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Enchanted Tiki Room-24 Tahitian Terrace_ The Legend of the Island Jewel.mp3",
         "comments": "Credit Chris Lyndon",
@@ -4522,6 +4522,25 @@ export const albums: Album[] = [
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Toontown Area Music-Area Loop (Reimagined, 2023).mp3",
         "comments": "",
+        "chapters": {
+          "0:00": "My Happy Place (Instrumental)",
+          "3:08": "Hot Dog!",
+          "3:54": "The Spectrum Song",
+          //"4:52": "Steamboat Willie Theme",
+          "4:52": "Strolling Along",
+          "6:50": "Walking & Whistling",
+          "9:33": "Playtime Shuffle",
+          "10:38": "Mickey Mouse Club March",
+          "11:31": "Lazy Bounce",
+          "13:19": "I2I",
+          "14:56": "Mickey Mouse Clubhouse Theme",
+          "19:38": "Happy Days",
+          "18:40": "Our Homespun Melody",
+          //"23:02": "After Sun",
+          "21:40": "\"Nothing Can Stop Us Now\"",
+          //"27:17": "On The Open Road",
+          "23:19": "Mousin' Around"
+        },
         "tags": []
       },
       "Mickey and Minnie's Runaway Railway",
@@ -4530,6 +4549,22 @@ export const albums: Album[] = [
         "artist": "Christopher Willis",
         "mp3": BASE_URL + "/Toontown Area Music-Mickey and Minnie_s Runaway Railway_ Queue.mp3",
         "comments": "",
+        "chapters": {
+          "0:00": "Mickey Mouse Club March",
+          "2:25": "Minnie's Yoo Hoo",
+          "4:22": "The Brave Little Squire",
+          "7:00": "Mickey Mouse Clubhouse",
+          "9:36": "Hats Enough",
+          "12:01": "Steamboat Silly",
+          "14:26": "Happy Birthday Mickey Mouse",
+          "16:43": "Sorcerer's Apprentice",
+          "19:07": "As Long As I'm With You",
+          "21:38": "Steamboat Bill",
+          "24:34": "Flower Blooming In My Heart",
+          "27:26": "My, What a Happy Day",
+          "29:15": "Hot Dog!",
+          "31:12": "Mickey Mouse Shorts Theme"
+        },
         "tags": []
       },
       {
@@ -4537,6 +4572,19 @@ export const albums: Album[] = [
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Toontown Area Music-Mickey and Minnie_s Runaway Railway_ Ride.mp3",
         "comments": "",
+        "tags": []
+      },
+      {
+        "title": "Mickey and Minnie's Runaway Railway: Exit",
+        "artist": "Christopher Willis",
+        "mp3": BASE_URL + "/Toontown Area Music-Mickey and Minnie_s Runaway Railway_ Exit.mp3",
+        "comments": "",
+        "chapters": {
+          "0:00": "Nothing Can Stop Us Now (Railroad Rag)",
+          "2:32": "Nothing Can Stop Us Now (Minnie Muchacha)",
+          "5:33": "Nothing Can Stop Us Now (Dippy Dawg Days)",
+          "8:27": "Nothing Can Stop Us Now (Wheels of Progress)"
+        },
         "tags": []
       },
       {
@@ -6723,83 +6771,6 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
-      /*{
-        "title": "Queue Music (2005): Distinguished Gentleman: Girls of Many Nations",
-        "artist": "Randy Edelman",
-        "mp3": BASE_URL + "/Soarin' Over California-02 Queue Music (2005)_ Distinguished Gentleman_ Girls of Many Nations.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Music (2005): Distinguished Gentleman: Soft Rebellion",
-        "artist": "Randy Edelman",
-        "mp3": BASE_URL + "/Soarin' Over California-03 Queue Music (2005)_ Distinguished Gentleman_ Soft Rebellion.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Music (2005): Distinguished Gentleman: Reprise",
-        "artist": "Randy Edelman",
-        "mp3": BASE_URL + "/Soarin' Over California-04 Queue Music (2005)_ Distinguished Gentleman_ Reprise.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Music (2005): The American President: Main Titles",
-        "artist": "Marc Shaiman",
-        "mp3": BASE_URL + "/Soarin' Over California-05 Queue Music (2005)_ The American President_ Main Titles.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Music (2005): Battle of the Atlantic Suite: Evening Tide",
-        "artist": "Dave Roylance / Bob Gavlin",
-        "mp3": BASE_URL + "/Soarin' Over California-06 Queue Music (2005)_ Battle of the Atlantic Suite_ Evening Tide.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Music (2005): Dave: You're On",
-        "artist": "James Newton Howard",
-        "mp3": BASE_URL + "/Soarin' Over California-07 Queue Music (2005)_ Dave_ You_re On.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Music (2005): Dragon: Victory at Ed Parker's",
-        "artist": "Randy Edelman",
-        "mp3": BASE_URL + "/Soarin' Over California-08 Queue Music (2005)_ Dragon_ Victory at Ed Parker_s.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Music (2005): Dragon: The Premier of the Big Boss",
-        "artist": "Randy Edelman",
-        "mp3": BASE_URL + "/Soarin' Over California-09 Queue Music (2005)_ Dragon_ The Premier of the Big Boss.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Music (2005): The American President: End Titles",
-        "artist": "Marc Shaiman",
-        "mp3": BASE_URL + "/Soarin' Over California-10 Queue Music (2005)_ The American President_ End Titles.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Music (2005): The Blue Max Suite",
-        "artist": "Jerry Goldsmith",
-        "mp3": BASE_URL + "/Soarin' Over California-11 Queue Music (2005)_ The Blue Max Suite.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Queue Music (2005): The Generals",
-        "artist": "Jerry Goldsmith",
-        "mp3": BASE_URL + "/Soarin' Over California-12 Queue Music (2005)_ The Generals.mp3",
-        "comments": "",
-        "tags": []
-      },*/
       {
         "title": "Queue Loop (2005)",
         "artist": "Walt Disney",
@@ -6820,7 +6791,14 @@ export const albums: Album[] = [
           "20:54": "The Generals - Jerry Goldsmith"
         }
       },
-      "Ride",
+      "Soarin' Over California (2001-2016)",
+      {
+        "title": "Preshow",
+        "artist": "Jerry Goldsmith",
+        "mp3": BASE_URL + "/Soarin' Over California-Preshow.mp3",
+        "comments": "",
+        "tags": []
+      },
       {
         "title": "Load Music",
         "artist": "Jerry Goldsmith",
@@ -6829,23 +6807,16 @@ export const albums: Album[] = [
         "tags": []
       },
       {
-        "title": "Soundtrack",
+        "title": "Soarin' Over California (Soundtrack)",
         "artist": "Jerry Goldsmith",
         "mp3": BASE_URL + "/Soarin' Over California-15 Soundtrack.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Score",
+        "title": "Soarin' Over California (Score)",
         "artist": "Jerry Goldsmith",
         "mp3": BASE_URL + "/Soarin' Over California-16 Score.mp3",
-        "comments": "",
-        "tags": []
-      },
-      {
-        "title": "Soarin' Around the World: Theme",
-        "artist": "Bruce Broughton",
-        "mp3": BASE_URL + "/Soarin' Over California-17 Soarin_ Around the World_ Theme.mp3",
         "comments": "",
         "tags": []
       },
@@ -6855,7 +6826,15 @@ export const albums: Album[] = [
         "mp3": BASE_URL + "/Soarin' Over California-18 Exit Music.mp3",
         "comments": "",
         "tags": []
-      }
+      },
+      "Soarin' Around the World (2016)",
+      {
+        "title": "Soarin' Around the World (Soundtrack)",
+        "artist": "Bruce Broughton",
+        "mp3": BASE_URL + "/Soarin' Over California-17 Soarin_ Around the World_ Soundtrack.mp3",
+        "comments": "",
+        "tags": []
+      },
     ]
   },
   {
