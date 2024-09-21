@@ -293,7 +293,7 @@
             {track.title}
           </span>
         </h3>
-        <h3 class="album">{chapters !== null && currentChapter !== null && currentChapter !== -1 ? chapters[currentChapter].name : track.album.name}</h3>
+        <h3 class="album">{chapters !== null && currentChapter !== null && currentChapter !== -1 && chapters[currentChapter] !== undefined ? chapters[currentChapter].name : track.album.name}</h3>
       </div>
     </div>
     <div class="centerBar">
