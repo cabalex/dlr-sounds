@@ -10,10 +10,8 @@
     import VolumeOff from "svelte-material-icons/VolumeOff.svelte";
     import PlaylistMusic from "svelte-material-icons/PlaylistMusic.svelte";
     import PlaylistMusicOutlined from "svelte-material-icons/PlaylistMusicOutline.svelte";
-    import Repeat from "svelte-material-icons/Repeat.svelte";
-    import RepeatOff from "svelte-material-icons/RepeatOff.svelte";
-    import RepeatOnce from "svelte-material-icons/RepeatOnce.svelte";
-    import Shuffle from "svelte-material-icons/Shuffle.svelte";
+    import Rewind from "svelte-material-icons/Rewind5.svelte";
+    import FastForward from "svelte-material-icons/FastForward5.svelte";
     import Castle from "../../assets/Castle.svelte";
   
     import clockFace from "../../assets/smallWorldClockface.png";
@@ -204,15 +202,6 @@
         updatePositionState();
       });
     }
-
-    function shuffleQueue() {
-      let pos = $audioStorePosition;
-      audioStore.update((value) => {
-        let shuffled = value.filter((v, i) => i !== pos).sort(() => Math.random() - 0.5);
-        audioStorePosition.set(0);
-        return [value[pos], ...shuffled];
-      });
-    }
   
     /* queue */
     let showingQueue = false;
@@ -309,8 +298,8 @@
     </div>
     <div class="centerBar">
       <div class="playbackActions">
-        <button title="Shuffle queue" on:click={shuffleQueue}>
-          <Shuffle size={24} />
+        <button class="ffBtn" title="Rewind 5s" on:click={() => audio.currentTime = Math.max(0, audio.currentTime - 5)}>
+          <Rewind size={24} />
         </button>
         <button on:click={() => { if (audio.currentTime > 3) { audio.currentTime = 0 } else { previousTrack() }}}><SkipPrevious size={24} /></button>
         <button class="playBtn" on:click={(e) => { if (audio.paused) { play() } else { pause() }; e.stopPropagation() } }>
@@ -321,14 +310,8 @@
           {/if}
         </button>
         <button on:click={nextTrack}><SkipNext size={24} /></button>
-        <button class:active={$repeat !== "off"} title="Repeat setting" on:click={() => repeat.update((value) => ["off", "on", "once"][(["off", "on", "once"].indexOf(value) + 1) % 3])}>
-          {#if $repeat === "on"}
-          <Repeat size={24} />
-          {:else if $repeat === "once"}
-          <RepeatOnce size={24} />
-          {:else}
-          <RepeatOff size={24} />
-          {/if}
+        <button class="ffBtn" title="Fast forward 5s" on:click={() => audio.currentTime = Math.min(audio.duration, audio.currentTime + 5)}>
+          <FastForward size={24} />
         </button>
       </div>
       <Seekbar bind:progress={progress} bind:duration={duration} chapters={chapters} audio={audio} updatePositionState={updatePositionState} />
@@ -600,6 +583,10 @@
     }
     .audioPlayer.fullscreen button {
       font-size: 2.5em;
+    }
+    :global(.audioPlayer.fullscreen .actions svg) {
+      width: 36px;
+      height: 36px;
     }
     :global(.audioPlayer button.active svg) {
       fill: var(--primary) !important;

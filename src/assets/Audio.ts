@@ -7142,27 +7142,30 @@ export const albums: Album[] = [
     "location": [33.80581498569456, -117.92146321768644],
     "tags": ["DCA"],
     "tracks": [
+      "Paradise Pier (2001-2010)",
       {
-        "title": "Paradise Pier: Area Loop (2001-2010)",
+        "title": "Area Loop (2001)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Paradise Pier-05 Paradise Pier_ Area Loop (2001-2010).mp3",
         "comments": "",
         "tags": []
       },
+      "Paradise Pier (2010-2018)",
       {
-        "title": "Paradise Pier: Area Demo Loop (2010)",
+        "title": "Area Demo Loop (2010)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Paradise Pier-10 Paradise Pier_ Area Demo Loop (2010).mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Paradise Pier: Area Loop (2010)",
+        "title": "Area Loop (2010)",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Paradise Pier-11 Paradise Pier_ Area Loop (2010).mp3",
         "comments": "",
         "tags": []
       },
+      "Paradise Park",
       {
         "title": "Paradise Park: Area Loop (2010)",
         "artist": "Walt Disney",
@@ -7202,7 +7205,7 @@ export const albums: Album[] = [
       },
       "California Screamin'",
       {
-        "title": "California Screamin': Ride",
+        "title": "California Screamin': Score",
         "artist": "Walt Disney",
         "mp3": BASE_URL + "/Paradise Pier-04 California Screamin__ Ride.mp3",
         "comments": "",
@@ -7223,29 +7226,30 @@ export const albums: Album[] = [
         "comments": "",
         "tags": []
       },
+      "Toy Story: Midway Mania!",
       {
-        "title": "Toy Story Midway Mania: Area Music: The Cleaner",
+        "title": "The Cleaner",
         "artist": "Randy Newman",
         "mp3": BASE_URL + "/Pixar Pier-02 Toy Story Midway Mania_ Area Music_ The Cleaner.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Toy Story Midway Mania: Area Music: You've Got a Friend in Me",
+        "title": "You've Got a Friend in Me",
         "artist": "Randy Newman",
         "mp3": BASE_URL + "/Pixar Pier-03 Toy Story Midway Mania_ Area Music_ You_ve Got a Friend in Me.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Toy Story Midway Mania: Hot Potato",
+        "title": "Hot Potato",
         "artist": "Randy Newman",
         "mp3": BASE_URL + "/Pixar Pier-04 Toy Story Midway Mania_ Hot Potato.mp3",
         "comments": "",
         "tags": []
       },
       {
-        "title": "Toy Story Midway Mania: Theme",
+        "title": "Theme",
         "artist": "Randy Newman",
         "mp3": BASE_URL + "/Pixar Pier-05 Toy Story Midway Mania_ Theme.mp3",
         "comments": "",

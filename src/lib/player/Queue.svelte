@@ -1,8 +1,13 @@
 <script lang="ts">
   import PlaylistRemove from "svelte-material-icons/PlaylistRemove.svelte";
   import Delete from "svelte-material-icons/Delete.svelte";
-  import { audioStore, audioStorePosition, } from "../../AudioStore";
+  import Repeat from "svelte-material-icons/Repeat.svelte";
+  import RepeatOff from "svelte-material-icons/RepeatOff.svelte";
+  import RepeatOnce from "svelte-material-icons/RepeatOnce.svelte";
+  import Shuffle from "svelte-material-icons/Shuffle.svelte";
+  import { audioStore, audioStorePosition, repeat, } from "../../AudioStore";
   import PlayAnim from "../../assets/PlayAnim.svelte";
+  import { slide } from "svelte/transition";
   export let shown = false;
   export let onShown = (shown: boolean) => {};
   let element;
@@ -28,6 +33,15 @@
     })
     audioStorePosition.set(0);
   }
+
+  function shuffleQueue() {
+      let pos = $audioStorePosition;
+      audioStore.update((value) => {
+        let shuffled = value.filter((v, i) => i !== pos).sort(() => Math.random() - 0.5);
+        audioStorePosition.set(0);
+        return [value[pos], ...shuffled];
+      });
+    }
 
   /* drag and drop */
   let mouseYCoordinate = null; // pointer y coordinate within client
@@ -67,16 +81,28 @@
   }
 </script>
 {#if shown}
-<div class="queue" bind:this={element} on:touchstart={(e) => e.stopPropagation()}>
+<div transition:slide={{axis: 'y', duration: 100}} class="queue" bind:this={element} on:touchstart={(e) => e.stopPropagation()}>
   <h3>
     <span>{$audioStore.length} {$audioStore.length == 1 ? "song" : "songs"} in queue</span>
+    <button title="Shuffle queue" on:click={shuffleQueue}>
+      <Shuffle size={24} />
+    </button>
+    <button class:active={$repeat !== "off"} title="Repeat setting" on:click={() => repeat.update((value) => ["off", "on", "once"][(["off", "on", "once"].indexOf(value) + 1) % 3])}>
+      {#if $repeat === "on"}
+      <Repeat size={24} />
+      {:else if $repeat === "once"}
+      <RepeatOnce size={24} />
+      {:else}
+      <RepeatOff size={24} />
+      {/if}
+    </button>
     <button title="Clear queue" on:click={clearQueue} disabled={$audioStore.length == 0}><Delete /></button>
   </h3>
   {#if mouseYCoordinate}
   <div
       class="track ghost"
       class:playing={$audioStorePosition === draggingItemIndex}
-      style="top: {mouseYCoordinate + distanceTopGrabbedVsPointer}px; width: {element.getBoundingClientRect().width - 45}px"
+      style="top: {mouseYCoordinate + distanceTopGrabbedVsPointer}px; width: {element.getBoundingClientRect().width - 35}px"
       draggable="true"
     >
       {#if $audioStorePosition === draggingItemIndex}
@@ -210,7 +236,7 @@
     z-index: 100;
     position: fixed;
     top: 0;
-    background-color: var(--alternate-dark);
+    background-color: #ccc;
     filter: drop-shadow(0 0 10px #777);
   }
   .queue > h3 {
@@ -253,6 +279,9 @@
     cursor: pointer;
     border-radius: 5px;
     border-color: transparent;
+  }
+  .queue button.active {
+    background-color: var(--primary);
   }
   .queue .track:hover {
     background-color: #999;
