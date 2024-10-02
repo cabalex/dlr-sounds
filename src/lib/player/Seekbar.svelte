@@ -35,9 +35,11 @@
     let secondsPerPixel = duration / bounding.width;
     scrubbing.tempCurrentTime = Math.max(0, Math.min(duration, (x - bounding.left) * secondsPerPixel));
     
-    for (let chapter of chapters) {
-      if (Math.abs(scrubbing.tempCurrentTime - chapter.startTime) < 30) {
-        scrubbing.tempCurrentTime = chapter.startTime;
+    if (chapters) {
+      for (let chapter of chapters) {
+        if (Math.abs(scrubbing.tempCurrentTime - chapter.startTime) < 30) {
+          scrubbing.tempCurrentTime = chapter.startTime;
+        }
       }
     }
     

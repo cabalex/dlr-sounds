@@ -9,7 +9,9 @@ export default class DisneylandReverb {
     effects: any[] = [];
 
     constructor(audioElem: HTMLAudioElement) {
-        this.context = new AudioContext();
+        this.context = new AudioContext({
+            sampleRate: 48000
+        });
         this.tuna = new Tuna(this.context);
 
         this.effects = [
