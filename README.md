@@ -1,7 +1,7 @@
 # [dlr-sounds](https://cabalex.github.io/dlr-sounds)
  A spiritual successor of [SoundsOfDisneyland.com](http://soundsofdisneyland.com).
  
- ![image](https://user-images.githubusercontent.com/31020729/206691452-cc504ea4-4942-4011-906d-fb1847618403.png)
+ ![Preview of DLR Sounds' UI, including playback and queue.](https://github.com/user-attachments/assets/86a27003-1b3e-4ad8-b56b-d75bf8de7666)
 
 
 ## Why?
