@@ -21,6 +21,7 @@
     "vite": "^3.2.3"
   },
   "dependencies": {
+    "fuse.js": "^7.0.0",
     "svelte-material-icons": "^2.0.4",
     "tunajs": "^1.0.15"
   }

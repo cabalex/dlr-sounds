@@ -81,6 +81,8 @@
   let chapters = track.chapters ? parseChapters(track.chapters) : null;
   function detectChapter() {
     if (!playing || !$audioElem || !$audioElem.duration || !track.chapters) return;
+
+    if (chapters === null) chapters = parseChapters(track.chapters);
     
     for (let i = 0; i < chapters.length; i++) {
       if ($audioElem.currentTime >= chapters[i].startTime) {
@@ -200,11 +202,7 @@
   {/if}
 </div>
 {#if chaptersOpen && chapters}
-<div class="chapters" transition:slide={{duration: 100}}>
-  <div class="chapterNote">
-    <Information />
-    Due to Web Audio limitations, chapters may not be exactly correct.
-  </div>
+<div class="chapters" transition:slide|local={{duration: 100}}>
   {#each chapters as chapter, i}
   <div class="chapter" class:playing={playing && currentChapter === i} on:click={(e) => {
     e.stopPropagation();
@@ -246,17 +244,6 @@
   .track.playing, .chapter.playing {
     color: var(--primary);
     font-weight: bold;
-  }
-  .chapterNote {
-    color: #888;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    padding: 5px;
-    padding-left: 20px;
-    text-align: left;
-    line-height: 1em;
   }
   .chapter .time {
     font-family: monospace;

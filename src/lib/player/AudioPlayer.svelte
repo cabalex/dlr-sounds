@@ -150,10 +150,27 @@
   
     // update metadata for media controls.
     function updateMetadata() {
+      let title = track.title;
+      let artist = track.artist;
+      let album = track.album.name;
+
+      if (chapters !== null && currentChapter !== null && currentChapter !== -1 && chapters[currentChapter] !== undefined) {
+        let parts = chapters[currentChapter].name.split(" - ");
+        title = parts[0];
+        artist = parts[1] || track.artist;
+        if (track.title.includes(":")) {
+          // "name: area loop" should just be the whole name
+          album = track.title;
+        } else {
+          // otherwise, it should be the name and the title
+          album = track.album.name + ": " + track.title;
+        }
+      }
+
       navigator.mediaSession.metadata = new MediaMetadata({
-        title: track.title,
-        artist: track.artist,
-        album: track.album.name,
+        title,
+        artist,
+        album,
         artwork: [{src: track.album.poster, sizes: "500x500", type: "image/jpeg"}]
       });
   
@@ -172,11 +189,31 @@
     }
   
     async function previousTrack() {
-      audioStorePosition.set(($audioStorePosition - 1 + $audioStore.length) % $audioStore.length);
+      if (chapters !== null && currentChapter !== null && currentChapter !== -1 && chapters[currentChapter] !== undefined && currentChapter > 0) {
+        if (progress - chapters[currentChapter].startTime < 5) {
+          audio.currentTime = chapters[currentChapter - 1].startTime;
+        } else {
+          audio.currentTime = chapters[currentChapter].startTime;
+        }
+      } else {
+        if ($audioStore.length === 1) {
+          audio.currentTime = 0;
+        } else {
+          audioStorePosition.set(($audioStorePosition - 1 + $audioStore.length) % $audioStore.length);
+        }
+      }
       await play();
     }
     async function nextTrack() {
-      audioStorePosition.set(($audioStorePosition + 1) % $audioStore.length);
+      if (chapters !== null && currentChapter !== null && currentChapter !== -1 && chapters[currentChapter] !== undefined && currentChapter < chapters.length - 1) {
+        audio.currentTime = chapters[currentChapter + 1].startTime;
+      } else {
+        if ($audioStore.length === 1) {
+          audio.currentTime = 0;
+        } else {
+          audioStorePosition.set(($audioStorePosition + 1) % $audioStore.length);
+        }
+      }
       await play();
     }
   
@@ -219,11 +256,18 @@
     let currentChapter = null;
     function detectChapter() {
       if (!$audioElem.duration || !chapters) return;
+
+      let oldChapter = currentChapter;
       
       for (let i = 0; i < chapters.length; i++) {
         if ($audioElem.currentTime >= chapters[i].startTime) {
           currentChapter = i;
         }
+      }
+
+      if (oldChapter !== currentChapter) {
+        // update title of track
+        updateMetadata();
       }
     }
   

@@ -2,18 +2,26 @@
   import Magnify from "svelte-material-icons/Magnify.svelte"
   import Close from "svelte-material-icons/Close.svelte"
   import Track from "./Track.svelte";
+  import Fuse from "fuse.js";
   export let tracks;
 
   let results = [];
   let inputRef;
 
+  const fuse = new Fuse(tracks, {
+    keys: [
+      "album.name",
+      "title",
+      "tags",
+      "chapters",
+    ],
+    threshold: 0.3,
+  });
+
   function onChange(e) {
     e.stopPropagation();
     if (e.target.value.length >= 3) {
-      let search = e.target.value.toLowerCase();
-      results = tracks.filter((track) => {
-        return typeof track !== "string" && `${track.album.name} - ${track.title} ${track.tags.join(", ")} ${track.chapters ? Object.values(track.chapters).join(", ") : ""}`.toLowerCase().includes(search);
-      });
+      results = fuse.search(e.target.value).map(x => x.item);
     } else {
       results = [];
     }
